@@ -2,32 +2,31 @@
 \subsection{FLEXPART}
 
 \subsubsection{FLEXPART wet depostion}
+Wet deposition in FLEXPART is calculated by releasing particles through out the
+whole atmospheric column. To differentiate between in-cloud and below-cloud
+removal in the model, require to know the position of the computational FLEXPART
+particle relative to the cloud. Since FLEXPART V10 there has been the option to
+use 3D cloud total water content, available in the ECMWF forcing
+\parencite{flexpart_wetdep}.  
 
-The wet deposition scheme in FLEXPART include both in cloud and below cloud
-removal. To determine wether a computational particle residing in a column with
-precipitation is situated above, inside or below a cloud FLEXPART uses
-meteorological information from the ECMWF input data. Since FLEXPART V10 the
-vertical extent of the cloud can be determined by the specific cloud liquid
-water content (CLWC) and specific cloud ice water content or from the summed
-quantity cloud total water content (CTWC) \parencite{flexpart_wetdep}. If the
-particle is found to be either inside or below a cloud the scavenging
-coefficient in FLEXPART is determined by either by the in-cloud scheme or the
-below cloud scheme.  
+Above the cloud no scavenging can occur, inside the cloud aerosols can be
+scavenged by acting as nucleation sites for cloud droplets or
+ice crystals (nucleation scavenging), below the cloud, aerosols can be washed-out
+through interactions with precipitation as the precipitation falls to the ground
+(impaction scavenging). The efficiency of the wet scavenging for insoluble aerosols 
+depends primarily on the size of the particle. Particularly for below cloud 
+scavenging, which is not very efficient for submicron particles as they tend to
+follow the streamlines. Initially mineral dust is insoluble and not very efficient CCN,
+however by weathering during transport the mineral dust aerosols might acquire a coating of
+of some soluble material e.g. sulfate \textcite{Dust_aerosols_coating2001}. Both in-cloud
+(\verb|PCCN_AERO| and \verb|PIN_AERO|) and below cloud (\verb|PCRAIN_AERO| and \verb|PCSNOW_AERO|),  
+scavenging parameters, can be adjusted in the \verb|SPECIES_nnn| file to fit the
+modeled species.     
 
-Since the precipitation does not necessarily occur over whole grid cell,
+Precipitation does not necessarily occur over whole grid cell,
 FLEXPART uses an empirical relation to get the sub-grid precipitation intensity
 $ I $ by scaling the  the surface precipitation intensity ($ I_t $) in the ECMWF
 input data, described in detail in \textcite{Flexpart-2005_ref_paper}.   
-
-Above the cloud no scavenging can occur, in side the cloud aerosols can be
-scavenged by acting as nucleation sites for cloud droplets or
-ice crystals (nucleation scavenging), below the cloud aerosols can be washed-out
-through interactions with precipitation as the precipitation falls to the ground
-(impaction scavenging). 
-
-In FLEXPART nucleation scavenging is only activated for particles residing at
-altitudes where cloud water is present and in the fraction of the gridcell where
-precipitation is occurring. The    
 
 % The wet deposition
 % in FLEXPART is computed by releasing computational FLEXPART particles in the
