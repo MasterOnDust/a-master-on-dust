@@ -1,0 +1,66 @@
+\NeedsTeXFormat{LaTeX2e}
+
+
+\ProvidesPackage{master_on_dust}[15/03/2019 Custom Latex thesis style]
+
+
+%% Encoding
+\RequirePackage[utf8]{inputenx}
+\RequirePackage[T1]{fontenc}
+
+\RequirePackage{babel,duomasterforside}
+
+\RequirePackage{subfiles}
+\RequirePackage{algorithm2e}
+\RequirePackage{cleveref}               %Better referencing to figures etc.
+\RequirePackage[nottoc]{tocbibind}
+\RequirePackage{csquotes}
+
+\RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\RequirePackage{chemformula}
+\RequirePackage[font=it]{caption}
+\RequirePackage{subcaption}
+\RequirePackage{gensymb}
+\RequirePackage{float}
+\RequirePackage{eso-pic}
+\RequirePackage{physics}
+\RequirePackage{algpseudocode}
+\RequirePackage{listings}  
+\RequirePackage[pdfusetitle]{hyperref}
+
+%Bibliography
+
+\RequirePackage[backend      = biber,
+                sortcites    = true,
+                giveninits   = true,
+                uniquename   = init,
+                doi          = true,
+                isbn         = true,
+                url          = false,
+                maxcitenames = 2,
+                maxbibnames  = 10,
+                style        = authoryear]{biblatex
+\addbibresource{references.bib}
+%Figures
+\RequirePackage{graphicx}     
+
+\graphicspath{{../../figs}}
+\RequirePackage{subcaption}   
+
+%% Mathematics
+\RequirePackage{amssymb}    % Extra symbols
+\RequirePackage{mathtools}  % Fonts and environments for mathematical formulae
+
+\RequirePackage[makeroom]{cancel}
+\RequirePackage[left=2cm,%
+                right=2cm,%
+                top=2.25cm,%
+                bottom=2.25cm,%
+                headheight=12pt,%
+                a4paper]{geometry}%
+                
+\RequirePackage[labelfont={bf,sf},%
+                labelsep=period,%
+                justification=raggedright]{caption}
+
+\endinput

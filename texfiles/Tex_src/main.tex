@@ -1,71 +1,7 @@
 % REMEMBER TO SET LANGUAGE!
 
-\documentclass[a4paper,12pt,english]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-\usepackage{subfiles}
-\usepackage{csvsimple}
-\usepackage{epstopdf}
-% Standard stuff
-\usepackage{bm,amsmath,graphicx,varioref,verbatim,amsfonts, mleftright, siunitx}
-\usepackage[colorlinks, citecolor=black]{hyperref}
-\usepackage{algorithm2e}
-\usepackage{cleveref}
-\usepackage[nottoc]{tocbibind}
-\usepackage{csquotes}
-% colors in text
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage{chemformula}
-\usepackage[font=it]{caption}
-\usepackage{subcaption}
-\usepackage{gensymb}
-\usepackage{float}
-\usepackage{eso-pic}
-\usepackage{physics}
-\usepackage{algpseudocode}
-\usepackage{titlepic}
-\usepackage[T1]{fontenc}
-\usepackage{booktabs}
-% Nicer default font (+ math font) than Computer Modern for most use cases
-\usepackage{mathpazo}
-\usepackage[toc,page]{appendix}
-\usepackage{mwe}
-\usepackage{rotating}
-\usepackage{tikz}
-
-
-%Cite stuff
-% References like (author, year)
-\usepackage[backend=biber,citestyle=authoryear, maxbibnames=9,maxcitenames=2]{biblatex}
-% \usepackage[backend=biber,style=nature]{biblatex}
-%\usepackage[colorlinks]{hyperref}
-\usepackage{url}
-% Document formatting
-\setlength{\parindent}{0mm}
-\setlength{\parskip}{1.5mm}
-
-%Kryss ut ting
-\usepackage[makeroom]{cancel}
-\usepackage[left=2cm,%
-                right=2cm,%
-                top=2.25cm,%
-                bottom=2.25cm,%
-                headheight=12pt,%
-                a4paper]{geometry}%
-                
-\usepackage[labelfont={bf,sf},%
-                labelsep=period,%
-                justification=raggedright]{caption}
-
-% Expectation value
-\usepackage{braket}
-
-%Color scheme for listings
-\usepackage{textcomp}
-\definecolor{listinggray}{gray}{0.9}
-\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
-
-
+\documentclass[a4paper,12pt,english]{report}
+\usepackage{master_on_dust}
 % Alter some LaTeX defaults for better treatment of figures:
 % See p.105 of "TeX Unbound" for suggested values.
 % See pp. 199-200 of Lamport's "LaTeX" book for details.
@@ -107,14 +43,6 @@
 \newcommand{\lnb}[1]{%
   \ln\mleft(#1\mright)%
 }
-\newcommand\BackgroundIm{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{%
-\vfill
-\centering
-% \includegraphics[height=\paperheight,width=\paperwidth]{FrontpageBlue.png}%
-\vfill
-}}}
 
 % Macros for writing auto-sized paranthesis, brackets and braces
 \newcommand{\para}[1]{\left(#1\right)}
@@ -154,24 +82,25 @@
 
 
 
-\setlength{\parindent}{1em}
+% \setlength{\parindent}{1em}
 
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd{\@maketitle}{\vskip 2em}{\vspace*{-1.5cm}}{}{}
-\makeatother
 
 \title{This master thesis will soon have a very cool title!}
 \author{Ove Haugvaldstad}
 
-\addbibresource{references.bib}
+
 \begin{document}
-\maketitle
-\newpage
+\duoforside[program={Meteorology and Oceanography},
+  dept={Section of Meteorology and Oceanography \and Department of Geoscience},
+  option={Difficult Computations},
+  printer={X-press printing house},
+  long]
+
 \pagenumbering{arabic}
-\subfile{methods.tex}
-\subfile{flexdust_model_discription.tex}
-\subfile{flexpart_model_discription.tex}
+\subfile{../methods}
+\subfile{../flexdust_model_discription}
+\subfile{../flexpart_model_discription}
 \newpage
 \printbibliography
+
 \end{document}
