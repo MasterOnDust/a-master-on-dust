@@ -5,14 +5,12 @@
 
 
 %% Encoding
-\RequirePackage[utf8]{inputenx}
 \RequirePackage[T1]{fontenc}
 
-\RequirePackage{babel,duomasterforside}
 
 \RequirePackage{subfiles}
 \RequirePackage{algorithm2e}
-\RequirePackage{cleveref}               %Better referencing to figures etc.
+           %Better referencing to figures etc.
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage{csquotes}
 
@@ -27,7 +25,7 @@
 \RequirePackage{algpseudocode}
 \RequirePackage{listings}  
 \RequirePackage[pdfusetitle]{hyperref}
-
+\RequirePackage[colorinlistoftodos]{todonotes}
 %Bibliography
 
 \RequirePackage[backend      = biber,
@@ -39,10 +37,11 @@
                 url          = false,
                 maxcitenames = 2,
                 maxbibnames  = 10,
-                style        = authoryear]{biblatex
+                style        = authoryear]{biblatex}
 \addbibresource{references.bib}
 %Figures
 \RequirePackage{graphicx}     
+\RequirePackage{keyval,xifthen}
 
 \graphicspath{{../../figs}}
 \RequirePackage{subcaption}   
@@ -54,13 +53,15 @@
 \RequirePackage[makeroom]{cancel}
 \RequirePackage[left=2cm,%
                 right=2cm,%
-                top=2.25cm,%
-                bottom=2.25cm,%
+                top=3.00cm,%
+                bottom=3.00cm,%
                 headheight=12pt,%
                 a4paper]{geometry}%
                 
 \RequirePackage[labelfont={bf,sf},%
                 labelsep=period,%
                 justification=raggedright]{caption}
+                
+\RequirePackage{cleveref}    
 
 \endinput

@@ -7,17 +7,15 @@
 \DeclareOption{norsk}{\def \duo@lang {bm}}
 \DeclareOption{nynorsk}{\def \duo@lang {nn}}
 
-\ExecuteOptions{norsk}
+\ExecuteOptions{english}
 \ProcessOptions \relax
 
 
 %% Initial code:
-
 \RequirePackage{graphicx,keyval,xifthen}
 \IfFileExists{type1cm.sty}{\RequirePackage{type1cm}}{}
 \IfFileExists{type1ec.sty}{\RequirePackage{type1ec}}{}
 \RequirePackage[T1]{url}
-
 
 %% The main command:
 
