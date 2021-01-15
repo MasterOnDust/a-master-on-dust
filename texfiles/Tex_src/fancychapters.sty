@@ -1,0 +1,21 @@
+% Some new dimensions...
+\newdimen\fancychapwidth
+\newdimen\fancychapsep
+
+% ... and their defaults
+\fancychapwidth=0.5\textwidth
+\fancychapsep=10pt
+
+% the \Chapter ...
+\long\def\Chapter#1{\cleardoublepage
+   \thispagestyle{plain}%
+   \global\@topnum\z@
+
+   \@afterindentfalse
+   \hfill\parbox{\fancychapwidth}{\em #1}	% put quotation in a box
+						   % flushed right
+   \vspace{\fancychapsep}\par			% add distance to chapter head
+   \secdef\@chapter\@schapter}
+
+% That's all folks.
+\endinput

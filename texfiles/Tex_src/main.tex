@@ -1,9 +1,10 @@
 % REMEMBER TO SET LANGUAGE!
+
 \documentclass[a4paper,12pt,english]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{babel,duomasterforside}
-
 \usepackage{master_on_dust}
+\usepackage{fancychapters}
 % Alter some LaTeX defaults for better treatment of figures:
 % See p.105 of "TeX Unbound" for suggested values.
 % See pp. 199-200 of Lamport's "LaTeX" book for details.
@@ -94,20 +95,12 @@
 \duoforside[program={Meteorology and Oceanography},
   dept={Section of Meteorology and Oceanography \and Department of Geoscience},
   long]
-  
+\subfile{../preface}  
 \tableofcontents
 
 \newpage
-\chapter{Background}
-Aeolian dust is a fundamental component in the climate system. Large range of scales motion influences the emission 
-,transport and deposition of aeolian dust from turbulent wind gust at the surface to large scale atmospheric circulation 
-patterns. The aim of this chapter is to the provide the necessary background for understanding the emission, deposition 
-and transport of East Asian aeolian dust. The first part of this chapter will focus on explaining the physics of dust 
-emissions, what are different processes and how do we model dust emissions, where are the major mineral dust source in 
-East Asia and which kind of meteorological conditions favours dust emission. The second part will go into the transport 
-of aeolian dust, the role large scale circulation have on dust transport from East Asian desert. \todo{NEED to give 
-proper references to the different section}. The last part will look at the how mineral dust is deposited, how was the 
-Loess Plateau formed and how the Loess deposit can be an a window into understanding past climate.   
+\subfile{../Background/Introduction} 
+\subfile{../Background/Atmospheric_circulation_in_Asia}   
 \subfile{../Background/physics_of_windblown_dust}
 \subfile{../Background/Mineral_dust_impact}
 \chapter{Methods}
