@@ -1,11 +1,15 @@
 % REMEMBER TO SET LANGUAGE!
 
-\documentclass[a4paper,14pt,english]{extreport}
+\documentclass[a4paper,14pt,english,final]{extreport}
 \usepackage[utf8]{inputenc}
 \usepackage{babel,duomasterforside}
 \setlength{\marginparwidth}{2cm}
 \usepackage{master_on_dust}
 \usepackage{fancychapters}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+% \usetikzlibrary{}
+% \tikzexternalize[prefix=../tikz/]
 % Alter some LaTeX defaults for better treatment of figures:
 % See p.105 of "TeX Unbound" for suggested values.
 % See pp. 199-200 of Lamport's "LaTeX" book for details.
@@ -24,6 +28,12 @@
 % N.B.: floatpagefraction MUST be less than topfraction !!
 \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
 % remember to use [htp] or [htpb] for placement
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 %Macro for writing vectors
 \def\*#1{\ensuremath{\mathbf{#1}}}
@@ -92,22 +102,24 @@
 \subtitle{To years of work}
 \author{Ove Haugvaldstad}
 
+\makeglossaries
+\input{texfiles/Misc/glossary}
+
 \begin{document}
 \duoforside[program={Meteorology and Oceanography},
   dept={Section of Meteorology and Oceanography \and Department of Geoscience},
   long]
 \subfile{../preface}  
 \tableofcontents
-
 \newpage
-\subfile{../Background/Introduction} 
-\subfile{../Background/Atmospheric_circulation_in_Asia}   
-\subfile{../Background/physics_of_windblown_dust}
-\subfile{../Background/Mineral_dust_impact}
-\chapter{Methods}
-\subfile{../Methods/flexdust_model_discription}
-\subfile{../Methods/flexpart_model_discription}
-\subfile{../Methods/model_setup}
+\subfile{../Background/Chapter1} 
+\subfile{../Methods/Chapter2}
+
+\clearpage
+
+\printglossary
+
+
 \newpage
 \printbibliography
 
