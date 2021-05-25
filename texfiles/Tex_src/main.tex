@@ -1,6 +1,6 @@
 % REMEMBER TO SET LANGUAGE!
 
-\documentclass[a4paper,14pt,english,final]{extreport}
+\documentclass[a4paper,12pt,english,final]{extreport}
 \usepackage[utf8]{inputenc}
 \usepackage{babel,duomasterforside}
 \setlength{\marginparwidth}{2cm}
@@ -8,15 +8,8 @@
 \usepackage{fancychapters}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows}
-% \usetikzlibrary{}
-% \tikzexternalize[prefix=../tikz/]
-% Alter some LaTeX defaults for better treatment of figures:
-% See p.105 of "TeX Unbound" for suggested values.
-% See pp. 199-200 of Lamport's "LaTeX" book for details.
-%   General parameters, for ALL pages:
-% \renewcommand{\topfraction}{0.9}	% max fraction of floats at top
-% \renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
-%   Parameters for TEXT pages (not float pages):
+\usepackage[inkscapearea=page]{svg}
+\svgpath{{texfiles/figs/}}
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}     % 2 may work better
@@ -109,12 +102,12 @@
 \duoforside[program={Meteorology and Oceanography},
   dept={Section of Meteorology and Oceanography \and Department of Geoscience},
   long]
-\subfile{../preface}  
+% \subfile{../preface}  
 \tableofcontents
 \newpage
-\subfile{../Background/Chapter1} 
-\subfile{../Methods/Chapter2}
-
+\subfile{texfiles/Background/Chapter1} 
+\subfile{texfiles/Methods/Chapter2}
+\subfile{texfiles/Results/Chapter3}
 \clearpage
 
 \printglossary
