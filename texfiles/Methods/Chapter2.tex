@@ -174,14 +174,14 @@ where $r_a$ is the aerodynamic resistance, $r_b$ is the quasi laminar surface la
 \end{equation}
 where $\rho_p$ and $d_p$ is the particle density and diameter, $\mu$ is the dynamic viscosity of air and $C_{cun}$ is the Cunningham slip-flow correction.
 
-In backward mode dry deposition is calculated at start of the simulation by releasing the particles in a shallow layer close to the ground. This layer corresponding to the layer which particles in forward mode would be subjected to dry deposition and by default is set to 30m. The "mass" of the particles are then scaled by the deposition velocity and tracked backward in time as in regular backward simulation \parencite{eckhardt2017source}. 
+In backward mode dry deposition is calculated at start of the simulation by releasing the particles in a shallow layer close to the ground. This layer corresponds to the layer which particles in forward mode would be subjected to dry deposition and by default is set to 30m. The "mass" of the particles are then scaled by the deposition velocity and tracked backward in time as in regular backward simulation \parencite{eckhardt2017source}. 
 
 \subsection{FLEXPART wet deposition}
 
 The current wet deposition in FLEXPART was recently improved in \textcite{flexpart_wetdep}, to take advantage of cloud information in ECWMF forcing. The the wet deposition scheme in FLEXPART consist of two steps. First the location of the particle in relation to the cloud is determined using the 3D specific cloud total
-water content (CTWC) from the input data.  Then based on the particle's location in relation to the cloud, the particle can either be subjected to nucleation scavenging inside the cloud, or impaction scavenging below the cloud. If the particle is above the cloud no scavenging can occur. 
+water content (CTWC).  Then based on the particle's location in relation to the cloud, the particle can either be subjected to nucleation scavenging inside the cloud, or impaction scavenging below the cloud. If the particle is above the cloud no scavenging can occur. 
 
-In backward simulations FLEXPART the particle release occur throughout the atmospheric column to first check if any particles are wet deposited. FLEXPART then calculates the trajectories for wet deposited particles starting at the height where the particles were scavenged the remaining particles are terminated.    
+In backward mode the wet deposition is calculated particle release occur throughout the atmospheric column to first check if any particles are wet deposited. FLEXPART then calculates the trajectories for wet deposited particles starting at the height where the particles were scavenged the remaining particles are terminated.    
  
 \subsubsection{In cloud scavenging}
 The in-cloud scavenging scheme in FLEXPART is only activated for particles residing within a precipitating cloud. Precipitation does not necessarily occur over the whole grid cell in the input data, accordingly FLEXPART uses an empirical relation to derive the fraction of a gridcell experiencing precipitation , see \textcite{Flexpart-2005_ref_paper} for details. The subgrid precipitating cloud water (PCW) is calculated according to: 

@@ -3,20 +3,55 @@
 \\[5pt]
 \rightline{{\rm --- The book of genesis 3:19}}
 }{Background}
-Dust is present almost every where 
-Dust can several associations depending on the context,  when talking about atmospheric dust one usually ref   Dust is an essential ingredient of our earth system.   
+Aeolian dust is one the most abundant aerosol species in the atmosphere constituting the majority of the total atmospheric  aerosol mass. The main source regions of aeolian dust are regions such as the Sahara desert, the Middle East and desert regions in north west China. Once the dust is entrained into the atmosphere it can be transported over wast distances \parencite{yumimoto_elevated_2009}. While in the atmosphere the dust directly impacts earth’s radiative balance through scattering short wave radiation from the sun and absorbing long wave radiation. Dust also indirectly impacts climate by acting as cloud condensation nuclei (CCN) and ice nuclei (IN) affecting the cloud droplet number concentrations, which in turn alters the cloud optical properties and life time \parencite{lohmann2006sensitivity}. The dust will eventually settle and depending where the dust is deposited it can have a significant impact on the biogeochemistry e.g. acting as an important source of nutrients in the ocean \parencite{jickells_dust_biogeo_2015}. Yet current climate models struggles with reproducing many of  the effects has on climate dust, due to their inability to accurately simulate the important dust processes such as dust emissions, transport and deposition. 
 
-P Aeolian dust is a fundamental component in the climate system. Large range of scales motion influences the emission 
-,transport and deposition of aeolian dust from turbulent wind gust at the surface to large scale atmospheric circulation 
-patterns. The aim of this chapter is to the provide the necessary background for understanding the emission, deposition 
-and transport of East Asian aeolian dust. The first part of this chapter will focus on explaining the physics of dust 
-emissions, what are different processes and how do we model dust emissions, where are the major dust source regions in 
-East Asia and which kind of meteorological conditions favours dust emission. The second part will go into the transport 
-of aeolian dust, the role large scale circulation have on dust transport from East Asian desert. \todo{NEED to give 
-proper references to the different section}. The last part will look at the how mineral dust is deposited, how was the 
-Loess Plateau formed and how the Loess deposit can be an a window into understanding past climate.
+In the first part of this chapter \Cref{sec:dust_modelling} will give an overview of the existing approaches for dust modelling. Outlining the physical that processes included in current dust models and what the main uncertainties are. Then the second part will focus on East Asian dust specifically and describe the characteristics of the main source, the meteorological conditions that responsible for producing dust events.     
 
-\section{Atmospheric circulation in East Asia}
+%A cloud with a high droplet number concentration of a given cloud water content would be more optically thick, this is known as the aerosol cloud albedo effect. Secondly the            
+
+%  \parencite{yumimoto_elevated_2009}    has been observed in   the largest in therms of mass   
+% Dust is present almost every where 
+% Dust can several associations depending on the context,  when talking about atmospheric dust one usually ref   Dust is an essential ingredient of our earth system.   
+
+% P Aeolian dust is a fundamental component in the climate system. Large range of scales motion influences the emission 
+% ,transport and deposition of aeolian dust from turbulent wind gust at the surface to large scale atmospheric circulation 
+% patterns. The aim of this chapter is to the provide the necessary background for understanding the emission, deposition 
+% and transport of East Asian aeolian dust. The first part of this chapter will focus on explaining the physics of dust 
+% emissions, what are different processes and how do we model dust emissions, where are the major dust source regions in 
+% East Asia and which kind of meteorological conditions favours dust emission. The second part will go into the transport 
+% of aeolian dust, the role large scale circulation have on dust transport from East Asian desert. \todo{NEED to give 
+% proper references to the different section}. The last part will look at the how mineral dust is deposited, how was the 
+% Loess Plateau formed and how the Loess deposit can be an a window into understanding past climate.
+
+\section{About dust modelling}\label{sec:dust_modelling}
+
+\subsection{Dust emissions}\label{sec:dust_emission_modelling}
+The first step of any dust model is to estimate the emission strength. Wind erosion is the consequence of a tug between the aerodynamic forces that tend to remove dust particles from the soil and forces that tend to fix the particles to ground such as gravity and inter-particle forces. The aerodynamic forces are normally quantified by the friction velocity $u^*$, which describe the amount of momentum transferred from the air to the surface. Then moment at which the aerodynamic forces exceed the forces counteracting wind erosion is described by the threshold friction velocity $u^*_t$. The balance between the $u^*$ and $u^*_t$ is sensitive to several environmental factors such as, weather (e.g. wind, precipitation and temperature), the soil composition, the soil moisture content, soil particle size distribution, vegetation converge and topography. All these factors vary significantly both spatially and temporally making accurately simulating dust emissions challenging to say the least.       
+%This tug is quantified by a threshold friction velocity $u^*$  This involve determining the which regions are susceptible to wind erosion.  Almost all the processes related to wind erosion depend on the particle size. 
+
+Many of the environmental factors have been accounted for based on empirical relations derived from several wind tunnel experiments and field measurement campaigns conducted during the last 50 years. In recent years observations from earth observing satellites such as the MODIS satellites have become increasingly important. This allowed for global monitoring of dust storm and to derived necessary land-surface and atmospheric parameters for dust modelling.    
+
+There are two ways that dust is entrained into the atmosphere, either directly through aerodynamically entrainment or through sandblasting by saltating dust particles. Whether a dust particle is entrained through sand blasting or aerodynamic entrainment depends on the size of the dust particle. For a dust particle resting in the soil bed there are four forces acting on the dust particle. The forces promoting entrainment are aerodynamic lift ($F_l$) and aerodynamic drag $(F_d)$ and the opposing forces are the inter-particle forces $F_{ip}$ and the gravitational force $F_g$. For a dust particle to be aerodynamically entrained, $F_l$ and $F_d$ have to exceed $F_{ip}$ and $F_g$. Friction velocity is commonly used to describe to the flux of momentum from the atmosphere to surface and is a crucial parameter when doing dust modelling. The inter-particle forces dominate for small dust particles  (< $50\mu m $) and therefore a have too large threshold friction velocity in order to be directly entrained in the atmosphere by the winds \parencite{kok2012physics}. 
+
+\subsection{Dust transport and depostion modelling}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width = \textwidth]{texfiles/figs/aeolian_transport_Parsons_Abrahams.pdf}
+  \caption{Different regimes of aeolian transport \parencite{nickling2009aeolian}}
+\end{figure}
+
+
+Rather fine dust particles are ejected into atmosphere by larger dust particles splashing into the soil bed. Because the large particles have a  lower threshold friction velocity. \Cref{fig:treshold_friction_velocity_ps} shows the friction velocity required for a dust particle to be aerodynamically lifted as a function of equivalent particle diameter, and we see that the minimum in threshold friction velocity occur between \SI{75}{\micro\metre} - \SI{100}{\micro\metre}.
+
+\section{Lagrangian Models}
+An advantage with Lagrangian models is that they essentially do not exhibit numerical diffusion, except for errors related to interpolating the meteorological input data to the particle positions, in contrast to Eulerian models which often suffer from numerical diffusion \parencite{cassiani_offline_2016}. \textcite{cassiani_offline_2016} evaluated the offline FLEXPART-NorESM against the online tracer solver within NorESM and showed that the horizontal diffusion was around 10 times stronger for the online NorESM solver compared to the offline FLEXPART-NorESM. 
+
+An interesting possibility of LPDM is that they can be run can either be run forward or backwards in time, by simply switching the sign of the advection. Forward simulation, are a natural choice for studying the dispersion of tracers from known sources, for example the dispersion of nuclear fallout where you have one point source but an unknown number of receptors. While a forward simulation indicate where an atmospheric tracer will go, a backward simulation indicate where the tracer came from. Therefore backward simulations are useful for interpreting measurements of atmospheric trace substances and to establish relationships between the sources and their receptors.  
+
+
+\section{East Asian Dust}
+
+\subsection{Atmospheric circulation in East Asia}
 The most prominent feature of the atmospheric circulation in the East Asian region is the monsoon system. A monsoon wind system is one that seasonally changes direction, blowing from one direction in the summer and in the opposite direction in the winter.  The primary driver of the East Asian monsoon system is the temperature contrast between the land and ocean. During the winter months the land is generally colder than the ocean where the main heating source is located over the equatorial western pacific. The convection associated with the heating drives a large scale meridional overturning circulation where the airmasses rises over the ocean and then subsides over the Sebrian region. Creating a persistent high pressure system over Sebria during the winter. This circulation is the East Asian Winter Monsoon (EAWM). During the East Asian Summer Monsoon (EASM) the situation is reversed. In the summer the land is much warmer than the ocean, the heating on land drives strong convection which creates a persistent low pressure at the surface. The low pressure drags moist air from the ocean inland. Upon reaching the Tibetan Plateau the moist air is lifted and consequently cooled which causes the water vapor to condense resulting in intense precipitation. 
 
 In following section will describe the EAWM and EASM circulation and how they are influenced by ...   
@@ -31,16 +66,9 @@ Except for dust storms in which the suspension motion is dominant, saltation pla
 \subsection{Deserts regions in East Asia}
 The main desert regions in east Asia is the Gobi Desert, Taklamakan desert, Badain Jaran Desert, \todo{Need map} and the Mu Us Desert. The Taklamakan desert is located in the tarim basin is the second largest sand desert in the world. The desert is surrounded by tall mountain ranges on both sides which can mechanically lift dust veils into the upper tropshere \parencite{yumimoto_elevated_2009}.   There are difference in soil composition between the different deserts. Gobi Desert is a primarialy stone desert, compared to Badain Jaran and Taklamakan which both sandy desert. The Badain Jaran desert has the tallest sanddunes in the planet. 
 
-\subsection{Dust transport and depostion modelling}
-There are two ways that dust is entrained into the atmosphere, either directly through aerodynamically entrainment or through sandblasting by saltating dust particles. Whether a dust particle is entrained through sand blasting or aerodynamic entrainment depends on the size of the dust particle. For a dust particle resting in the soil bed there are four forces acting on the dust particle. The forces promoting entrainment are aerodynamic lift ($F_l$) and aerodynamic drag $(F_d)$ and the opposing forces are the inter-particle forces $F_{ip}$ and the gravitational force $F_g$. For a dust particle to be aerodynamically entrained, $F_l$ and $F_d$ have to exceed $F_{ip}$ and $F_g$. Friction velocity is commonly used to describe to the flux of momentum from the atmosphere to surface and is a crucial parameter when doing dust modelling. The inter-particle forces dominate for small dust particles  (< $50\mu m $) and therefore a have too large threshold friction velocity in order to be directly entrained in the atmosphere by the winds \parencite{kok2012physics}. 
-
-Rather fine dust particles are ejected into atmosphere by larger dust particles splashing into the soil bed. Because the large particles have a  lower threshold friction velocity. \Cref{fig:treshold_friction_velocity_ps} shows the friction velocity required for a dust particle to be aerodynamically lifted as a function of equivalent particle diameter, and we see that the minimum in threshold friction velocity occur between \SI{75}{\micro\metre} - \SI{100}{\micro\metre}.
 
 
-\section{Lagrangian Models}
-An advantage with Lagrangian models is that they essentially do not exhibit numerical diffusion, except for errors related to interpolating the meteorological input data to the particle positions, in contrast to Eulerian models which often suffer from numerical diffusion \parencite{cassiani_offline_2016}. \textcite{cassiani_offline_2016} evaluated the offline FLEXPART-NorESM against the online tracer solver within NorESM and showed that the horizontal diffusion was around 10 times stronger for the online NorESM solver compared to the offline FLEXPART-NorESM. 
 
-An interesting possibility of LPDM is that they can be run can either be run forward or backwards in time, by simply switching the sign of the advection. Forward simulation, are a natural choice for studying the dispersion of tracers from known sources, for example the dispersion of nuclear fallout where you have one point source but an unknown number of receptors. While a forward simulation indicate where an atmospheric tracer will go, a backward simulation indicate where the tracer came from. Therefore backward simulations are useful for interpreting measurements of atmospheric trace substances and to establish relationships between the sources and their receptors.  
 
 \subsection{Source receptor relationships within the framework Lagrangian particle dispersion models}
 
@@ -123,9 +151,3 @@ Thus we can calculate the s-r relationship between the receptor and spatial temp
 If $\alpha=0$ then $p=1$ the s-r relationship is expressed as mass mixing ratio $\frac{q}{\rho}$ becomes just the average residence time of the grid cell of consideration. Then the different processes the tracer might experience are expressed by "correcting" the residence time by the transmission function. 
 
 
-\subsection{Saltation}\label{fig:Regimes_of_aeolian_transport}
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width = \textwidth]{texfiles/figs/aeolian_transport_Parsons_Abrahams.pdf}
-  \caption{Different regimes of aeolian transport \parencite{nickling2009aeolian}}
-\end{figure}
