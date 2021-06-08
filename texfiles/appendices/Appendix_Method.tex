@@ -1,0 +1,81 @@
+
+\chapter{Source receptor relationships within the framework Lagrangian particle dispersion models}
+
+The problem with using ordinary Lagrangian trajectory model to calculate trajectories is that measurements 
+often represent large volumes of air and not infinitesimally small air parcels (from now on referred to as 
+particles). Therefore a single particle trajectory is usually not representative of the trajectory of the 
+whole volume element. This is to due deformation and stretching of the fluid elements. This deformation 
+happens for example if the flow has to pass an obstacle eg. a mountain range, the initially compact fluid 
+elements would be torn apart and distributed over large areas. Moreover the separation and distortion of the
+volume element would be even more effective in the presence of strong vertical wind shear causing fluid 
+elements to travel in opposite direction. Which means that two particles that are at the beginning close to 
+each other would given enough time would eventually be separated by large distances. Another issue with the 
+single particle approach is that the turbulence of the atmosphere would increase the volume of the initial 
+fluid element over time, increasing the horizontal dispersion. This could make trajectories which encounter 
+deep convection or are travelling within the boundary layer even less accurate. This even more apparent for 
+trajectories which are only based on the mean wind fields, which cannot represent the effect of turbulent 
+mixing on the fluid element. \par A Lagrangian particles dispersion model LPDM can solve both of the issues 
+of the traditional Lagrangian trajectory model. Deformation of the fluid element can accurately be 
+represented by computing the trajectories of several thousand particles giving a statistical description of 
+the dispersion of each volume element. The LPDM can also accurately represent turbulence by adding a 
+stochastic term to the the mean wind. 
+LPDM also have an advantage over Eulerian grid based transport models in that they do not require a 
+computational grid, which means they are essentially free from numerical diffusion, except for errors 
+related to interpolating the meteorological input data to the particle positions 
+\parencite{cassiani_offline_2016}. \par LPDM allows in the same way as traditional Lagrangian trajectory 
+models to be run forward or backwards in time, by simply switching the sign of the advection. Forward 
+simulation, are a natural choice for studying the dispersion of tracers from known sources, for example the 
+dispersion of nuclear fallout where you have one point source but an unknown number of receptors. While a 
+forward simulation indicate where an atmospheric tracer will go, a backward simulation indicate where the 
+tracer came from. Therefore backward simulations are useful for interpreting measurements of atmospheric 
+trace substances and to establish relationships between the sources and their receptors.  However 
+interpreting the output from a backward simulation is not as straightforward. The simplest interpretation is
+to think about it analogues to forward calculation and consider the LPDM as tool to calculate air mass 
+trajectories which includes both mean wind and turbulent motions and think of the particle cloud as a 
+retroplume. The retroplume can then be used to calculate the centroid trajectory which would give a more 
+representative trajectory than a single particle trajectory \parencite{stohl2002replacement}. \par Another 
+approach is to use the LPDM to establish source-receptor relationship, to describe the sensitivity of a 
+receptor to a source. A LPDM can only simulate linear s-r relationship, therefore a LPDM cannot be used to 
+simulate nonlinear chemical reactions. However, all the other processes that affect the tracer during 
+atmospheric transport are linear; advection, diffusion, convective mixing dry and wet deposition, and radio 
+active decay \parencite{seibert2004source}. Then linear s-r relationship  can be defined as a s-r matrix 
+(SRM) $\mathbf{M}$ whose elements $m_{il}$ are defined as
+\begin{equation}\label{eq:s-r_relationship}
+    m_{il} = \frac{y_l}{x_i}
+\end{equation}
+Where the $y_l$ is receptor element and $x_i$ is the source elements. The receptor elements are often 
+defined in terms of concentrations $C$ (unit \si{\kg\per\cubic\metre}) and sources are usually specified as 
+mass fluxes $Q$ (unit \si{\kg\per\cubic\metre\per\s}). 
+Which means that by definition the unit of the SRM in \Cref{eq:s-r_relationship} has to be \si{\per\s}, to be clear this is by construction and is not a measure of the residence time of the particles within a gridbox. Another important point is that when the SRM is known for a given source vector the receptor values can be obtained by a simple vector matrix multiplication. Determining the SRM can be computationally demanding, especially in a forward simulation where the number of source element greatly outnumber the number of receptor elements, and the SRM has to be determined for each source element. However in a backwards simulation the number of simulations required are equal to the number of receptor points. 
+\par In the following paragraph the aim is to show the s-r relationship is derived within the LPDM framework both in a source and receptor oriented view of transport since it does. The formalism is the same for both a forward and a backward simulation however, in a backward simulation the particles are only a means to probe for the possible processes affecting the substance being transported. \par In the Lagrangian reference frame there are no advective changes (think about experiences of unconscious mosquito suspended in the air) so the mixing ratio $\chi$ of the tracer is only affected by the sources $q$ and any linear removal process proportional to $\chi$. We consider the tracer mixing ratio rather than concentration, since concentration depend on the local air density which changes with temperature and pressure, whereas the mixing ratio $\chi$ which is the volume of a trace substance per volume of air, which remains constant with density. Converting between concentration and mixing ratio is just a matter of dividing by the local air density. Thus the change in mixing ratio with time is given by \Cref{eq:mix_ratio_lagr}, where $\alpha(t)$ is the net removal constant and $\frac{q(t)}{\rho(t)}$ is the source term. 
+\begin{equation}\label{eq:mix_ratio_lagr}
+    \frac{d \chi(t)}{dt} = \frac{q(t)}{\rho(t)} + \alpha(t)\chi(t)
+\end{equation}
+
+Solving the differential equation give the following solution, step by step solution in the appendix:
+\begin{equation}\label{eq:mixing_ratio_tracer}
+    \chi(t) = \chi_0 \exp{\left(-\int_0^t \alpha(t)dt'\right)} + \int_0^t \frac{q(t)}{\rho(t)}\exp{\left(\int_{t'}^t\alpha(t'')\right)dt''}dt'
+\end{equation}
+This yields the mixing ratio at time $t$ at the receptor location for a given trajectory and $\chi_0$ is the initial mixing ratio. In \parencite{seibert2004source} they introduced the following abbreviation \cref{eq:transmission_funct} and called it the transmission function. The transmission function determines the fraction of material that is transmitted along a single trajectory.   
+\begin{equation}\label{eq:transmission_funct}
+    p(t') = \exp{\left(\int_{t'}^t\alpha(t'')\right)dt''}dt'
+\end{equation} 
+The mixing ratio derived in \cref{eq:mixing_ratio_tracer} is valid for instantaneous mixing rations including turbulent motions. However observations at the measurement station does not usually represent point in time rather it is an average. Consequently the mean mixing ration should be obtained by taking an ensemble average of all the trajectories arriving within an interval between $t_1$ and $t_2$. If the averaging window exceeds the time scale of the turbulent fluctuation, the temporal average of the instantaneous values are the same as the temporal average of the ensemble means $\overline{\chi}$. Substituting the transmission function we obtain the following expression for the mean mixing ratio $\overline{\chi}$. 
+\begin{equation}\label{eq:ensemble_mix_ratio}
+    \overline{\chi(t_1, t_2)} = \frac{1}{t_2-t_1}\int_{t_1}^{t_2} \chi(t)dt = \frac{1}{t_2-t_1}\int_{t_1}^{t_2} \left(\chi_0(t)p(t,0)+\int_0^t \frac{q(t,t')p(t,t'}{\rho(t,t')}dt'\right)dt
+\end{equation}
+where the time variable $t$ now appears in $q$ $\rho$ and $p$ to signify different trajectories arriving at different times. Next we need to discretize \Cref{eq:ensemble_mix_ratio}. In \textcite{seibert2004source} the introduce the following discretisation:
+
+\begin{equation}\label{eq:discrete_mix_ratio}
+    \chi \approx \overline{\chi_0p(0)} + \frac{1}{J} \sum_j \sum_i \sum_n \left(\frac{q_{in}}{\rho_{in}}p_{jn}\Delta t'_{ijn}\right)
+\end{equation}
+Where the arrival time $t$ is discretized into $J$ time slots which each represented one back trajectory, where the trajectories arrive at equal intervals between $t_1$ and $t_2$ and are designated by index j. Space is gridded by index i and the discretisation of $t'$ is designated by index n. The $\Delta t'_{ijn}$ is the residence time of a back trajectory $j$ in a grid cell ($i,n$), which in addition to being the discrete representation of $dt$ also indicate the trajectory movement. The source function does only depend on when back trajectory passes over the source and not the arrival time therefore \Cref{eq:discrete_mix_ratio} can be rearranged to:
+\begin{equation}
+    \chi \approx \overline{\chi_0p(0)} + \sum_i \sum_n \left[\frac{q_{in}}{\rho_{in}}p_{jn} \frac{1}{J}\sum_j (p_{jn}\Delta t'_{ijn})\right]
+\end{equation}
+Thus we can calculate the s-r relationship between the receptor and spatial temporal grid cell ($i,n$):
+\begin{equation}
+    \frac{\partial \overline{\chi}}{q_{in}} = \frac{1}{J} \sum_j \frac{p_{jn} \Delta t'_{ijn}}{\rho_in}
+\end{equation}
+If $\alpha=0$ then $p=1$ the s-r relationship is expressed as mass mixing ratio $\frac{q}{\rho}$ becomes just the average residence time of the grid cell of consideration. Then the different processes the tracer might experience are expressed by "correcting" the residence time by the transmission function. 
+

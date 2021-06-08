@@ -1,6 +1,6 @@
 % REMEMBER TO SET LANGUAGE!
 
-\documentclass[a4paper,12pt,english,final]{extreport}
+\documentclass[a4paper,12pt,english,twoside,final]{extreport}
 \usepackage[utf8]{inputenc}
 \usepackage{babel,duomasterforside}
 \setlength{\marginparwidth}{2cm}
@@ -51,6 +51,7 @@
   \ln\mleft(#1\mright)%
 }
 
+
 % Macros for writing auto-sized paranthesis, brackets and braces
 \newcommand{\para}[1]{\left(#1\right)}
 \newcommand{\brak}[1]{\left[#1\right]}
@@ -95,27 +96,38 @@
 \subtitle{To years of work}
 \author{Ove Haugvaldstad}
 
-\makeglossaries
-\input{texfiles/Misc/glossary}
 
+% \input{texfiles/Misc/glossary}
+\input{texfiles/Misc/acronyms}
+\makenoidxglossaries
 \begin{document}
 \duoforside[program={Meteorology and Oceanography},
   dept={Section of Meteorology and Oceanography \and Department of Geoscience},
   long]
-% \subfile{../preface}  
+\pagenumbering{roman}
 \tableofcontents
-\newpage
+\glsaddall
+\printnoidxglossary[type=\acronymtype,nonumberlist]
+
+\listoffigures
+\listoftables
+\clearpage
+\pagestyle{fancy}
+\pagenumbering{arabic}
 \subfile{texfiles/Background/introduction}
 \subfile{texfiles/Background/Chapter1} 
 \subfile{texfiles/Methods/Chapter2}
 \subfile{texfiles/Results/Chapter3}
 \subfile{texfiles/Discussion/discussion}
+
+\begin{appendices}
+\subfile{texfiles/appendices/Supplementary_figures}
+\subfile{texfiles/appendices/Appendix_Method}
+\end{appendices}
 \clearpage
 
-\printglossary
+% \printnoidxglossaries
 
-
-\newpage
 \printbibliography
 
 \end{document}

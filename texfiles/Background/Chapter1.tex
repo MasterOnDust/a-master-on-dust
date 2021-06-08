@@ -1,43 +1,74 @@
+\thispagestyle{empty}
 \Chapter{
     ``For you are dust, and to dust shall you return.''
 \\[5pt]
 \rightline{{\rm --- The book of genesis 3:19}}
 }{Background}
-Aeolian dust is one the most abundant aerosol species in the atmosphere constituting the majority of the total atmospheric  aerosol mass. The main source regions of aeolian dust are regions such as the Sahara desert, the Middle East and desert regions in north west China. Once the dust is entrained into the atmosphere it can be transported over wast distances \parencite{yumimoto_elevated_2009}. While in the atmosphere the dust directly impacts earth’s radiative balance through scattering short wave radiation from the sun and absorbing long wave radiation. Dust also indirectly impacts climate by acting as cloud condensation nuclei (CCN) and ice nuclei (IN) affecting the cloud droplet number concentrations, which in turn alters the cloud optical properties and life time \parencite{lohmann2006sensitivity}. The dust will eventually settle and depending where the dust is deposited it can have a significant impact on the biogeochemistry e.g. acting as an important source of nutrients in the ocean \parencite{jickells_dust_biogeo_2015}. Yet current climate models struggles with reproducing many of  the effects has on climate dust, due to their inability to accurately simulate the important dust processes such as dust emissions, transport and deposition. 
+Aeolian dust is one the most abundant aerosol species in the atmosphere and accounts for the majority of the total atmospheric  aerosol mass. Aeolian dust referrers to dust that is emitted and transported by winds and the word aeolian stems from the Greek god Aeolus which in Greek mythology is the keeper of the winds.  Dust emissions by aeolian processes are favourable in regions with dry and easily erodible soils, sparse vegetation and strong winds. The main sources are found in regions such as the Sahara, Middle East and north west China. Climatically these regions are typically found either within the subtropical high pressure belt caused by the descending part of the Hadley circulation, the rain shadow created by surrounding topography or in the interior of the continents far from any moisture sources. Once the dust gets entrained into the upper troposphere it can be transported by the winds for thousands of kilometres \parencite{yumimoto_elevated_2009}. While suspended in the air the dust has a direct impact on the earth’s radiative balance through the scattering of short wave radiation and absorption of long wave radiation. The dust aerosols can also interact with clouds by acting as cloud condensation nuclei (CCN) and ice nuclei (IN), thereby changing the optical properties and life time of the clouds \parencite{lohmann2006sensitivity}. Once the dust is deposited to the surface, it can provide nutrients to the ocean \parencite{jickells_dust_biogeo_2015} or land ecosystems as well as accelerating snow melt by modifying the snow albedo. 
 
-In the first part of this chapter \Cref{sec:dust_modelling} will give an overview of the existing approaches for dust modelling. Outlining the physical that processes included in current dust models and what the main uncertainties are. Then the second part will focus on East Asian dust specifically and describe the characteristics of the main source, the meteorological conditions that responsible for producing dust events.     
+The first part of this chapter will delve further into the topic of dust, focusing on how dust impacts climate and the influence of climate change on dust production, and how the tight relationship between dust and climate can be used to understand past climate change. Then \Cref{sec:dust_modelling} will look into how dust models works, and outline the physical processes behind dust emission, transport and deposition, which lay at the core of any dust model. To conclude this section I'll summarise where the current challenges dust modelling lay. In second part of this chapter will focus on East Asian region specifically. Beginning with describing the location and characteristics of the main sources regions, followed by an overview meteorological conditions that responsible for producing dust events and the climatology of dust events. \textbf{In sec xxx} will describe the main modes of variability in circulation namely the arctic occilation the east asian winter monsoon and . 
 
-%A cloud with a high droplet number concentration of a given cloud water content would be more optically thick, this is known as the aerosol cloud albedo effect. Secondly the            
 
-%  \parencite{yumimoto_elevated_2009}    has been observed in   the largest in therms of mass   
-% Dust is present almost every where 
-% Dust can several associations depending on the context,  when talking about atmospheric dust one usually ref   Dust is an essential ingredient of our earth system.   
+\section{Physics of windblown dust}
 
-% P Aeolian dust is a fundamental component in the climate system. Large range of scales motion influences the emission 
-% ,transport and deposition of aeolian dust from turbulent wind gust at the surface to large scale atmospheric circulation 
-% patterns. The aim of this chapter is to the provide the necessary background for understanding the emission, deposition 
-% and transport of East Asian aeolian dust. The first part of this chapter will focus on explaining the physics of dust 
-% emissions, what are different processes and how do we model dust emissions, where are the major dust source regions in 
-% East Asia and which kind of meteorological conditions favours dust emission. The second part will go into the transport 
-% of aeolian dust, the role large scale circulation have on dust transport from East Asian desert. \todo{NEED to give 
-% proper references to the different section}. The last part will look at the how mineral dust is deposited, how was the 
-% Loess Plateau formed and how the Loess deposit can be an a window into understanding past climate.
+\subsection{The role of dust in the climate system}
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=\textwidth]{texfiles/figs/Desert_distrubtion.PNG}
+    \caption{Earth's distribution of arid regions, adopted from \textcite{williams_climate_2014}}
+    \label{fig:desert_distrubtion}
+\end{figure}
+Around 1/3 of the earth surface is covered by deserts, that is regions that where the precipitation is too low and evaporation to high to allow plants to grow \parencite{williams_climate_2014}. As shown in \Cref{fig:desert_distrubtion} a large portion of the arid regions are located between 20\degree - 40\degree north/south, this region is know as the dust belt. The dust belt coincide with the descending part of the Hadley circulation. The descending motion creates a very stable atmosphere that suppress the formation of rain fall. The loose soil in these region are easiliy erodible, accordingly during period of strong winds dust emissions are naturally produced and entrained into the atmosphere. Producing an estimated 2000Mt of atmospheric dust each year, with around 1500Mt being deposited on land and about 500Mt being deposited into the ocean \parencite{shao2011dust}.   
 
+\subsubsection{The radiative effect of dust}
+Atmospheric dust particles directly affect the transfer of radiation through the atmosphere. The smallest dust particles between 0.2-\SI{2}{\micro\metre}, that has a size around same order as the wavelength of visible light are  most efficient at scattering incoming solar radiation back to space. Accordingly the smallest particles have a cooling effect on climate. Conversely the larger particles (> \SI{4}{\micro\metre}) produces has an warming effect on climate due to their larger size which makes them efficient at absorbing terrestrial long wave radiation \parencite{choobari2014global}.
+The lifetime of the dust aerosol are also strongly dependent on particle size \parencite{mahowald2014size}. Constraining the direct radiative effect of dust aerosols requires thus both getting the magnitude and size distribution of the emitted dust correct \parencite{adebiyi2020dust}. The emergence of Earth observing satellites has allowed better monitoring of the direct radiative impact of dust aerosols in the atmosphere. However there are still exist large uncertainties in both the magnitude and sign of the the direct radiative effect of atmospheric dust. 
+
+\subsubsection{Indirect radiative effect of dust: how dust impact clouds}
+While in the atmosphere dust can also interact with clouds as IN and CCN changing the microphysical properties of the clouds \parencite{lohmann2006sensitivity}. Even though dust aerosols are by them self are quite in efficient CCN bt themself, if they aquire a coating of soluble material  Even small changes in the microphysical properties (e.g. droplet size, droplet concentration and cloud phase) of the clouds could have a large influence on Climate. Dust aerosol have also been discovered to have an influence on tropical cyclone. Where tropical cyclones that intercepted as dust cloud was found to be significantly weaker after passing throug the dust cloud. T 
+
+\subsubsection{The impact of dust deposition on ecosystem}
+As a conce... \todo{Need to write something}
+       
+However current climate models struggles with reproducing many of the effects aeolian dust has on climate, due to their inability to accurately simulate the important dust processes such as dust emissions, transport and deposition \parencite{adebiyi2020dust}. 
 \section{About dust modelling}\label{sec:dust_modelling}
+% Here I could write something about the historical context. 
+The first major scientific work on understanding the physics of Aeolian process was done Ralph Alger Bagnold with the publication of "\emph{The physics of blown sand and desert dunes}" in 1941. However the field of dust modelling did not take off until the early 1990 when scientist realised that aerosols including dust were responsible for a large fraction of the uncertainties in the climate models due to the difficulties in determining the aerosol radiative effect \parencite{tegen1996influence}.
+This motivated major efforts towards developing global dust models \parencite{dust_dist_Ginoux2001,zender2003mineral}. With the increased model resolution and further improvement of the model physics the global dust models has not only been used simulate time averaged dust features but also to study regional dust transport \parencite{zhao2006simulated} and studies of individual dust events.
+Most dust models are integrated systems  that are coupled to an atmospheric model, also called online dust models. However offline dust models also exist, these models relies on an external input data, commonly atmospheric reanalysis to provide the required atmospheric variables. The disadvantage of an offline is that new meteorological fields are only available at the temporal resolution of the input data, which is typically on the order hours. Whereas an online model the meteorological field would be updated at every model time step which depending on the use case could be on the order of minutes. On the other hand offline models are typically much faster to run as they does not have to calculate all the different atmospheric variables at each time step.           
 
 \subsection{Dust emissions}\label{sec:dust_emission_modelling}
-The first step of any dust model is to estimate the emission strength. Wind erosion is the consequence of a tug between the aerodynamic forces that tend to remove dust particles from the soil and forces that tend to fix the particles to ground such as gravity and inter-particle forces. The aerodynamic forces are normally quantified by the friction velocity $u^*$, which describe the amount of momentum transferred from the air to the surface. Then moment at which the aerodynamic forces exceed the forces counteracting wind erosion is described by the threshold friction velocity $u^*_t$. The balance between the $u^*$ and $u^*_t$ is sensitive to several environmental factors such as, weather (e.g. wind, precipitation and temperature), the soil composition, the soil moisture content, soil particle size distribution, vegetation converge and topography. All these factors vary significantly both spatially and temporally making accurately simulating dust emissions challenging to say the least.       
+% dust emission is controlled by saltating sand particles which convey momentum of the wind flow to, and cast out, the finest dust particles lying in the bed
+% the rich clay content, e.g., >20%, creates soil aggregates and clods so as to effectively depress sand saltation as well as dust emission 
+
+The first step of any dust model is to estimate the surface dust flux. \emph{This is done by relating the saltation ..to veritcal ectx}  Wind erosion is the consequence of a tug between the aerodynamic forces that tend to lift dust particles from the soil bed and forces that tend to fix the particles to ground such as gravity and inter-particle forces. The aerodynamic forces are normally quantified in terms of a friction velocity $u^*$, which describe the amount of momentum transferred from the air to the surface \parencite{ShaoYaping2008PaMo}. The moment when the aerodynamic forces exceed the forces counteracting wind erosion is described by a threshold friction velocity $u^*_t$. The balance between the $u^*$ and $u^*_t$ is sensitive to several environmental factors such as, weather (e.g. wind, precipitation and temperature), the soil composition, the soil moisture content, soil particle size distribution, vegetation converge and topography . 
+All these factors vary significantly both spatially and temporally making accurately simulating dust emissions challenging to say the least. \Cref{fig:treshold_friction_velocity_ps} show the the threshold friction velocity as a function of particle diameter, the coloured lines represent the semi empirical relations for $u^*_t$ described in \textcite{iversen1982saltation} (pink), \textcite{shao2000simple} (green) and \textcite{bagnold1941physics}. The semi empirical relations and measurement seems to agree on a minimum in $u^*_t$ around in the range between  \SI{75}{\micro\metre} - \SI{100}{\micro\metre}. However these particles are to heavy to be the subject of long range suspension, rather they will soon after entrainment take on a ballistic trajectory. The impact from the large particle impacting the soil bed then eject smaller dust particles from the soil bed, this process is called sand blasting. These smaller particles can be subjected to long range transport. 
+
+There has been proposed several physics-based schemes for estimating the vertical dust \parencite{MB95_dust_emission,alfaro2001modeling,shao2004simplification}. The the main distinction between the present schemes lay in how the particle size information is represented in the model. The schemes can be divided into either one of two categories, bulk and size resolving dust emission schemes. The bulk schemes (e.g. the emission scheme by \parencite{MB95_dust_emission}) gives an estimate of the total dust flux $F$ but provide no information about particle size resolved dust flux $F(d)$. The particle size dust flux $F(d)$ is then inferred by assuming size distribution of the emitted dust particles $p_s(d)$. Based on the theory of brittle fragments \textcite{kok_scaling_2011} derived theoretical expression of the particle size distribution for dust particles between \SI{0.1}{\micro\metre} - \SI{20}{\micro\metre} which showed good agreement when compared against observed size distributions. The \textcite{kok_scaling_2011} size distribution has been included in current climate models and has been shown to improved the representation of dust aerosols when compared to observations \parencite{johnson2012global}. The particle size resolving schemes, e.g. \textcite{shao2004simplification}, can directly derive the size resolved dust flux. However the problem with these schemes is that they require knowing the parent soil particle size distribution, but measurements of parent soil particle size distributions are not available on a global scale.
 %This tug is quantified by a threshold friction velocity $u^*$  This involve determining the which regions are susceptible to wind erosion.  Almost all the processes related to wind erosion depend on the particle size. 
+\textbf{\begin{figure}[hptb]
+    \centering
+    \includegraphics[scale=0.7]{../figs/Threshold_friction_velocity.PNG}
+    \caption{Threshold friction velocity $\mathbf{u^*}$ as a function of particle diameter. Measurements from wind tunnel experiments are represented by points, the lines represent different semi empirical expression for the threshold friction velocity \parencite{kok2012physics}}.
+    \label{fig:treshold_friction_velocity_ps}
+\end{figure}}
 
-Many of the environmental factors have been accounted for based on empirical relations derived from several wind tunnel experiments and field measurement campaigns conducted during the last 50 years. In recent years observations from earth observing satellites such as the MODIS satellites have become increasingly important. This allowed for global monitoring of dust storm and to derived necessary land-surface and atmospheric parameters for dust modelling.    
+Many of the environmental factors have been accounted for based on empirical relations derived from several wind tunnel experiments and field measurement campaigns conducted during the last 50 years. In recent years observations from earth observing satellites such as the MODIS satellites have become increasingly important. This allowed for global monitoring of dust storm and to derived necessary land-surface and atmospheric parameters for dust modelling.  
 
-There are two ways that dust is entrained into the atmosphere, either directly through aerodynamically entrainment or through sandblasting by saltating dust particles. Whether a dust particle is entrained through sand blasting or aerodynamic entrainment depends on the size of the dust particle. For a dust particle resting in the soil bed there are four forces acting on the dust particle. The forces promoting entrainment are aerodynamic lift ($F_l$) and aerodynamic drag $(F_d)$ and the opposing forces are the inter-particle forces $F_{ip}$ and the gravitational force $F_g$. For a dust particle to be aerodynamically entrained, $F_l$ and $F_d$ have to exceed $F_{ip}$ and $F_g$. Friction velocity is commonly used to describe to the flux of momentum from the atmosphere to surface and is a crucial parameter when doing dust modelling. The inter-particle forces dominate for small dust particles  (< $50\mu m $) and therefore a have too large threshold friction velocity in order to be directly entrained in the atmosphere by the winds \parencite{kok2012physics}. 
 
-\subsection{Dust transport and depostion modelling}
+
+%There are two ways that dust is entrained into the atmosphere, either directly through aerodynamically entrainment or through sandblasting by saltating dust particles. Whether a dust particle is entrained through sand blasting or aerodynamic entrainment depends on the size of the dust particle. For a dust particle resting in the soil bed there are four forces acting on the dust particle. The forces promoting entrainment are aerodynamic lift ($F_l$) and aerodynamic drag $(F_d)$ and the opposing forces are the inter-particle forces $F_{ip}$ and the gravitational force $F_g$. For a dust particle to be aerodynamically entrained, $F_l$ and $F_d$ have to exceed $F_{ip}$ and $F_g$. Friction velocity is commonly used to describe to the flux of momentum from the atmosphere to surface and is a crucial parameter when doing dust modelling. The inter-particle forces dominate for small dust particles  (< $50\mu m $) and therefore a have too large threshold friction velocity in order to be directly entrained in the atmosphere by the winds \parencite{kok2012physics}. 
+
+\subsection{Dust transport and deposition modelling}
+Dust transport be divided into several different regimes as illustrated in \Cref{fig:modes_of_dust_transport}, which mode of transport a dust particles are subjected is to predominately determined by the local wind speed and its particle size.
+
+saltation through which dust is transported along the direction of the  
+
 \begin{figure}[htbp]
   \centering
   \includegraphics[width = \textwidth]{texfiles/figs/aeolian_transport_Parsons_Abrahams.pdf}
   \caption{Different regimes of aeolian transport \parencite{nickling2009aeolian}}
+  \label{fig:modes_of_dust_transport}
 \end{figure}
 
 
@@ -49,7 +80,8 @@ An advantage with Lagrangian models is that they essentially do not exhibit nume
 An interesting possibility of LPDM is that they can be run can either be run forward or backwards in time, by simply switching the sign of the advection. Forward simulation, are a natural choice for studying the dispersion of tracers from known sources, for example the dispersion of nuclear fallout where you have one point source but an unknown number of receptors. While a forward simulation indicate where an atmospheric tracer will go, a backward simulation indicate where the tracer came from. Therefore backward simulations are useful for interpreting measurements of atmospheric trace substances and to establish relationships between the sources and their receptors.  
 
 
-\section{East Asian Dust}
+
+\section{East asian dust}
 
 \subsection{Atmospheric circulation in East Asia}
 The most prominent feature of the atmospheric circulation in the East Asian region is the monsoon system. A monsoon wind system is one that seasonally changes direction, blowing from one direction in the summer and in the opposite direction in the winter.  The primary driver of the East Asian monsoon system is the temperature contrast between the land and ocean. During the winter months the land is generally colder than the ocean where the main heating source is located over the equatorial western pacific. The convection associated with the heating drives a large scale meridional overturning circulation where the airmasses rises over the ocean and then subsides over the Sebrian region. Creating a persistent high pressure system over Sebria during the winter. This circulation is the East Asian Winter Monsoon (EAWM). During the East Asian Summer Monsoon (EASM) the situation is reversed. In the summer the land is much warmer than the ocean, the heating on land drives strong convection which creates a persistent low pressure at the surface. The low pressure drags moist air from the ocean inland. Upon reaching the Tibetan Plateau the moist air is lifted and consequently cooled which causes the water vapor to condense resulting in intense precipitation. 
@@ -57,97 +89,74 @@ The most prominent feature of the atmospheric circulation in the East Asian regi
 In following section will describe the EAWM and EASM circulation and how they are influenced by ...   
 
 \subsection{East Asian Winter Monsoon}
-The EAWM dominates the climate in East Asia during winter months, December, January, February, and is closely related to the cold core of the Siberian High.  
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=\textwidth]{texfiles/figs/climatology_1999-2019.pdf}
+    \caption{The 20 year average of winter (DJF)  and spring (MAM) circulation from ERA5. (a) Winter and (b) spring \acrshort{mslp} and 850hPa winds climatology. (c) Winter and (b) spring 500hPa geopotential height and winds. (e) winter and (f) spring 200hPa geopotential height and windspeed.}
+    \label{fig:clim_circulation}
+\end{figure}
+The EAWM dominates the climate in East Asia during winter months, December, January, February, and is closely related to the cold core of the Siberian High. The \acrshort{eawm} circulation is primarially driven by the temprature contrast between the relative cold and warm ocean. \acrshort{eawm} consist of 3 subcomponets which can be identified in \Cref{fig:clim_circulation}, at the surface the Siberian High and Alutian low, East Asian trough can be identified at the 500hPa level located around 120\degree E and 50\degree N  
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=\textwidth]{texfiles/figs/winter_MO_AO_composite.pdf}
+    \caption{Circulation composite anomalies of 850hPa winds and mean sea level pressure for strong - weak winter monsoon years and negative - positive winter AO. (a) and (b) is the DJF anomalies and (c) - (d) is MAM anomilies in the following spring}
+    \label{fig:mo_ao_composite}
+\end{figure}
 
-\section{Physics of windblown dust}
+\subsection{The impact of Arctic Oscillation on the East Asian Climate}
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=\textwidth]{texfiles/figs/EOF_AO_NAO.pdf}
+    \caption{The spatial correlation of the leading EOF of 1000hPa geopotential height (a) representing the \acrshort{ao}. (b)  spatial correlation of the leading \acrshort{eof}  of SLP anomalies over the Atlantic sector, 20\degree-80\degree N, 90\degree W-40\degree, representing the \acrshort{nao}.}
+    \label{fig:EOF_NAO_AO}
+\end{figure}
+The \acrfull{ao} is represented by the leading EOF of the 1000hPa geopotential height poleward of 20 \degree N \parencite{thompson1998arctic}. In it's structure it resembles the \acrfull{nao} except being more zonally symetric in structure. The AO has been shown to have a significant impact on the \acrshort{eawm} where negative winter AO is usually associated with a stronger winter monsoon and vice versa. Cold events are also found to be more frequent over East Asia during negative AO conditions \parencite{he2017impact}. \textcite{wu2002winter} examined how the \acrshort{ao} influence the \acrshort{eawm} and found that the AO directly influence surface air temperature (SAT), \acrshort{mslp} and the East Asian Trough at 500 hPa over the region northwards of 35°N in East Asia rather than through its impact on the SH. The SH in comparison had more direct impact on the \acrshort{eawm} through influencing the \acrshort{mslp} and the northly wind along the east asian coast. However due to the how \acrshort{ao} suppresses the influence of the \acrshort{sh} on the higher latitudes, the influence of the \acrshort{sh} happens primarily southwards of 50\degree N over East Asia \parencite{wu2002winter}. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{texfiles/figs/winter_MO_AO_composite_500h.pdf}
+    \caption{Circulation composite anomalies of 500hPa winds and geopotential height for strong - weak winter monsoon years and negative - positive winter AO. (a) and (b) is the DJF anomalies and (c) - (d) is MAM anomilies in the following spring}
+    \label{fig:mo_ao_composite_500hPa}
+\end{figure}
+
+\subsection{Characterisation of East Asian dust sources}
+The majority of the East Asian deserts are located in arid regions of Northern China and South east Mongolia. Together the East Asian desert regions makes up the second largest source of atmospheric dust aerosols \parencite{chen2017overview} with an estimated annual emissions of \textbf{XX}Mt - \textbf{XX} \todo{Find reference}. 
+
+\todo{Need a nice map of dust sources maybe Hui can provide?}
+
+In therms of the morphology and composition of the surface soil, the East Asian desert can separated into two classes gobi-desert and sand desert \parencite{xuan2002characterization}. Gobi characterise regions consisting of pebbles, gravel and rock debris and gobi-desert then refers to an area consisting of interluding regions of sandy deserts, gobis and grassland. Gobi and gobi-deserts are mainly found in the northern region of the Inner Mongolia plateau and the southern part of Mongolia, this whole region is commonly referred to as the Gobi desert. Sand deserts primarily consists of loose sand and the largest sand desert in the regions are the Taklamakan desert located in the tarim basin and the    
+
+
+\subsection{Dust storm climatology}
+The majority of the dust events in East Asia occur during the spring months from March until May with half of the dust events occuring in April \parencite{sun2001spatial}. The dust storms are associated with cold air outbreaks which initiate cyclone and frontal activity. The number of cold air outbreaks occurring in spring is much influenced by the intensity and location of the jet stream. A strong jetstream inhibits air mass exchange between lower and higher latitudes whereas a weak yet which extend further south is not able to confine the cold air resulting in cold air outbreaks \parencite{wang2008variability}.   
+
 it has been known that there are three major motions of wind‐blown sand particles, i.e., creep, saltation, and suspension
 
 Except for dust storms in which the suspension motion is dominant, saltation plays a key role in the wind erosion process
 \subsection{Deserts regions in East Asia}
 The main desert regions in east Asia is the Gobi Desert, Taklamakan desert, Badain Jaran Desert, \todo{Need map} and the Mu Us Desert. The Taklamakan desert is located in the tarim basin is the second largest sand desert in the world. The desert is surrounded by tall mountain ranges on both sides which can mechanically lift dust veils into the upper tropshere \parencite{yumimoto_elevated_2009}.   There are difference in soil composition between the different deserts. Gobi Desert is a primarialy stone desert, compared to Badain Jaran and Taklamakan which both sandy desert. The Badain Jaran desert has the tallest sanddunes in the planet. 
 
+%And, southwest of the plateau, the bottom of the Old Tarim Basin and Old Junggar Basin had also lifted to 1000 m elevation but still remained lower than the surrounding topography. The modern Tarim Basin and Junggar Basin are surrounded by the Altaj Mountains in the north, Tainshan Mountains in between, Tibetan Plateau in the south, Pumir Plateau in the west, and Mongolian Plateau and Kunlun Mountains in the east
+
+%It is suggested that the source region in East Asia consists of two parts or systems: (i) the Mongolian Plateau dust source system, including deserts and gobi-deserts on the Mongolian Plateau and its southern extension—the Ordos Plateau and Alxa Plateau; and (ii) the Tarim Basin dust source system, including deserts and gobi-deserts in the Tarim Basin, Junggar Basin, and eastern vicinity.
+
+%classified dust storms in East Asia into four types, among which the S (stationary) type and M (moving) type are basic ones. 80\% of their S type dust storms occurred over the Taklimakan Desert and vicinity, while 70\% of the M type originated over the gobi area and desert area of 90–105°E, i.e., the Mongolian Plateau and its southern extension.
+
+\subsubsection{Gobi desert}
 
 
+%Gravel covering the gobi surface can effect the dust emission both positively and negatively: gravel half-buried in sand (soil) surfaces decreases the effective wind shear force on the soil surface, resulting in stress partitioning (Nickling and Gillies, 2003), and a complete stony armor strongly depresses the aeolian motion of particles (Yi et al., 2002). 
 
+%precipitation is rare in the gobi area, less than 50 mm yr−1 (Zhao, 1994), and is limited to the summer season so that the gobi surface becomes extremely dry in spring when the strong wind behind a cold front periodically blows through East Asia and is enhanced over the vast and flat gobi surface. As the surface wind speed often reaches 24–30 m s−1, or even higher, on the south Mongolian Plateau (Qian et al., 1997), strong dust storms occur in spite of the gravel armoring and the below 0°C air temperature. 
 
-\subsection{Source receptor relationships within the framework Lagrangian particle dispersion models}
+%Thousands of kilometers from the oceans and high above the sea level, the Mongolian climate is extremely dry, continental and cold.
 
-The problem with using ordinary Lagrangian trajectory model to calculate trajectories is that measurements 
-often represent large volumes of air and not infinitesimally small air parcels (from now on referred to as 
-particles). Therefore a single particle trajectory is usually not representative of the trajectory of the 
-whole volume element. This is to due deformation and stretching of the fluid elements. This deformation 
-happens for example if the flow has to pass an obstacle eg. a mountain range, the initially compact fluid 
-elements would be torn apart and distributed over large areas. Moreover the separation and distortion of the
-volume element would be even more effective in the presence of strong vertical wind shear causing fluid 
-elements to travel in opposite direction. Which means that two particles that are at the beginning close to 
-each other would given enough time would eventually be separated by large distances. Another issue with the 
-single particle approach is that the turbulence of the atmosphere would increase the volume of the initial 
-fluid element over time, increasing the horizontal dispersion. This could make trajectories which encounter 
-deep convection or are travelling within the boundary layer even less accurate. This even more apparent for 
-trajectories which are only based on the mean wind fields, which cannot represent the effect of turbulent 
-mixing on the fluid element. \par A Lagrangian particles dispersion model LPDM can solve both of the issues 
-of the traditional Lagrangian trajectory model. Deformation of the fluid element can accurately be 
-represented by computing the trajectories of several thousand particles giving a statistical description of 
-the dispersion of each volume element. The LPDM can also accurately represent turbulence by adding a 
-stochastic term to the the mean wind. 
-LPDM also have an advantage over Eulerian grid based transport models in that they do not require a 
-computational grid, which means they are essentially free from numerical diffusion, except for errors 
-related to interpolating the meteorological input data to the particle positions 
-\parencite{cassiani_offline_2016}. \par LPDM allows in the same way as traditional Lagrangian trajectory 
-models to be run forward or backwards in time, by simply switching the sign of the advection. Forward 
-simulation, are a natural choice for studying the dispersion of tracers from known sources, for example the 
-dispersion of nuclear fallout where you have one point source but an unknown number of receptors. While a 
-forward simulation indicate where an atmospheric tracer will go, a backward simulation indicate where the 
-tracer came from. Therefore backward simulations are useful for interpreting measurements of atmospheric 
-trace substances and to establish relationships between the sources and their receptors.  However 
-interpreting the output from a backward simulation is not as straightforward. The simplest interpretation is
-to think about it analogues to forward calculation and consider the LPDM as tool to calculate air mass 
-trajectories which includes both mean wind and turbulent motions and think of the particle cloud as a 
-retroplume. The retroplume can then be used to calculate the centroid trajectory which would give a more 
-representative trajectory than a single particle trajectory \parencite{stohl2002replacement}. \par Another 
-approach is to use the LPDM to establish source-receptor relationship, to describe the sensitivity of a 
-receptor to a source. A LPDM can only simulate linear s-r relationship, therefore a LPDM cannot be used to 
-simulate nonlinear chemical reactions. However, all the other processes that affect the tracer during 
-atmospheric transport are linear; advection, diffusion, convective mixing dry and wet deposition, and radio 
-active decay \parencite{seibert2004source}. Then linear s-r relationship  can be defined as a s-r matrix 
-(SRM) $\mathbf{M}$ whose elements $m_{il}$ are defined as
-\begin{equation}\label{eq:s-r_relationship}
-    m_{il} = \frac{y_l}{x_i}
-\end{equation}
-Where the $y_l$ is receptor element and $x_i$ is the source elements. The receptor elements are often 
-defined in terms of concentrations $C$ (unit \si{\kg\per\cubic\metre}) and sources are usually specified as 
-mass fluxes $Q$ (unit \si{\kg\per\cubic\metre\per\s}). 
-Which means that by definition the unit of the SRM in \Cref{eq:s-r_relationship} has to be \si{\per\s}, to be clear this is by construction and is not a measure of the residence time of the particles within a gridbox. Another important point is that when the SRM is known for a given source vector the receptor values can be obtained by a simple vector matrix multiplication. Determining the SRM can be computationally demanding, especially in a forward simulation where the number of source element greatly outnumber the number of receptor elements, and the SRM has to be determined for each source element. However in a backwards simulation the number of simulations required are equal to the number of receptor points. 
-\par In the following paragraph the aim is to show the s-r relationship is derived within the LPDM framework both in a source and receptor oriented view of transport since it does. The formalism is the same for both a forward and a backward simulation however, in a backward simulation the particles are only a means to probe for the possible processes affecting the substance being transported. \par In the Lagrangian reference frame there are no advective changes (think about experiences of unconscious mosquito suspended in the air) so the mixing ratio $\chi$ of the tracer is only affected by the sources $q$ and any linear removal process proportional to $\chi$. We consider the tracer mixing ratio rather than concentration, since concentration depend on the local air density which changes with temperature and pressure, whereas the mixing ratio $\chi$ which is the volume of a trace substance per volume of air, which remains constant with density. Converting between concentration and mixing ratio is just a matter of dividing by the local air density. Thus the change in mixing ratio with time is given by \Cref{eq:mix_ratio_lagr}, where $\alpha(t)$ is the net removal constant and $\frac{q(t)}{\rho(t)}$ is the source term. 
-\begin{equation}\label{eq:mix_ratio_lagr}
-    \frac{d \chi(t)}{dt} = \frac{q(t)}{\rho(t)} + \alpha(t)\chi(t)
-\end{equation}
+%  It is also normal in Mongolia that the annual precipitation varies greatly from year to year. For example, the precipitation in Sainshand (44°52′N, 110°09′E) was 83 mm yr−1 in 1963 but, in the next year, it went up to 248 mm yr−1 (CMA, 1970). Such a great interannual change in precipitation means that, in drought years, severe dust storms occur even in the north mountain area. At the end of winter season, the south Siberian anti-cyclone named the ‘Siberian High’ becomes unstable and, in the following spring months, breaks down several times so that a succession of frontal systems traverses the country from northwest to southeast, resulting in strong surface wind, which is further strengthened over the vast and flat gobi surface. 
 
-Solving the differential equation give the following solution, step by step solution in the appendix:
-\begin{equation}\label{eq:mixing_ratio_tracer}
-    \chi(t) = \chi_0 \exp{\left(-\int_0^t \alpha(t)dt'\right)} + \int_0^t \frac{q(t)}{\rho(t)}\exp{\left(\int_{t'}^t\alpha(t'')\right)dt''}dt'
-\end{equation}
-This yields the mixing ratio at time $t$ at the receptor location for a given trajectory and $\chi_0$ is the initial mixing ratio. In \parencite{seibert2004source} they introduced the following abbreviation \cref{eq:transmission_funct} and called it the transmission function. The transmission function determines the fraction of material that is transmitted along a single trajectory.   
-\begin{equation}\label{eq:transmission_funct}
-    p(t') = \exp{\left(\int_{t'}^t\alpha(t'')\right)dt''}dt'
-\end{equation} 
-The mixing ratio derived in \cref{eq:mixing_ratio_tracer} is valid for instantaneous mixing rations including turbulent motions. However observations at the measurement station does not usually represent point in time rather it is an average. Consequently the mean mixing ration should be obtained by taking an ensemble average of all the trajectories arriving within an interval between $t_1$ and $t_2$. If the averaging window exceeds the time scale of the turbulent fluctuation, the temporal average of the instantaneous values are the same as the temporal average of the ensemble means $\overline{\chi}$. Substituting the transmission function we obtain the following expression for the mean mixing ratio $\overline{\chi}$. 
-\begin{equation}\label{eq:ensemble_mix_ratio}
-    \overline{\chi(t_1, t_2)} = \frac{1}{t_2-t_1}\int_{t_1}^{t_2} \chi(t)dt = \frac{1}{t_2-t_1}\int_{t_1}^{t_2} \left(\chi_0(t)p(t,0)+\int_0^t \frac{q(t,t')p(t,t'}{\rho(t,t')}dt'\right)dt
-\end{equation}
-where the time variable $t$ now appears in $q$ $\rho$ and $p$ to signify different trajectories arriving at different times. Next we need to discretize \Cref{eq:ensemble_mix_ratio}. In \textcite{seibert2004source} the introduce the following discretisation:
+%In the Mongolian Plateau system and downwind vicinity, from northwest to southeast, the surface soil texture shows a coarse-to-fine trend: gobi gravel becomes desert sand, followed by silt and clay of the Loess Plateau. 
 
-\begin{equation}\label{eq:discrete_mix_ratio}
-    \chi \approx \overline{\chi_0p(0)} + \frac{1}{J} \sum_j \sum_i \sum_n \left(\frac{q_{in}}{\rho_{in}}p_{jn}\Delta t'_{ijn}\right)
-\end{equation}
-Where the arrival time $t$ is discretized into $J$ time slots which each represented one back trajectory, where the trajectories arrive at equal intervals between $t_1$ and $t_2$ and are designated by index j. Space is gridded by index i and the discretisation of $t'$ is designated by index n. The $\Delta t'_{ijn}$ is the residence time of a back trajectory $j$ in a grid cell ($i,n$), which in addition to being the discrete representation of $dt$ also indicate the trajectory movement. The source function does only depend on when back trajectory passes over the source and not the arrival time therefore \Cref{eq:discrete_mix_ratio} can be rearranged to:
-\begin{equation}
-    \chi \approx \overline{\chi_0p(0)} + \sum_i \sum_n \left[\frac{q_{in}}{\rho_{in}}p_{jn} \frac{1}{J}\sum_j (p_{jn}\Delta t'_{ijn})\right]
-\end{equation}
-Thus we can calculate the s-r relationship between the receptor and spatial temporal grid cell ($i,n$):
-\begin{equation}
-    \frac{\partial \overline{\chi}}{q_{in}} = \frac{1}{J} \sum_j \frac{p_{jn} \Delta t'_{ijn}}{\rho_in}
-\end{equation}
-If $\alpha=0$ then $p=1$ the s-r relationship is expressed as mass mixing ratio $\frac{q}{\rho}$ becomes just the average residence time of the grid cell of consideration. Then the different processes the tracer might experience are expressed by "correcting" the residence time by the transmission function. 
+%A cold front passage in spring produces strong surface wind in both systems. Because of the difference in topography, northwest wind and northeast wind respectively prevail in the Mongolian Plateau system and the Tarim Basin system. 
+\subsection{The Chinese Loess Plateau}
+%On the Loess Plateau, the content of silt and clay in the surface soil is more than 90\% and the sand and gravel content is in totally lacking (Xiong and Li, 1990). Also, the annual mean precipitation is around 400 mm yr
 
-
+%Loess Plateau is the center of a strong dust-fall region. Their chemical analysis of soil samples proves also that the Loess Plateau was formed by millions of years of dust deposition (Zhang, 1999).

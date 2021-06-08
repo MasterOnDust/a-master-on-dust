@@ -1,4 +1,4 @@
-\chapter{Methods and Data} 
+\chapter{Model description, data and analysis method} 
 In this thesis the dust emission model 
 FLEXDUST\footnote{\url{https://git.nilu.no/christine/flexdust/-/tree/b07dc58226a3e0844328482d343ab6a14f3869c7} (last access 06/05/2021)} 
 \parencite{flexdust_ref_2016} and the Lagrangian particle dispersion model 
@@ -39,7 +39,7 @@ simulate the spring time dust deposition between 1999 and 2019 at 7 sites across
 
 The receptor oriented backwards simulation approach was chosen over the forward approach due to being more computationally efficient when the number of source elements greatly exceed the number of receptors. In addition the backward approach allow to naturally deal with point receptors, whereas in a forward simulation the deposition at the receptor location has to be interpolated from the model output grid. The backward approach also makes it possible to determine exactly which source regions that are contributing to deposition at receptor.     
 
-Compared to conventional Eulerian dust emission and transport, the Largrangian modelling framework used in FLEXPART does not require a computational grid. This means that Lagrangian models to are almost devoid of artificial numerical diffusion, and the only errors are due to interpolation of meteorological variables to the particle position and the in discretisation of the differential equation. The limited amount of numerical diffusion allow FLEXPART better preserve filament structures within the dust plume that in a Eulerian model would be smoothed out \parencite{cassiani_offline_2016}. However a limitation with FLEXPART and FLEXDUST is that they are completely depended on the quality and amount information available in input data, this constrains the complexity of the parameterizations that can be implemented \parencite{flexpart_wetdep}. Whereas in an online Eulerian dust emission model any variable required can be calculate by the model it self.       
+Compared to conventional integrated dust models, the Largrangian modelling framework used in FLEXPART does not require a computational grid. This means that Lagrangian models to are almost devoid of artificial numerical diffusion, and the only errors are due to interpolation of meteorological variables to the particle position and the in discretisation of the differential equation. The limited amount of numerical diffusion allow FLEXPART better preserve filament structures within the dust plume that in a Eulerian model would be smoothed out \parencite{cassiani_offline_2016}. However a limitation with FLEXPART and FLEXDUST is that they are completely depended on the quality and amount information available in input data, this constrains the complexity of the parameterizations that can be implemented \parencite{flexpart_wetdep}. Whereas in an online Eulerian dust model any variable required can be calculate by the model it self.       
 
 The simulations have been conducted on the Saga super computer operated by the Norwegian high performace 
 computing center, Sigma2. For storage and post analysis, the data is transferred to the 
@@ -47,16 +47,17 @@ NIRD computing infrastructure (National Infrastructure for Research Data).
 
 
 \section{Flex\_extract}
-Both FLEXPART and FLEXDUST depend on external meteorological input data. \verb|Flex_extract| is a package developed to retrieve and prepare the necessary meteorological input data from the European Centre for Medium weather forecast (ECWMF) servers for running FLEXPART simulations \parencite{tipka_flex_extract_2020}. Here we used \verb|flex_extract| version 7.0.4, to retrieve the necessary input field from ERA5 reanalysis at 3hourly temporal resolution at $0.3\degree \times 0.3\degree$ spatial resolution for the region of East asia from March until May for the years from 1999 to 2019. The retrieval process can be rather slow as a large amount of data needs to be downloaded.     
+Both FLEXPART and FLEXDUST depend on external meteorological input data. \verb|Flex_extract| is a package developed to retrieve and prepare the necessary meteorological input data from the European Centre for Medium weather forecast (ECWMF) servers for running FLEXPART simulations \parencite{tipka_flex_extract_2020}. 
+The version of \verb|flex_extract| used here was 7.0.4, to retrieve the necessary input field from ERA5 reanalysis at 3hourly temporal resolution at $0.3\degree \times 0.3\degree$ spatial resolution for the region of East asia from March until May for the years from 1999 to 2019. The retrieval process can be rather slow as a large amount of data needs to be downloaded.     
 
 \subsubsection{ERA5}
 ERA5 is the latest reanalysis produced by the ECWMF. 
 The ERA5 reanalysis assimilate large amount of observational data in order to provide the best estimate of the state of the atmosphere extending back to 1979 \parencite{hersbach_era5_2020}. Compared to its predecessor ERA-Interim, ERA5 offers higher spatial resolution of $0.25\degree \times 0.25\degree$, with up to hourly temporal resolution, and is based on a more recent version of the integrated forecast system (IFS). 
 
-\section{FLEXDUST}
-FLEXDUST is a global dust emission model, developed specifically to be used together 
+\section{FLEXDUST}\label{sec:flexdust}
+FLEXDUST is a global dust emission model, specifically developed to be used together 
 with FLEXPART for studying long range dust transport and deposition. FLEXDUST relies on common 
-formulations for dust emissions found in global climate models \parencite{flexdust_ref_2016}. 
+formulations for dust emissions found in global climate models \parencite{flexdust_ref_2016}. FLEXDUST is a bulk emission scheme as decribed in \Cref{sec:dust_emission_modelling}. 
 
 A crucial part of any dust emission model is to identify the regions with high bare soil 
 fraction, which are regions that are likely exposed to wind erosion. FLEXDUST utilise the satellite 
@@ -136,12 +137,7 @@ where $u_*$ is the friction velocity, c is a constant scaling factor ($4.8\cdot 
 \end{equation}
 \Cref{eq:sand_blasing_eff} is only valid for clay fraction $\leq$ 0.2, so if the clay fraction exceed 0.2 it is set to 0.2 in FLEXDUST \parencite{zender2003mineral}. 
 
-\begin{figure}[hptb]
-    \centering
-    \includegraphics[scale=0.7]{../figs/Threshold_friction_velocity.PNG}
-    \caption{Threshold friction velocity $\mathbf{u^*}$ as a function of particle diameter. Measurements from wind tunnel experiments are represented by points, the lines represent different empirical expression for the threshold friction velocity \parencite{kok2012physics}}.
-    \label{fig:treshold_friction_velocity_ps}
-\end{figure}
+
 
 The small dust particles (< \SI{20}{\micro\metre}) has a greater potential to experience long range transport due their smaller settling velocities. Since FLEXDUST was developed with the purpose of studying long range dust transport, the emitted dust is assumed to have a volume size distribution varying between \SI{0.2}{\micro\metre} and \SI{18.2}{\micro\metre}. This size distribution is based on brittle fragmentation theory described in \textcite{kok_scaling_2011}. The log normal volume size distribution is determined according to \Cref{eq:size_dist}. 
 
@@ -150,21 +146,21 @@ The small dust particles (< \SI{20}{\micro\metre}) has a greater potential to ex
 \end{equation}
 Where $c_v = \SI{12.62}{\micro\metre}$ is a normalisation constant, $\overline{D_s}=\SI{3.4}{\micro\metre}$ and $\sigma_s = 3.0$ is the median diameter and the geometric standard deviation respectively.  
 
-\section{The Lagrangian particle dispersion model: \protect\\ FLEXPART}
+\section{The Lagrangian particle dispersion model: FLEXPART}
 
 \par The dust transport and deposition is calculated by FLEXPART (Flexible Particle dispersion model). FLEXPART is an offline Lagrangian particle dispersion model (LPDM), that has been been to applied to study transport of a wide range of atmospheric atmospheric tracers, eg. mineral dust, black carbon and volcanic ash \parencite{flexdust_ref_2016,choi_investigation_2020, eckhardt2008estimation}. FLEXPART is driven by 3-hourly ERA5 meteorological reanalysis at $0.3\degree \times 0.3\degree$ spatial resolution. The version of FLEXPART used is 10.4 which includes the improved wet deposition scheme based on cloud information from the ECWMF input fields \parencite{flexpart_wetdep}. 
-\par FLEXPART calculates trajectories for a large number computational particles (from here on referred to as particle) that follow the wind-fields resolved in the meteorological input data with parameterizations of the turbulent motions, subgrid-scale convection, and gravitational settling imposed on the trajectories. Each particle represent a dust-aerosol population with a log-normal mass size distribution with a specified density and mean particle diameter. In addition ice nucleation efficiency ,$IN_{eff}$, cloud condensation nuclei efficiency $CCN_{eff}$ and efficiency of below cloud scavenging by rain $C_{rain}$ and snow $C_{snow}$, can be assigned to the particle regulating the strength of the wet deposition in the model.   
+\par FLEXPART calculates trajectories for a large number computational particles (from here on referred to as particle and not be confused with real dust particles) that follow the wind-fields resolved in the meteorological input data with parameterizations of the turbulent motions, subgrid-scale convection, and gravitational settling imposed on the trajectories. Each particle represent a dust-aerosol population with a log-normal mass size distribution with a specified density and mean particle diameter. In addition ice nucleation efficiency ,$IN_{eff}$, cloud condensation nuclei efficiency $CCN_{eff}$ and efficiency of below cloud scavenging by rain $C_{rain}$ and snow $C_{snow}$, can be assigned to the particle regulating the strength of the wet deposition in the model.   
 
 FLEXPART can be either run forward in time from the source to receptor, or backwards from the receptor to the source. The main distinction between forward and backward simulations, is in how the emission strength is constrained. In a forward simulation particles are released at the source and the emitted mass which the particles carry are defined prior to the particle release directly yielding the concentration and deposition on a regular longitude latitude at each time step. 
 
 However in a backward simulation the particle release happens at the receptor and the emission strength is unknown. Then the purpose of the particles in a backward simulation is to probe for the possible source regions and establish the emission sensitivity i.e. how sensitive the deposition at receptor would be to a potential source element. The final output correspond to a distribution of possible source areas at each time step also called emission sensitivity. The emission sensitivity is constructed in such that when multiplied by the emission flux with units \si{\kg\per\cubic\metre\per\s} would produce a map of how much each source element are contributing to the concentration or deposition at the receptor.  
 
-For backward simulation the concentration, wet and dry deposition has to be obtained in separate simulations, due  the particles being released depending on the configuration.  
+For backward simulation the concentration, wet and dry deposition has to be obtained in separate simulations, due  the manner in which the particles are released depends on the configuration.  
 \subsection{FLEXPART: dry deposition}
-In the atmosphere the dry deposition flux vary with height. Where in the boundary layer turbulent diffusion and gravitational settling are dominating and close to the surface in the quasi-laminar sublayer brownian motion and gravitational settling dominate. 
+In the atmosphere the dry deposition flux vary with height. In the boundary layer turbulent diffusion and gravitational settling are dominating and close to the surface in the quasi-laminar sublayer brownian motion and gravitational settling dominate. 
 
 In FLEXPART the dry deposition is represented by calculating the dry deposition velocity $v_d(z)$, and when multiplied with the concentration at a specified height yields the deposition flux. The last stage of deposition from the air to the surface is quite complex and depend both on the properties of the surface and the dust particle it self. 
-FLEXPART includes both a dry deposition scheme for deposition velocities particulate matter as well as gasses, and is calculated according to a two layer resistance model \parencite{Flexpart-2005_ref_paper}. For particulate matter the deposition velocity is calculated according to:
+FLEXPART includes both a dry deposition scheme for particulate matter as well as gasses, and is calculated according to a two layer resistance model \parencite{Flexpart-2005_ref_paper}. For particulate matter the deposition velocity is calculated according to:
 \begin{equation}
     v_d=[r_a + r_b + r_a r_b v_g]^{-1} + v_g
 \end{equation}
@@ -178,11 +174,10 @@ In backward mode dry deposition is calculated at start of the simulation by rele
 
 \subsection{FLEXPART wet deposition}
 
-The current wet deposition in FLEXPART was recently improved in \textcite{flexpart_wetdep}, to take advantage of cloud information in ECWMF forcing. The the wet deposition scheme in FLEXPART consist of two steps. First the location of the particle in relation to the cloud is determined using the 3D specific cloud total
+The wet deposition scheme in FLEXPART was recently improved in \textcite{flexpart_wetdep}, to take advantage of cloud information recently available from the ECWMF forcing. The the wet deposition scheme in FLEXPART consist of two steps. First the location of the particle in relation to the cloud is determined using the 3D specific cloud total
 water content (CTWC).  Then based on the particle's location in relation to the cloud, the particle can either be subjected to nucleation scavenging inside the cloud, or impaction scavenging below the cloud. If the particle is above the cloud no scavenging can occur. 
 
-In backward mode the wet deposition is calculated particle release occur throughout the atmospheric column to first check if any particles are wet deposited. FLEXPART then calculates the trajectories for wet deposited particles starting at the height where the particles were scavenged the remaining particles are terminated.    
- 
+In backward mode the wet deposition is calculated before the particle. Since wet deposition can occur throughout the whole atmospheric column, the particles are released over the whole atmospheric column to check if any particles are subjected to wet deposition. FLEXPART then calculates the trajectories for wet deposited particles starting at the height where the particles were scavenged and the remaining particles are terminated.    
 \subsubsection{In cloud scavenging}
 The in-cloud scavenging scheme in FLEXPART is only activated for particles residing within a precipitating cloud. Precipitation does not necessarily occur over the whole grid cell in the input data, accordingly FLEXPART uses an empirical relation to derive the fraction of a gridcell experiencing precipitation , see \textcite{Flexpart-2005_ref_paper} for details. The subgrid precipitating cloud water (PCW) is calculated according to: 
 \begin{equation}
