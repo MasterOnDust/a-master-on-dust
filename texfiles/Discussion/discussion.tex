@@ -10,5 +10,19 @@ Improving the clustering routine in FLEXPART would involve doing clustering base
 
 I would argue that the current format of the backward emissions sensitivity is not optimal. As described in \Cref{sec:flexpart} the deposition and source contribution is obtained by multiplying the emissions sensitivity with the emission strength. However the current output format has the dimmensionallity of (pointspec, time, height, lon, lat) where the time dimension starts and the end of the simulation a  then goes backward to the beginning. The pointspec dimension represent the forward time dimension which corresponding to a new particle release. The length of the backward trajectories are then controlled by specifying the maximum age through the AGECLASS parameter. First of all the current format result in a lot of empty entries as when the maximum age is exceeded. In therms of the ease of use of the output from backward FLEXPART simulations the output format is a major problem and can easily cause miss understandings. The current output format is designed to be same regardless of the whether it done using a forwad or backward approach. However I belive that FLEXPART would be easier to use if an output format specifically for the backward simulation were to be included. Which had the dimensions of (btime, time, height, lon,lat) where btime correpsond to the time along the back trajectory in seconds and time would be the forward time dimensions. Then the output from FLEXPART could be use directly without having to post processes first. 
 
-\section{The link between AO and dust deposition}
-The winter circulation composite anomalies and the correlation analysis showed a strong connection between the winter AO and dust deposition. During negative AO years the jetstream is weaker causing it to meander further south. A weaker yet stream does also make it more favourable for cold air intruding into East Asia \parencite{he2017impact}.  
+\section{spatial difference of dust deposition over CLP}
+What are the causes for the spatial difference
+
+
+\section{Mechanism for the interannual variation of dust deposition over CLP }
+
+\subsection{emission?}
+\subsection{transport?}
+\subsection{fine vs. coarse, wet vs. dry?}
+\subsection{spatial difference in interannual variation?}
+\subsection{Link between AO and dust deposition over CLP?}
+The winter circulation composite anomalies and the correlation analysis showed a strong connection between the winter AO and dust deposition. During negative AO years the jetstream is weaker causing it to meander further south. A weaker yet stream does also make it more favourable for cold air intruding into East Asia \parencite{he2017impact}. Negative \acrshort{ao} is also associated with a increased snow and cloud cover over central Siberia which increases the albedo amplifying the surface  cooling.  \textcite{liu2018influence} examined the relationship between spring dust emissions and preceding winter \acrshort{ao} using the MERRA2 reanalysis showed that the anomalously cold surface conditions over Central Siberia that arise during negative \acrshort{ao} years can produce anomalously cold conditions that last into spring. Moreover the cold conditions strengthens the temperature gradient between Mongolia and northern China causing stronger than usual north westerlies. This is consistent with the spring composite anomalies of EOF1 in \Cref{fig:eof_composite_MAM}a which shows anomalous cyclonic circulation over Central Siberian and strengthened North westerlies. However from the spring time composite anomalies for the total deposition  \Cref{fig:MAM_850_fine_composite} and \Cref{fig:MAM_850_coarse_composite} only Yinchuan similar circulation anomalies to the emissions. 
+
+Comparing the spring EOF2 circulation composite anomalies with the deposition circulation composite anomalies, SACOL fine clay \Cref{fig:MAM_850_fine_composite}e show similar circulation anomalies to that of positive EOF2 years. Accordingly strong deposition of fine dust at SACOL suggests a large contribution from Taklamakan, this is also consistent with source contribution composite anomalies in \Cref{fig:source_contrib2mmu_anomalies}. Interestingly Luochuan coarse silt show circulation anomalies more in line with the negative EOF2 years.    
+
+\section{Implication for interpreting loess records}

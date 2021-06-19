@@ -3,10 +3,10 @@ In this section the results from the FLEXPART and FLEXDUST model simulations are
 In  \Cref{sec:result_average} the average state of emission transport and deposition are examined. For each location the mean dust transport path and main source regions are determined for both the fine clay and coarse silt particle size bins. 
 Then in \Cref{sec:inter_annual_results} the inter annual variation in spring dust emissions, transport and deposition over the 20 year period are investigated. The composite analysis of the of the circulation during the preceeding winter in strong and weak deposition years show a strong positive MSLP anomalies over the arctic implying a negative \acrshort{ao}.   
 
-\section{Model sensitivity experiments}\label{sec:sensitvity_experiment}
+\section{Model sensitivity to input data and parameters}\label{sec:sensitvity_experiment}
 Sensitivity experiments are a crucial part of any modelling study. The aim of a sensitivity analysis is to quantify the impact of possible errors in the input data on the predicted model output. 
 In \Cref{sec:sens_forcing} the impact of meteorological forcing on the simulated dust emissions and deposition is examined by comparing ERA5 and ERA-Interim forced simulations
-. Sand and clay fractions are an important input variables in FLEXDUST (\Cref{sec:flexdust}), therefore the sensitivity of simulated dust emission to the choice of soil texture data set is considered in \Cref{sec:sens_soil}. \Cref{sec:density_experiment} and \Cref{wet:dep_sensitivty} the sensitivity of estimated deposition to the choice of particle density and cloud scavenging parameters are investigated. 
+. Sand and clay fractions are important input variables in FLEXDUST (\Cref{sec:flexdust}), therefore the sensitivity of simulated dust emission to the choice of soil texture data set is considered in \Cref{sec:sens_soil}. \Cref{sec:density_experiment} and \Cref{wet:dep_sensitivty} the sensitivity of estimated deposition to the choice of particle density and cloud scavenging parameters are investigated. 
 \subsection{Sensitivity to forcing data}\label{sec:sens_forcing}
 
 \begin{figure}[htpb]
@@ -28,7 +28,7 @@ To better understand how errors in meteorological forcing impacts the model resu
 Further more the source contribution of total deposition (\Cref{fig:era5_era_interim_source}) show an even higher sensitivity to input forcing. This might be partly because of ERA-Interim forced simulation showing weaker emissions from weak and moderate dust events than the ERA5 forced simulation. 
 This also consistent with the largest deposition episode not coinciding with the strong emission events.
 \subsection{Sensitivity to soil texture data}\label{sec:sens_soil}
-The dust emission scheme used in FLEXDUST assume that the sand blasting efficiency (\Cref{eq:sand_blasing_eff}) increases exponentially with $f_{clay}$ for $f_{clay} \leq 0.2$. Consequently the simulated dust emission might very sensitive to the soil texture data set used.
+The dust emission scheme used in FLEXDUST assume that the sand blasting efficiency (\Cref{eq:sand_blasing_eff}) increases exponentially with $f_{clay}$ for $f_{clay} \leq 0.2$. Consequently the simulated dust emission might be very sensitive to the soil texture data set used.
 During the process of performing these sensitivity experiments it was discovered that original soil texture dataset had a very small clay fraction over the Taklamakan (\Cref{fig:clay_sand_fraction_comparison}a). This resulted in FLEXDUST barely simulating any emissions from Taklamakan.
 
 \begin{figure}[hptb]
@@ -46,8 +46,8 @@ To address this bias, new sand and clay maps from the SoilGrids database maintai
     \caption{Accumulated simulated dust emissions for 2019, default soil maps (a), and ISRIC soil maps (b).}
     \label{fig:emissions_ISRIC_old_com}
 \end{figure}
-\subsection{Particle density experiment}\label{sec:density_experiment}
-The density of mineral dust particles vary depending on it the mineralogical composition of the dust particle. To examine how the density of the dust particle affects the long range transport and the amount of deposited material, backwards
+\subsection{Sensitivity to particle density}\label{sec:density_experiment}
+The density of mineral dust particles vary depending on the mineralogical composition of the dust particle. To examine how the density of the dust particle affects the long range transport and the amount of deposited material, backwards
 FLEXPART simulations with varying particle density from \SI{2200}{\kg\per\cubic\cm} to \SI{2800}{\kg\per\cubic\cm}  were conducted  at the SACOL site for the spring of 2019. 
 In \Cref{fig:dry_dep_density} and \Cref{fig:wet_dep_density} the rate of dry and wet deposition are plotted for different densities and a least squares fit is done to the data. The rate of  increase approximately linearly with increasing particle density. The density has a bigger impact on the deposition rate of the coarse particles (\Cref{fig:dry_dep_density}b, \Cref{fig:wet_dep_density}), where the rate of deposition of the heaviest particle is almost twice that of the lightest particle. In comparison to the fine particles which only show about a 2\% difference between the lightest and heaviest particle in the dry deposition rate. The wet deposition is more sensitive to the particle density compared to the dry deposition for both the fine and coarse particles. 
 \begin{figure}[hptb]
@@ -64,7 +64,7 @@ In \Cref{fig:dry_dep_density} and \Cref{fig:wet_dep_density} the rate of dry and
     \label{fig:wet_dep_density}
 \end{figure}
 
-\subsection{Sensitivity of cloud scavenging scheme}\label{wet:dep_sensitivty}
+\subsection{Sensitivity to cloud scavenging scheme}\label{wet:dep_sensitivty}
 To test how the different model parameters affect the simulated wet deposition. FLEXDUST was run with both with and without the below cloud scavenging turned on. \Cref{fig:scav_sensitivty} shows the difference between having the below cloud scavenging scheme turned on and off. There is a higher contribution from the proximal regions with the below cloud scavenging turned on.  
 \begin{figure}[htbp]
     \centering
@@ -73,7 +73,7 @@ To test how the different model parameters affect the simulated wet deposition. 
     \label{fig:scav_sensitivty}
 \end{figure}
 
-\section{Model evaluation}\label{sec:model_eval}
+\section{Model evaluation against observation}\label{sec:model_eval}
 \begin{figure}
     \centering
     \includegraphics[scale=0.45]{texfiles/figs/Osada_locations.PNG}
@@ -97,7 +97,7 @@ There is a very limited amount of measurements of dust deposition fluxes that bo
     \label{fig:model_eval_wet_deposition}
 \end{figure}
 
-\section{Average emissions, transport and deposition}\label{sec:result_average}
+\section{Average dust emissions, transport and deposition}\label{sec:result_average}
 To give some context to the investigation of the inter annual variation of dust emissions, transport and deposition in the \Cref{sec:inter_annual_results}. The average mode of dust emission, transport and deposition is examined first. 
 \subsection{Dust emissions}
 In the subsequent analysis the source regions are divided into five regions as shown in \Cref{fig:emission_map_flexdust}. The average spring time emission amount and percentage for the three source regions with the strongest emissions are shown \Cref{tab:emissions}. The estimated mean total spring emissions are 20.02 Mt/spring and are close to the estimates by \textcite{xuan2004identification} for PM30 of 27.6 Mt/year. 
@@ -174,7 +174,8 @@ The time series of spring time emissions for the 3 major source regions are show
     \caption{Time series of total spring time dust emissions from 1999-2019. The total emission is partitioned into the contribution from the Taklamakan (Blue), North West CLP (Green) and Mongolia (Orange) }
     \label{fig:emission_timeseries}
 \end{figure}
-\acrfull{eof} analysis based on yearly de-trended spring emissions was done to identify the main modes of variability in dust emissions. The significance of each EOF was evaluated based on the rule of thumb outlined by \textcite{north1982sampling}. Stating that if the neighbouring eigenvalue lay within the typically error of the respective eigenvalue $\lambda$, the two EOFs might be mixed in their signal and hence not representing true patterns. Following this rule, \Cref{fig:eof_test} shows that the first and second \acrshort{eof} meets this criterion.  
+
+\acrfull{eof} analysis based on yearly de-trended spring emissions was done to identify the interannual variations in the spatiotemporal characteristics of spring dust emissions from East Asian deserts. The significance of each EOF was evaluated based on the rule of thumb outlined by \textcite{north1982sampling}. Stating that if the neighbouring eigenvalue lay within the typically error of the respective eigenvalue $\lambda$, the two EOFs might be mixed in their signal and hence not representing true patterns. Following this rule, \Cref{fig:eof_test} shows that the first and second \acrshort{eof} meets this criterion.  
 
 \begin{figure}[htbp]
     \centering
@@ -284,6 +285,21 @@ To better understand the circulation differences between strong and weak deposit
     \label{fig:DJF_850_coarse_composite}
 \end{figure}
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{texfiles/figs/mslp_850hPa_2micron_MAM.pdf}
+    \caption{Composite difference anomalies of mean sea level pressure and 850hPa strong minus weak deposition years of the "fine clay" size bin in spring (MAM) for all the locations (a-g).  (h) indicates which years are strong years and which years are weak.}
+    \label{fig:MAM_850_fine_composite}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{texfiles/figs/mslp_850hPa_20micron_MAM.pdf}
+    \caption{Composite difference anomalies of mean sea level pressure and 850hPa strong minus weak deposition years of the "coarse silt" size bin in spring (MAM) for all the locations (a-g).  (h) indicates which years are strong years and which years are weak.}
+    \label{fig:MAM_850_coarse_composite}
+\end{figure}
+
+
 \begin{figure}[hptb]
     \centering
     \includegraphics[width=\columnwidth]{texfiles/figs/20micrion_DJF_ws_geopot_500hPa.pdf}
@@ -297,3 +313,4 @@ To better understand the circulation differences between strong and weak deposit
     \caption{Composite difference anomalies of 500hPa geopotential height (contours) and 500hPa windspeed (shading) strong minus weak deposition years of the fine size bin in winter (DJF) for all the locations a-g  (h) indicates which years are strong years and which years are weak.}
     \label{fig:DJF_500hPa_fine_composite}
 \end{figure}
+

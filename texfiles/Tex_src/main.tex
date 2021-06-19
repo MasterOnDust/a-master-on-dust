@@ -1,11 +1,12 @@
 % REMEMBER TO SET LANGUAGE!
 
-\documentclass[a4paper,12pt,english,twoside,final]{extreport}
+\documentclass[a4paper,11pt,english,twoside,draft]{extbook}
 \usepackage[utf8]{inputenc}
 \usepackage{babel,duomasterforside}
 \setlength{\marginparwidth}{2cm}
 \usepackage{master_on_dust}
 \usepackage{fancychapters}
+\usepackage{nopageno}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows}
 \usepackage[inkscapearea=page]{svg}
@@ -57,6 +58,13 @@
 \newcommand{\brak}[1]{\left[#1\right]}
 \newcommand{\brac}[1]{\left\{#1\right\}}
 
+\fancypagestyle{plain}{ 
+    \fancyhf{}           
+    \fancyfoot[RO,LE]{\thepage}
+     \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0pt}% Line at the footer visible
+  }
+
 
 
 \newcommand{\pd}[2][]{\frac{\partial#1}{\partial#2}}
@@ -96,24 +104,27 @@
 \subtitle{To years of work}
 \author{Ove Haugvaldstad}
 
-
 % \input{texfiles/Misc/glossary}
 \input{texfiles/Misc/acronyms}
 \makenoidxglossaries
 \begin{document}
+\clearpage
+\thispagestyle{empty}
 \duoforside[program={Meteorology and Oceanography},
   dept={Section of Meteorology and Oceanography \and Department of Geoscience},
   long]
-\pagenumbering{roman}
+
+\frontmatter
+\subfile{texfiles/abstract}
 \tableofcontents
 \glsaddall
 \printnoidxglossary[type=\acronymtype,nonumberlist]
 
 \listoffigures
 \listoftables
-\clearpage
+
+\mainmatter
 \pagestyle{fancy}
-\pagenumbering{arabic}
 \subfile{texfiles/Background/introduction}
 \subfile{texfiles/Background/Chapter1} 
 \subfile{texfiles/Methods/Chapter2}
