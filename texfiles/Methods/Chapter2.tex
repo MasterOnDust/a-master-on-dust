@@ -1,4 +1,4 @@
-\chapter{Model description, data and analysis method} 
+\chapter{Model Description, Data and Analysis Method} 
 In this thesis the dust emission model 
 FLEXDUST\footnote{\url{https://git.nilu.no/christine/flexdust/-/tree/b07dc58226a3e0844328482d343ab6a14f3869c7} (last access 06/05/2021)} 
 \parencite{flexdust_ref_2016} and the Lagrangian particle dispersion model 
@@ -6,7 +6,7 @@ FLEXPART\footnote{ \url{https://git.nilu.no/flexpart/flexpart/-/tree/release-10.
 \parencite{Flexpart10.4_ref} was used to 
 simulate the spring time dust deposition between 1999 and 2019 at 7 sites across the Chinese Loess Plateau. Both FLEXDUST and FLEXPART are developed at the Norwegian Institute for air research (NILU). 
 
-\textcite{flexdust_ref_2016} used the same two models to study the transport and deposition of high latitude dust, where they simulated the dust transport from a source oriented viewpoint, following the dust from the source to deposition. Here the dust transport and deposition is simulated from a receptor viewpoint, where all the dust that could possibly be deposited at receptor location are tracked backward in time to probe for a possible sources. The distribution of source possibilities are then constrained by the emission field produced by FLEXDUST. The modelling workflow is summarised by the flow chart in \Cref{fig: flow_chart}. 
+\textcite{flexdust_ref_2016} used the same two models to study the transport and deposition of high latitude dust, where they simulated the dust transport from a source-oriented viewpoint, following the dust from the source to deposition. Here, the dust transport and deposition are simulated from a receptor viewpoint. All the dust deposited at the receptor location is tracked backwards in time to probe for possible sources. The emission field produced by FLEXDUST then constrains the distribution of possible sources. The flow chart in \Cref{fig: flow_chart} summarises the modelling workflow. The receptor oriented backwards simulation approach was chosen over the forward approach due to being more computationally efficient when the number of source elements greatly exceeds the number of receptors. In addition, the backward approach allows dealing with point receptors naturally. In a forward simulation, the deposition at the receptor location must be interpolated from the model output grid. The backward approach also makes it possible to determine exactly the source regions that contribute to deposition at the receptor. 
 
 \begin{figure}[!ht]
   \centering
@@ -37,41 +37,38 @@ simulate the spring time dust deposition between 1999 and 2019 at 7 sites across
 \label{fig: flow_chart}
 \end{figure}
 
-The receptor oriented backwards simulation approach was chosen over the forward approach due to being more computationally efficient when the number of source elements greatly exceed the number of receptors. In addition the backward approach allow to naturally deal with point receptors, whereas in a forward simulation the deposition at the receptor location has to be interpolated from the model output grid. The backward approach also makes it possible to determine exactly which source regions that are contributing to deposition at receptor.     
+The Lagrangian modelling framework used in FLEXPART does not require a computational grid. This means that FLEXPART is almost devoid of artificial numerical diffusion. The only errors are due to the interpolation of meteorological variables to the particle position and the discretisation of the differential equations. The limited amount of numerical diffusion allows FLEXPART better preserve filament structures within the dust plume that in an Eulerian model would be smoothed out \parencite{cassiani_offline_2016}. However, since  FLEXPART and FLEXDUST are offline models, they are completely dependent on the quality and amount of information available in input data. This constrains the complexity of the parameterizations that can be implemented \parencite{flexpart_wetdep}. 
 
-Compared to conventional integrated dust models, the Largrangian modelling framework used in FLEXPART does not require a computational grid. This means that Lagrangian models to are almost devoid of artificial numerical diffusion, and the only errors are due to interpolation of meteorological variables to the particle position and the in discretisation of the differential equation. The limited amount of numerical diffusion allow FLEXPART better preserve filament structures within the dust plume that in a Eulerian model would be smoothed out \parencite{cassiani_offline_2016}. However a limitation with FLEXPART and FLEXDUST is that they are completely depended on the quality and amount information available in input data, this constrains the complexity of the parameterizations that can be implemented \parencite{flexpart_wetdep}. Whereas in an online Eulerian dust model any variable required can be calculate by the model it self.       
-
-The simulations have been conducted on the Saga super computer operated by the Norwegian high performace 
-computing center, Sigma2. For storage and post analysis, the data is transferred to the 
+The simulations have been conducted on the Saga supercomputer operated by the Norwegian high performance 
+computing centre, Sigma2. For storage and post-analysis, the data is transferred to the 
 NIRD computing infrastructure (National Infrastructure for Research Data). 
-
 
 \section{Flex\_extract}
 Both FLEXPART and FLEXDUST depend on external meteorological input data. \verb|Flex_extract| is a package developed to retrieve and prepare the necessary meteorological input data from the European Centre for Medium weather forecast (ECWMF) servers for running FLEXPART simulations \parencite{tipka_flex_extract_2020}. 
-The version of \verb|flex_extract| used here was 7.0.4, to retrieve the necessary input field from ERA5 reanalysis at 3hourly temporal resolution at $0.3\degree \times 0.3\degree$ spatial resolution for the region of East asia from March until May for the years from 1999 to 2019. The retrieval process can be rather slow as a large amount of data needs to be downloaded.     
+The version of \verb|flex_extract| used here was 7.0.4, to retrieve the necessary input field from ERA5 reanalysis at 3hourly temporal resolution at $0.3\degree \times 0.3\degree$ spatial resolution for the region of East Asia from March until May for the years from 1999 to 2019. The retrieval process can be slow, as in addition to the large amounts of data that needs to be downloaded, the request also has to be processed by the ECWMF servers.     
 
 \subsubsection{ERA5}
 ERA5 is the latest reanalysis produced by the ECWMF. 
-The ERA5 reanalysis assimilate large amount of observational data in order to provide the best estimate of the state of the atmosphere extending back to 1979 \parencite{hersbach_era5_2020}. Compared to its predecessor ERA-Interim, ERA5 offers higher spatial resolution of $0.25\degree \times 0.25\degree$, with up to hourly temporal resolution, and is based on a more recent version of the integrated forecast system (IFS). 
+The ERA5 reanalysis assimilates large amounts of observational data to provide the best estimate of the state of the atmosphere extending back to 1979 \parencite{hersbach_era5_2020}. Compared to its predecessor ERA-Interim, ERA5 offers a higher spatial resolution of $0.25\degree \times 0.25\degree$, up to hourly temporal resolution, and is based on a more recent version of the integrated forecast system (IFS). 
 
 \section{FLEXDUST}\label{sec:flexdust}
-FLEXDUST is a global dust emission model, specifically developed to be used together 
-with FLEXPART for studying long range dust transport and deposition. FLEXDUST relies on common 
-formulations for dust emissions found in global climate models \parencite{flexdust_ref_2016}. FLEXDUST is a bulk emission scheme as decribed in \Cref{sec:dust_emission_modelling}. 
+FLEXDUST is a global dust emission model specifically developed to be used together 
+with FLEXPART to study long-range dust transport and deposition. FLEXDUST relies on common 
+formulations for dust emissions found in global climate models \parencite{flexdust_ref_2016}. FLEXDUST uses a bulk emission scheme as described in \Cref{sec:dust_emission_modelling}. 
 
-A crucial part of any dust emission model is to identify the regions with high bare soil 
-fraction, which are regions that are likely exposed to wind erosion. FLEXDUST utilise the satellite 
-based Global Land Cover map version 3, by National Mapping Organisations (GLCNMO) with at 
-resolution of 15 arcseconds \parencite{shirahata2017production} to obtain the bare soil fraction globally.
+FLEXDUST identifies the possible dust sources as regions with high bare soil 
+fraction. The bare soil fraction is obtained from the satellite- 
+based Global Land Cover map version 3, by National Mapping Organisations (GLCNMO), with a 
+resolution of 15 arcseconds \parencite{shirahata2017production}.
 In addition to bare soil regions, FLEXDUST also considers partly vegetated areas as possible
-dust sources. The available soil fraction for partly vegetated areas are determined by
-subtracting the vegetation cover included from the ECWMF meteorological forcing.
-Depressions are often more favourable to dust emissions as sediments are more easily gathered there \parencite{zender2003mineral}. Therefore FLEXDUST apply the erodibility scaling 
+dust sources. The available soil fraction for partly vegetated areas is determined by
+subtracting bare soil fraction from the vegetation cover included with the ECWMF meteorological forcing.
+FLEXDUST considers depressions to be more favourable to dust emissions as sediments are more easily gathered there \parencite{zender2003mineral}. Therefore FLEXDUST apply the erodibility scaling 
 \Cref{eq_ero_soil_frac} according to \textcite{dust_dist_Ginoux2001}. 
 \begin{equation}\label{eq_ero_soil_frac}
     S = \left(\frac{z_{max} - z_i}{z_{max} - z_{min}}\right)^5 
 \end{equation}    
-Here $z_i$ is the local elevation and $z_{max}$ and $z_{min}$ is the minimum and
+Here $z_i$ is the local elevation, $z_{max}$ and $z_{min}$ is the minimum and
 maximum elevation in a 10\degree $\times$ 10\degree area.  The erodibility $S$ is
 then scaled by the bare soil fraction to get the erodible soil fraction. The erodible soil fraction over East Asia is shown in \Cref{fig:erodible_soil_fraction_EA}. 
 \begin{figure}[hptb]
@@ -81,51 +78,39 @@ then scaled by the bare soil fraction to get the erodible soil fraction. The ero
     \label{fig:erodible_soil_fraction_EA}
 \end{figure}
 
-In FLEXDUST dust emission occur when the friction velocity exceeds the minimal threshold 
-friction velocity of the particles in the soil bed. Based on wind tunnel experiments, dust 
-particles with equivalent diameter between \SI{75}{\micro\metre} - \SI{100}{\micro\metre} has 
-the smallest threshold friction velocity (\cref{fig:treshold_friction_velocity_ps}). The 
-threshold friction velocity $u_{*t0}(d)$ in FLEXDUST is determined by the 
-\SI{75}{\micro\metre} particles, following the idealised expression of \textcite{shao2000simple}:
-\begin{equation}
-    u_{*t0}(d) = \sqrt{a_1 \left(\frac{\rho_p}{\rho_a}gd+\frac{a_2}{\rho_ad}\right)} 
-\end{equation}
-Here $a_1$ and the scaling constant for the inter particle forces, $a_2$  is assumed to be 0.0123 and \SI{3.0}{\kg\per\s\squared} respectively, which is  
-according to \textcite{shao2000simple}, $\rho_p$ is the particle density and $\rho_a$ is the air density. 
+The threshold friction velocity follow the idealised expression of \textcite{shao2000simple} in \Cref{eq:treshold_fric_vel}, and is determined by the \SI{75}{\micro\metre} particles. 
 For regions where there are clay and silt present, but no sand, \SI{10}{\micro\metre} 
-particles are set to determine the threshold friction velocity. In FLEXDUST clay and 
+particles are set to determine the threshold friction velocity. The clay and 
 silt fractions can either be obtained from ISRIC 250m resolution Soil Grids dataset 
-\parencite{soil-grid_ref} or from the Global soil Data \cite{task2014global} dataset. 
-
-The effect of soil moisture on the threshold friction velocity is parametrized according to \textcite{fecan1998parametrization}:
+\parencite{soil-grid_ref} or from the Global soil Data \cite{task2014global} dataset, which is the default. The effect of soil moisture on the threshold friction velocity is parametrized according to \textcite{fecan1998parametrization}:
 \begin{equation}
     \begin{cases}
     \frac{u_{*tw}}{u_{*t}}=1, & \text{if } w < w' \\
     \frac{u_{*tw}}{u_{*t}}=\sqrt{1+1.21(w-w')^{0.68}}, & w \geq w'
     \end{cases}
 \end{equation}
-where $w$ is the volumetric water content of the soil (\%). If the soil moisture exceed $w'$, the capillary 
+where $w$ is the volumetric water content of the soil (\%). If the soil moisture exceeds $w'$, the capillary 
 forces will start affecting the threshold friction velocity. Where $w'$ is given by \Cref{eq:moisture_clay} 
 and depends on the clay content $c$ (\%).   
 \begin{equation} \label{eq:moisture_clay}
     w' = 0.17c + 0.0014c^2
 \end{equation}
-The soil moisture content is retrieved from the ECWMF input fields. Further, snow cover is 
-assumed to inhibit dust emissions and snow cover data is also obtained from the ECWMF input fields. 
-\par In partly vegetated areas non-erodible surface elements would increase the surface 
+The soil moisture content is retrieved from the ECWMF input fields. Furthermore, snow cover obtained from the ECWMF input fields and is
+assumed to inhibit dust emissions. 
+\par In partly vegetated areas, non-erodible surface elements would increase the surface 
 roughness affecting the dust emissions. In FLEXDUST the drag partition to non-erodible 
 surface elements for partly vegetated areas are accounted for following the description in 
-\parencite{zender2003mineral}, by scaling the mobilisation threshold by $f_d$ according to \Cref{eq:drag_partition}:
+\textcite{zender2003mineral}, by scaling the mobilisation threshold by $f_d$ according to \Cref{eq:drag_partition}:
 \begin{equation}\label{eq:drag_partition}
     f_d = \left[1 - \frac{\ln (z_{0m}/z_{0s})}{0.35\ln (0.1/z_{0s})^{0.8}}\right]^{-1}
 \end{equation}
-Here $z_{0m}$ is the roughness length of momentum transfer and $z_{0s}$ is the smooth roughness length which 
-describe roughness of a bed of potentially erodible particles without any non erodible elements. Wind tunnel 
-experiments has shown that: 
+Here $z_{0m}$ is the roughness length of momentum transfer, and $z_{0s}$ is the smooth roughness length which 
+describe the roughness of a bed of potentially erodible particles without any non-erodible elements. Wind tunnel 
+experiments have shown that: 
 \begin{equation}
     z_{0s} \approx D/30
 \end{equation}
-where $D$ is the particle diameter. In FLEXDUST it is assumed globally uniform values of  $z_{0m}=\SI{100.0}{\micro\metre}$ and $z_{0s}=\SI{33.3}{\micro\metre}$
+where $D$ is the particle diameter. In FLEXDUST it is assumed globally uniform values of  $z_{0m}=\SI{100.0}{\micro\metre}$ and $z_{0s}=\SI{33.3}{\micro\metre}$.
 
 After the mobilisation threshold is calculated,  the dust emissions flux is derived following the paremeterisation of the vertical dust flux as described in \textcite{MB95_dust_emission}: 
 \begin{equation}
@@ -139,43 +124,31 @@ where $u_*$ is the friction velocity, c is a constant scaling factor ($4.8\cdot 
 
 
 
-The small dust particles (< \SI{20}{\micro\metre}) has a greater potential to experience long range transport due their smaller settling velocities. Since FLEXDUST was developed with the purpose of studying long range dust transport, the emitted dust is assumed to have a volume size distribution varying between \SI{0.2}{\micro\metre} and \SI{18.2}{\micro\metre}. This size distribution is based on brittle fragmentation theory described in \textcite{kok_scaling_2011}. The log normal volume size distribution is determined according to \Cref{eq:size_dist}. 
+The small dust particles (< \SI{20}{\micro\metre}) has a greater potential to experience long-range transport due to their smaller settling velocities. Since FLEXDUST was developed to study long-range dust transport, the emitted dust is assumed to have a volume size distribution varying between \SI{0.2}{\micro\metre} and \SI{18.2}{\micro\metre}. This size distribution is based on brittle fragmentation theory described in \textcite{kok_scaling_2011}. The log-normal volume size distribution is determined according to \Cref{eq:size_dist}. 
 
 \begin{equation}\label{eq:size_dist}
     \frac{\text{d} V_d}{\text{d} \ln D_d} = \frac{D_d}{c_v}\left[1 + \text{erf}\left(\frac{\ln(D_d/\overline{D_s})}{\sqrt{2}\ln \sigma_s}\right)\right]\text{exp}\left[-\left(\frac{D_d}{\lambda}\right)^3\right]
 \end{equation}
 Where $c_v = \SI{12.62}{\micro\metre}$ is a normalisation constant, $\overline{D_s}=\SI{3.4}{\micro\metre}$ and $\sigma_s = 3.0$ is the median diameter and the geometric standard deviation respectively.  
 
-\section{The Lagrangian particle dispersion model: FLEXPART}
+\section{FLEXible PARTicle Dispersion Model: FLEXPART}
+\par The dust transport and deposition is calculated by the \acrfull{flexpart}. FLEXPART is an offline \acrshort{lpdm}, that has been applied to study the transport of a wide range of atmospheric tracers, e.g. mineral dust, black carbon and volcanic ash \parencite{flexdust_ref_2016,choi_investigation_2020, eckhardt2008estimation}. 
+The version of FLEXPART used is 10.4 and includes the improved wet deposition scheme based on cloud information from the ECWMF input fields \parencite{flexpart_wetdep}. 
+\par FLEXPART calculates trajectories for a large number of computational particles (from here on referred to as particle and not be confused with real dust particles) that move according to the wind-fields resolved in the meteorological forcing with parameterizations of the turbulent motions, subgrid-scale convection, and gravitational settling imposed on the trajectories. Each particle represents a dust-aerosol population with a log-normal mass size distribution with a specified density and mean particle diameter. In addition, ice nucleation efficiency,$IN_{eff}$, cloud condensation nuclei efficiency $CCN_{eff}$ and efficiency of below cloud scavenging by rain $C_{rain}$ and snow $C_{snow}$, can be assigned to the particle regulating the strength of the wet deposition in the model.   
 
-\par The dust transport and deposition is calculated by FLEXPART (Flexible Particle dispersion model). FLEXPART is an offline Lagrangian particle dispersion model (LPDM), that has been been to applied to study transport of a wide range of atmospheric atmospheric tracers, eg. mineral dust, black carbon and volcanic ash \parencite{flexdust_ref_2016,choi_investigation_2020, eckhardt2008estimation}. FLEXPART is driven by 3-hourly ERA5 meteorological reanalysis at $0.3\degree \times 0.3\degree$ spatial resolution. The version of FLEXPART used is 10.4 which includes the improved wet deposition scheme based on cloud information from the ECWMF input fields \parencite{flexpart_wetdep}. 
-\par FLEXPART calculates trajectories for a large number computational particles (from here on referred to as particle and not be confused with real dust particles) that follow the wind-fields resolved in the meteorological input data with parameterizations of the turbulent motions, subgrid-scale convection, and gravitational settling imposed on the trajectories. Each particle represent a dust-aerosol population with a log-normal mass size distribution with a specified density and mean particle diameter. In addition ice nucleation efficiency ,$IN_{eff}$, cloud condensation nuclei efficiency $CCN_{eff}$ and efficiency of below cloud scavenging by rain $C_{rain}$ and snow $C_{snow}$, can be assigned to the particle regulating the strength of the wet deposition in the model.   
-
-FLEXPART can be either run forward in time from the source to receptor, or backwards from the receptor to the source. The main distinction between forward and backward simulations, is in how the emission strength is constrained. In a forward simulation particles are released at the source and the emitted mass which the particles carry are defined prior to the particle release directly yielding the concentration and deposition on a regular longitude latitude at each time step. 
-
-However in a backward simulation the particle release happens at the receptor and the emission strength is unknown. Then the purpose of the particles in a backward simulation is to probe for the possible source regions and establish the emission sensitivity i.e. how sensitive the deposition at receptor would be to a potential source element. The final output correspond to a distribution of possible source areas at each time step also called emission sensitivity. The emission sensitivity is constructed in such that when multiplied by the emission flux with units \si{\kg\per\cubic\metre\per\s} would produce a map of how much each source element are contributing to the concentration or deposition at the receptor.  
-
-For backward simulation the concentration, wet and dry deposition has to be obtained in separate simulations, due  the manner in which the particles are released depends on the configuration.  
+FLEXPART can be either run forward in time from the source to receptor or backwards from the receptor to the source. The main difference between forward and backward simulations lies in how the emission strength is constrained. 
+In a forward simulation, the particles are released at the source. The emitted mass which the particles carry is defined before the particle release, directly yielding the concentration and deposition on a regular longitude latitude grid at each time step.
+However, in a backward simulation the particle release happens at the receptor, and the emission strength is unknown. Then the purpose of the particles in a backward simulation is to probe for the possible source regions and establish the emission sensitivity, i.e. how sensitive the deposition at receptor would be to a potential source element. 
+The final output corresponds to a distribution of possible source areas at each time step, also called emission sensitivity. The emission sensitivity is constructed such that when multiplied by the emission flux with units \si{\kg\per\cubic\metre\per\s} would produce a map of how much each source element are contributing to the concentration or deposition at the receptor. In backward simulation concentration, wet and dry deposition must be obtained in separate simulations as the particle release is set up differently depending on the configuration.  
 \subsection{FLEXPART: dry deposition}
-In the atmosphere the dry deposition flux vary with height. In the boundary layer turbulent diffusion and gravitational settling are dominating and close to the surface in the quasi-laminar sublayer brownian motion and gravitational settling dominate. 
+In FLEXPART the dry deposition is represented by a dry deposition velocity $v_d(z)$, which when multiplied with the concentration at a specified height yields the deposition flux. 
+FLEXPART includes both a dry deposition scheme for particulate matter as well as gasses and is calculated based on a two-layer resistance model \parencite{Flexpart-2005_ref_paper}.
 
-In FLEXPART the dry deposition is represented by calculating the dry deposition velocity $v_d(z)$, and when multiplied with the concentration at a specified height yields the deposition flux. The last stage of deposition from the air to the surface is quite complex and depend both on the properties of the surface and the dust particle it self. 
-FLEXPART includes both a dry deposition scheme for particulate matter as well as gasses, and is calculated according to a two layer resistance model \parencite{Flexpart-2005_ref_paper}. For particulate matter the deposition velocity is calculated according to:
-\begin{equation}
-    v_d=[r_a + r_b + r_a r_b v_g]^{-1} + v_g
-\end{equation}
-where $r_a$ is the aerodynamic resistance, $r_b$ is the quasi laminar surface layer resistance ,$v_g$ is the settling velocity and the product $r_a r_b v_g$ represent a virtual resistance \parencite{GIARDINA201811_drydepo}. The gravitational settling velocity is calculated according to \textcite{slinn1982predictions}:
-\begin{equation}
-    v_g = \frac{g\rho_p d_p^2 C_{cun}}{18\mu}
-\end{equation}
-where $\rho_p$ and $d_p$ is the particle density and diameter, $\mu$ is the dynamic viscosity of air and $C_{cun}$ is the Cunningham slip-flow correction.
-
-In backward mode dry deposition is calculated at start of the simulation by releasing the particles in a shallow layer close to the ground. This layer corresponds to the layer which particles in forward mode would be subjected to dry deposition and by default is set to 30m. The "mass" of the particles are then scaled by the deposition velocity and tracked backward in time as in regular backward simulation \parencite{eckhardt2017source}. 
+In backward mode, dry deposition is calculated at the start of the simulation by releasing the particles in a shallow layer close to the ground. This layer corresponds to the layer which particles in forward mode would be subjected to dry deposition and is by default is set to 30m. The "mass" of the particles are then scaled by the deposition velocity and tracked backward in time as in regular backward simulation \parencite{eckhardt2017source}. 
 
 \subsection{FLEXPART wet deposition}
-
-The wet deposition scheme in FLEXPART was recently improved in \textcite{flexpart_wetdep}, to take advantage of cloud information recently available from the ECWMF forcing. The the wet deposition scheme in FLEXPART consist of two steps. First the location of the particle in relation to the cloud is determined using the 3D specific cloud total
-water content (CTWC).  Then based on the particle's location in relation to the cloud, the particle can either be subjected to nucleation scavenging inside the cloud, or impaction scavenging below the cloud. If the particle is above the cloud no scavenging can occur. 
+The wet deposition scheme in FLEXPART was recently improved in \textcite{flexpart_wetdep}, to take advantage of cloud information available from the ECWMF forcing. The wet deposition scheme in FLEXPART consists of two steps.
+First, the location of the particle in relation to the cloud is determined using the 3D specific \acrfull{ctwc}. Then based on the particle's location in relation to the cloud, the particle can either be subjected to nucleation scavenging inside the cloud or impaction scavenging below the cloud. If the particle is above the cloud, no scavenging can occur. 
 
 In backward mode the wet deposition is calculated before the particle. Since wet deposition can occur throughout the whole atmospheric column, the particles are released over the whole atmospheric column to check if any particles are subjected to wet deposition. FLEXPART then calculates the trajectories for wet deposited particles starting at the height where the particles were scavenged and the remaining particles are terminated.    
 \subsubsection{In cloud scavenging}
@@ -197,10 +170,45 @@ In reality $F_{nuc}$ depends on many different parameters such as aerosol size, 
 Dust aerosols residing below the cloud might be scavenged by falling rain drops and snowflakes, called impaction scavenging. In FLEXPART The probability of an aerosol being scavenged by liquid droplets is parameterized according to \textcite{laakso2003ultrafine} and for snow scavenging FLEXPART uses the parameterization by \textcite{kyro2009snow}. The efficiency of scavenging by falling rain and snow can also be adjusted in the model by changing the $C_{rain}$ and $C_{snow}$ parameter.   
 
 
-\section{Model setup}\label{sec:Model_setup}
+\section{Model Setup}\label{sec:Model_setup}
+
+\begin{table}[htpb]
+\caption{The model sensitivity experiments that have been performed}
+\centering
+
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllll@{}}
+\toprule
+ Sensitivity experiment & Soil map  & Forcing & Below cloud scavenging & Particle density \\ \midrule
+ Model forcing & ISRIC  & ERA-Interim & Yes & \SI{2500}{\kg\per\cubic\cm}  \\
+ Particle density & ISRIC & ERA5  & Yes & \SI{2200}{\kg\per\cubic\cm}-\SI{2800}{\kg\per\cubic\cm}  \\
+ Soil texture & Default & ERA5 & Yes & \SI{2500}{\kg\per\cubic\cm}   \\
+ Cloud scavenging& ISRIC  & ERA5 & No & \SI{2500}{\kg\per\cubic\cm} \\ \bottomrule
+
+\end{tabular}%
+}
+\end{table}
+
 Both FLEXPART and FLEXDUST was run at 3hourly temporal resolution and $0.1\degree \times 0.1\degree$ spatial resolution driven by the same ERA5 meteorological forcing data. The deposition is simulated for March until May from 1999-2019. 
 
-In FLEXPART, backward simulation are carried out from seven location across the Chinese Loess Plateau, from west to east SACOL (\ang{104.137}E,  \ang{35.964}N)\\, Shapotou (\ang{105.0475}E,  \ang{37.749}N), Yinchuan (\ang{106.101}E, \ang{38.50}N) Lingtai \\ (\ang{107.789}N,  \ang{35.710}E), Lantian (\ang{109.256}E, \ang{34.18}N), Luochuan (\ang{109.424}E, \\  \ang{35.710}N) and  Badoe (\ang{111.17}E, \ang{39.003}N).
+In FLEXPART, backward simulation are carried out from seven location across the Chinese Loess Plateau, from west to east SACOL shown in \Cref{fig:maps_clp_deserts}a and the exact coodinates are listed in 
+
+\begin{table}[htpb]
+\caption{The coordinates of the locations for where the FLEXPART backward simulations are initiated}
+\centering
+\label{tab:coordinates_clp}
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & Longitude & Latitude \\ \midrule
+SACOL & 104.137 & 35.964 \\
+Shapotou  & 105.0475 & 37.749  \\
+Yinchuan & 106.101 & 38.50 \\
+Lingtai & 107.789 &  35.710\\
+Lantian & 109.256 & 34.18 \\
+Luochuan & 109.424 &  35.710\\
+Badoe & 111.17  &  39.003  \\ \bottomrule
+\end{tabular}
+\end{table}
 
 A new particle release is initiated every 3rd hour from the receptor location. For the dry deposition simulations 50000 particles and for wet deposition model runs 200000 particles during a single particle release. A higher amount of particles are used for the wet deposition simulations due to how the particle release is setup. The particles are kept in the simulation for 5 days before they are discarded. 
 
@@ -208,13 +216,13 @@ The FLEXPART simulations include two particles size bins \SI{1.7}{\micro\metre}-
 
 In total this amounts to 4 separate FLEXPART simulations for each sites and 28 simulations in total. 
 
-To take advantage of large number of CPUs available on the super computer the FLEXPART simulations are divided into smaller individual simulations that can be run in parallel. Each sub simulation lasts on month and the and takes about 8 hours to run on a single CPU. Scripts has been specifically developed for setting up and submitting the FLEXPART simulations to the cluster. 
+To take advantage of large number of CPUs available on the super computer the FLEXPART simulations are divided into smaller individual simulations that can be run in parallel. Each sub simulation lasts one month and takes about 8 hours to run on a single CPU. Scripts has been specifically developed for setting up and submitting the FLEXPART simulations to the cluster. 
 
 \section{Analysis Tools}
 The analysis and post processing of the model output is achieved using a handful of python libraries. Plotting and data visualisation:  \verb|matplotlib|, \verb|seaborn|, \verb|cartopy|. Data analysis and data processing: \verb|xarray|, \verb|numpy|, \verb|scikit-learn|, \verb|pandas|, \verb|dask|, \verb|snakemake|, \verb|jupyter|. The full python environment listing the specific version of the packages are available on my GitHub. In addition several python scripts was developed to facilitate the analysis and processing of the model output and is available on my GitHub.        
 
 \subsection{FLEXPART trajectory analysis}
-In addition to emission sensitivity, FLEXPART can output the centriod position of the particle cloud and cluster the particles into a specified number of cluster groups at each output interval \parencite{stohl_replacement_2002}. However the clusters produced by FLEXPART are not very informative due to the clustering only being based on the position of the particles at the output time and does not take into consideration which cluster it was previously assign to. Therefore rather than using the cluster trajectories, the centriod trajectoroies of every particle release are re-clustered using the procedure described by \textcite{dorling1992cluster}. 
+In addition to emission sensitivity, FLEXPART can output the centriod position of the particle cloud and cluster the particles into a specified number of cluster groups at each output interval \parencite{stohl_replacement_2002}. However the clusters produced by FLEXPART are not very informative due to the clustering only being based on the position of the particles at the output time and does not take into consideration which cluster it was previously assign to. Therefore rather than using the cluster trajectories, the centriod trajectories of every particle release are re-clustered using the procedure described by \textcite{dorling1992cluster}. 
 
 The \textcite{dorling1992cluster} clustering algorithm is an adaptive clustering method, which starts by clustering the trajectories into many clusters (~30) using K-means clustering. Here the K-means implementation in the scikit-learn python package is used \parencite{scikit-learn}, which cluster the trajectories based on their euclidean distance from the cluster centriod trajectory. K-means works by separating the data in k groups with equal variance and minimising the within cluster sum of squares also called the inertia: 
 \begin{equation}
@@ -232,69 +240,36 @@ After each merger the relative change in the score of the clustering between the
 
 Composite analysis is a useful method for identifying climatic features that are difficult to observe in its totally. A composite analysis involve collecting a number of cases of given situation, e.g. years with strong deposition, and create an average representation of meteorological conditions in that given situation, e.g. surface winds during strong deposition years. The to further magnify the changes one could subtract the cases where this particular situation is weak to produce composite anomalies.      
 
-\begin{table}[htpb]
-\centering
-\begin{tabular}{lll}
- &  &  \\
- &  &  \\
-\rowcolor[HTML]{EFEFEF} 
- &  & \\
- & \verb|LOUTSTEP| & 10800s \\
-\rowcolor[HTML]{EFEFEF} 
- & \verb|LOUTAVER| & 10800s \\
- & \verb|LOUTSAMPLE| & 900s  \\
-\rowcolor[HTML]{EFEFEF} 
- & \verb|LSYNCTIME| & 900  \\
- & \verb|CTL|  & -5.00 \\
-\rowcolor[HTML]{EFEFEF} 
- &  &  \\
- &  &  \\
-\rowcolor[HTML]{EFEFEF} 
- &  & 
-\end{tabular}
-\end{table}
 
 \begin{table}[htpb]
+\caption{FLEXPART species parameters for "clay" and "silt" particle size bin}
+\label{tab:particle_params}'
 \centering
-\begin{tabular}{lll}
- & \textbf{Fine Silt} & \\
-\rowcolor[HTML]{EFEFEF} 
- \verb|PCRAIN_AERO|& 1.00  \\
- \verb|PCSNOW_AERO|& 1.00  \\
-\rowcolor[HTML]{EFEFEF} 
- \verb|PCC_AERO|& 0.45 \parencite{flexdust_ref_2016}  \\
- \verb|PIN_AERO|& 0.10 \parencite{flexdust_ref_2016}  \\
-\rowcolor[HTML]{EFEFEF} 
- \verb|PDENSITY|& \SI{2500.0}{\kg\per\cubic\metre}   \\
- \verb|PDQUER|& \SI{2.057E-6}{\metre}   \\
-\rowcolor[HTML]{EFEFEF} 
- \verb|PDSIGMA|&1.21   
-\end{tabular}
-
-\caption{FLEXPART species parameters for "FINE SILT" particle size bin}
-\label{Table_species_fine_silt}
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & Clay  & Silt \\ \midrule
+\verb|PCRAIN_AERO| & 1.00  & 1.00 \\
+\verb|PCSNOW_AERO| & 1.00  &  1.00 \\
+\verb|PCC_AERO| & 0.45 \parencite{flexdust_ref_2016}   &  0.9\parencite{flexdust_ref_2016} \\
+\verb|PIN_AERO| & 0.10 \parencite{flexdust_ref_2016} & 0.1 \parencite{flexdust_ref_2016} \\
+\verb|PDENSITY| & \SI{2500.0}{\kg\per\cubic\metre}    & \SI{2500.0}{\kg\per\cubic\metre} \\
+\verb|PDQUER| & \SI{2.057E-6}{\metre}    &  \SI{17.32E-6}{\metre}   \\
+\verb|PDSIGMA| & 1.21   &  1.15    \\ \bottomrule
+\end{tabular}%
+% }
 \end{table}
 
-\begin{table}[htpb]
-\centering
-\begin{tabular}{lll}
- & \textbf{Coarse Silt} & \\
-\rowcolor[HTML]{EFEFEF} 
- \verb|PCRAIN_AERO|& 1.00  \\
- \verb|PCSNOW_AERO|& 1.00  \\
-\rowcolor[HTML]{EFEFEF} 
- \verb|PCC_AERO|& 0.9 \parencite{flexdust_ref_2016}  \\
- \verb|PIN_AERO|& 0.10 \parencite{flexdust_ref_2016}  \\
-\rowcolor[HTML]{EFEFEF} 
- \verb|PDENSITY|& \SI{2500.0}{\kg\per\cubic\metre} \\
- \verb|PDQUER|& \SI{17.32E-6}{\metre}   \\
-\rowcolor[HTML]{EFEFEF} 
- \verb|PDSIGMA|&1.15   
-\end{tabular}
-\caption{FLEXPART species parameters for "COARSE SILT" particle size bin}
-\label{Table_species_coaurse}
-\end{table}
-% The wet deposition
-% in FLEXPART is computed by releasing computational FLEXPART particles in the
-% entire atmospheric column.  
 
+\begin{table}[]
+    \caption{Caption}
+    \label{tab:my_label}
+    \centering
+    \begin{tabular}{@{}ll@{}} 
+    \toprule
+         &  \\ \midrule
+         
+         & 
+    \end{tabular}
+
+\end{table}

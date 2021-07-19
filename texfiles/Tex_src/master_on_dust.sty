@@ -35,12 +35,13 @@
 \RequirePackage[backend      = biber,
                 sortcites    = true,
                 giveninits   = true,
-                uniquename   = init,
+                uniquename   = false,
                 doi          = true,
                 isbn         = true,
                 url          = false,
                 maxcitenames = 2,
                 maxbibnames  = 10,
+                uniquelist   = false,
                 style        = authoryear]{biblatex}
 \addbibresource{references.bib}
 %Figures
@@ -95,8 +96,8 @@
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyfoot[LE,RO]{\thepage}
-\fancyhead[RO]{\rightmark}
+\fancyfoot[RE,LO]{\thepage}
+\fancyhead[LO]{\rightmark}
 \fancyhead[LE]{\leftmark}
 
 

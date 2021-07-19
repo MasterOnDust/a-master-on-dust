@@ -79,3 +79,19 @@ Thus we can calculate the s-r relationship between the receptor and spatial temp
 \end{equation}
 If $\alpha=0$ then $p=1$ the s-r relationship is expressed as mass mixing ratio $\frac{q}{\rho}$ becomes just the average residence time of the grid cell of consideration. Then the different processes the tracer might experience are expressed by "correcting" the residence time by the transmission function. 
 
+
+\chapter{Cluster analysis of FLEXPART trajectories}
+
+In addition to emission sensitivity, FLEXPART can output the centriod position of the particle cloud and cluster the particles into a specified number of cluster groups at each output interval \parencite{stohl_replacement_2002}. However the clusters produced by FLEXPART are not very informative due to the clustering only being based on the position of the particles at the output time and does not take into consideration which cluster it was previously assign to. Therefore rather than using the cluster trajectories, the centriod trajectoroies of every particle release are re-clustered using the procedure described by \textcite{dorling1992cluster}. 
+
+The \textcite{dorling1992cluster} clustering algorithm is an adaptive clustering method, which starts by clustering the trajectories into many clusters (~30) using K-means clustering. Here the K-means implementation in the scikit-learn python package is used \parencite{scikit-learn}, which cluster the trajectories based on their euclidean distance from the cluster centriod trajectory. K-means works by separating the data in k groups with equal variance and minimising the within cluster sum of squares also called the inertia: 
+\begin{equation}
+    \sum_{i=0}^{n}\min_{\mu_j \in C}(||x_i - \mu_j||^2)
+\end{equation}
+Where $x_i$ represent the a single trajectory and $\mu_j$ is the cluster centriod. 
+
+The K-means algorithm is quite sensitive to the inital cluster centriod, therefore the K-means is repeated 20 times with different seeds and the run with the lowest inertia is selected. 
+
+Then two closest cluster centriod are found by calculating which two cluster centriod has shortest great circle distance between each other. The clusters are then merged and their combined centriod calculated and used together with the remaining centriod clusters as initial centriods in the for next K-means clustering. This is repeated until there is only two clusters left. 
+
+After each merger the relative change in the score of the clustering between the previous and the merged cluster is calculated. A large relative change in score is interpreted as two distinct clusters having been merged and the clusters before the merger are kept. This allows for an more objective method for determining the optimal number of clusters.    
