@@ -18,6 +18,40 @@ Badoe & 111.17  &  39.003  \\ \bottomrule
 \end{tabular}
 \end{table}
 
+
+
+\begin{table}[htpb]
+    \centering
+    \label{tab:command_file}
+    \caption{Setting specified in the COMMAND file for the main FLEXPART simulations. Dry deposition (Wet deposition) }
+    \begin{tabular}{@{}ll@{}}
+        \toprule
+        \verb|LDIRECT| & -1 \\ 
+        \verb|LOUTSTEP| & 10800 \\
+        \verb|LOUTAVER| & 10800 \\
+        \verb|LOUTSAMPLE| & 900 \\
+        \verb|ITSPLIT| & 9999999 \\
+        \verb|LSYNCTIME| & 900 \\
+        \verb|CTL| & -5.000 \\
+        \verb|IFINE| & 4 \\
+        \verb|IOUT| & 13 \\
+        \verb|IPOUT| & 0 \\
+        \verb|LSUBGRID| & 1 \\
+        \verb|LCONVECTION| & 1 \\
+        \verb|LAGESPECTRA| & 1 \\
+        \verb|IPIN| & 0 \\
+        \verb|IOUTPUTFOREACHRELEASE| & 1 \\
+        \verb|IFLUX| & 0 \\
+        \verb|MDOMAINFILL| & 0 \\
+        \verb|IND_SOURCE| & 1 \\
+        \verb|IND_RECEPTOR| (*) & (4) 3 \\ \bottomrule
+        
+    \end{tabular}
+
+
+\end{table}
+
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.8]{texfiles/figs/EOF_north_test.pdf}

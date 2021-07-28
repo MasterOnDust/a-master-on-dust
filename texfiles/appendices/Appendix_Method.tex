@@ -1,44 +1,50 @@
 
-\chapter{Source receptor relationships within the framework Lagrangian particle dispersion models}
+\chapter{Source receptor relationships within the framework Lagrangian particle dispersion models}\label{appendix:lpdm_SRR}
 
-The problem with using ordinary Lagrangian trajectory model to calculate trajectories is that measurements 
+The problem with using an ordinary Lagrangian trajectory model to calculate trajectories is that measurements 
 often represent large volumes of air and not infinitesimally small air parcels (from now on referred to as 
 particles). Therefore a single particle trajectory is usually not representative of the trajectory of the 
-whole volume element. This is to due deformation and stretching of the fluid elements. This deformation 
-happens for example if the flow has to pass an obstacle eg. a mountain range, the initially compact fluid 
-elements would be torn apart and distributed over large areas. Moreover the separation and distortion of the
+whole volume element. This is to due the deformation and stretching of the fluid elements. This deformation 
+happens for example if the flow has to pass an obstacle, e.g. a mountain range, the initially compact fluid 
+elements would be torn apart and distributed over large areas. Moreover, the separation and distortion of the
 volume element would be even more effective in the presence of strong vertical wind shear causing fluid 
-elements to travel in opposite direction. Which means that two particles that are at the beginning close to 
-each other would given enough time would eventually be separated by large distances. Another issue with the 
-single particle approach is that the turbulence of the atmosphere would increase the volume of the initial 
-fluid element over time, increasing the horizontal dispersion. This could make trajectories which encounter 
-deep convection or are travelling within the boundary layer even less accurate. This even more apparent for 
-trajectories which are only based on the mean wind fields, which cannot represent the effect of turbulent 
-mixing on the fluid element. \par A Lagrangian particles dispersion model LPDM can solve both of the issues 
+elements to travel in opposite directions. This means that two particles that are at the beginning close to 
+each other would, given enough time would eventually be separated by large distances. Another issue with the 
+single particle approach is that the atmosphere's turbulence would increase the volume of the initial 
+fluid element over time, increasing the horizontal dispersion. This could make trajectories that encounter 
+deep convection or are travelling within the boundary layer even less accurate. This is even more apparent for 
+trajectories based only on the mean wind fields, which cannot represent the effect of turbulent 
+mixing on the fluid element. 
+
+A Lagrangian particles dispersion model \acrshort{lpdm} can solve both of the issues 
 of the traditional Lagrangian trajectory model. Deformation of the fluid element can accurately be 
 represented by computing the trajectories of several thousand particles giving a statistical description of 
-the dispersion of each volume element. The LPDM can also accurately represent turbulence by adding a 
-stochastic term to the the mean wind. 
-LPDM also have an advantage over Eulerian grid based transport models in that they do not require a 
+the dispersion of each volume element. The \acrshort{lpdm} can also accurately represent turbulence by adding a 
+stochastic term to the mean wind. 
+\acrshort{lpdm} also have an advantage over Eulerian grid-based transport models in that they do not require a 
 computational grid, which means they are essentially free from numerical diffusion, except for errors 
 related to interpolating the meteorological input data to the particle positions 
-\parencite{cassiani_offline_2016}. \par LPDM allows in the same way as traditional Lagrangian trajectory 
-models to be run forward or backwards in time, by simply switching the sign of the advection. Forward 
-simulation, are a natural choice for studying the dispersion of tracers from known sources, for example the 
+\parencite{cassiani_offline_2016}. 
+
+\acrshort{lpdm}s allows in the same way as traditional Lagrangian trajectory 
+models to be run forward or backwards in time by simply switching the sign of the advection. Forward 
+simulation is a natural choice for studying the dispersion of tracers from known sources, such as the 
 dispersion of nuclear fallout where you have one point source but an unknown number of receptors. While a 
 forward simulation indicate where an atmospheric tracer will go, a backward simulation indicate where the 
 tracer came from. Therefore backward simulations are useful for interpreting measurements of atmospheric 
-trace substances and to establish relationships between the sources and their receptors.  However 
-interpreting the output from a backward simulation is not as straightforward. The simplest interpretation is
-to think about it analogues to forward calculation and consider the LPDM as tool to calculate air mass 
-trajectories which includes both mean wind and turbulent motions and think of the particle cloud as a 
+trace substances and to establish relationships between the sources and their receptors. 
+
+However, interpreting the output from a backward simulation is not as straightforward. The simplest interpretation is
+to think about it analogues to forward calculation and consider the \acrshort{lpdm} as a tool to calculate the air mass 
+trajectories which include both mean wind and turbulent motions, and think of the particle cloud as a 
 retroplume. The retroplume can then be used to calculate the centroid trajectory which would give a more 
-representative trajectory than a single particle trajectory \parencite{stohl2002replacement}. \par Another 
-approach is to use the LPDM to establish source-receptor relationship, to describe the sensitivity of a 
-receptor to a source. A LPDM can only simulate linear s-r relationship, therefore a LPDM cannot be used to 
+representative trajectory than a single particle trajectory
+
+Another approach is to use the \acrshort{lpdm} to establish a source-receptor relationship, to describe the sensitivity of a 
+receptor to a source. A \acrshort{lpdm} can only simulate linear s-r relationship. Therefore a \acrshort{lpdm} cannot be used to 
 simulate nonlinear chemical reactions. However, all the other processes that affect the tracer during 
 atmospheric transport are linear; advection, diffusion, convective mixing dry and wet deposition, and radio 
-active decay \parencite{seibert2004source}. Then linear s-r relationship  can be defined as a s-r matrix 
+active decay \parencite{seibert2004source}. Then the linear s-r relationship  can be defined as a s-r matrix 
 (SRM) $\mathbf{M}$ whose elements $m_{il}$ are defined as
 \begin{equation}\label{eq:s-r_relationship}
     m_{il} = \frac{y_l}{x_i}
@@ -46,8 +52,9 @@ active decay \parencite{seibert2004source}. Then linear s-r relationship  can be
 Where the $y_l$ is receptor element and $x_i$ is the source elements. The receptor elements are often 
 defined in terms of concentrations $C$ (unit \si{\kg\per\cubic\metre}) and sources are usually specified as 
 mass fluxes $Q$ (unit \si{\kg\per\cubic\metre\per\s}). 
-Which means that by definition the unit of the SRM in \Cref{eq:s-r_relationship} has to be \si{\per\s}, to be clear this is by construction and is not a measure of the residence time of the particles within a gridbox. Another important point is that when the SRM is known for a given source vector the receptor values can be obtained by a simple vector matrix multiplication. Determining the SRM can be computationally demanding, especially in a forward simulation where the number of source element greatly outnumber the number of receptor elements, and the SRM has to be determined for each source element. However in a backwards simulation the number of simulations required are equal to the number of receptor points. 
-\par In the following paragraph the aim is to show the s-r relationship is derived within the LPDM framework both in a source and receptor oriented view of transport since it does. The formalism is the same for both a forward and a backward simulation however, in a backward simulation the particles are only a means to probe for the possible processes affecting the substance being transported. \par In the Lagrangian reference frame there are no advective changes (think about experiences of unconscious mosquito suspended in the air) so the mixing ratio $\chi$ of the tracer is only affected by the sources $q$ and any linear removal process proportional to $\chi$. We consider the tracer mixing ratio rather than concentration, since concentration depend on the local air density which changes with temperature and pressure, whereas the mixing ratio $\chi$ which is the volume of a trace substance per volume of air, which remains constant with density. Converting between concentration and mixing ratio is just a matter of dividing by the local air density. Thus the change in mixing ratio with time is given by \Cref{eq:mix_ratio_lagr}, where $\alpha(t)$ is the net removal constant and $\frac{q(t)}{\rho(t)}$ is the source term. 
+This means that by definition, the unit of the SRM in \Cref{eq:s-r_relationship} has to be \si{\per\s}, to be clear, this is by construction and is not a measure of the residence time of the particles within a grid box. Another important point is that when the SRM is known for a given source vector the receptor values can be obtained by a simple vector-matrix multiplication. Determining the SRM can be computationally demanding, especially in a forward simulation where the number of source elements greatly outnumber the number of receptor elements since the SRM has to be determined for each source element. However, in a backwards simulation the number of simulations required is equal to the number of receptor points. 
+
+The following paragraph aims to show how the s-r relationship is derived within the \acrshort{lpdm} framework both in a source and receptor oriented view of transport. The formalism is the same for both a forward and a backward simulation however, in a backward simulation the particles are only a means to probe for the possible processes affecting the substance being transported. There are no advective changes in the Lagrangian reference frame (think about experiences of unconscious mosquito suspended in the air), so the mixing ratio $\chi$ of the tracer is only affected by the sources $q$ and any linear removal process proportional to $\chi$. We consider the tracer mixing ratio rather than concentration, since concentration depends on the local air density, which changes with temperature and pressure, whereas the mixing ratio $\chi$ is the volume of a trace substance per volume of air, which remains constant with density. Converting between concentration and mixing ratio is just a matter of dividing by the local air density. Thus the change in mixing ratio with time is given by \Cref{eq:mix_ratio_lagr}, where $\alpha(t)$ is the net removal constant and $\frac{q(t)}{\rho(t)}$ is the source term. 
 \begin{equation}\label{eq:mix_ratio_lagr}
     \frac{d \chi(t)}{dt} = \frac{q(t)}{\rho(t)} + \alpha(t)\chi(t)
 \end{equation}
@@ -60,7 +67,7 @@ This yields the mixing ratio at time $t$ at the receptor location for a given tr
 \begin{equation}\label{eq:transmission_funct}
     p(t') = \exp{\left(\int_{t'}^t\alpha(t'')\right)dt''}dt'
 \end{equation} 
-The mixing ratio derived in \cref{eq:mixing_ratio_tracer} is valid for instantaneous mixing rations including turbulent motions. However observations at the measurement station does not usually represent point in time rather it is an average. Consequently the mean mixing ration should be obtained by taking an ensemble average of all the trajectories arriving within an interval between $t_1$ and $t_2$. If the averaging window exceeds the time scale of the turbulent fluctuation, the temporal average of the instantaneous values are the same as the temporal average of the ensemble means $\overline{\chi}$. Substituting the transmission function we obtain the following expression for the mean mixing ratio $\overline{\chi}$. 
+The mixing ratio derived in \cref{eq:mixing_ratio_tracer} is valid for instantaneous mixing rations including turbulent motions. However, observations at the measurement station do not usually represent a point in time, and rather it is an average. Consequently, the mean mixing ratio should be obtained by taking an ensemble average of all the trajectories arriving within an interval between $t_1$ and $t_2$. If the averaging window exceeds the time scale of the turbulent fluctuation, the temporal average of the instantaneous values are the same as the temporal average of the ensemble means $\overline{\chi}$. Substituting the transmission function, we obtain the following expression for the mean mixing ratio $\overline{\chi}$. 
 \begin{equation}\label{eq:ensemble_mix_ratio}
     \overline{\chi(t_1, t_2)} = \frac{1}{t_2-t_1}\int_{t_1}^{t_2} \chi(t)dt = \frac{1}{t_2-t_1}\int_{t_1}^{t_2} \left(\chi_0(t)p(t,0)+\int_0^t \frac{q(t,t')p(t,t'}{\rho(t,t')}dt'\right)dt
 \end{equation}
@@ -82,16 +89,19 @@ If $\alpha=0$ then $p=1$ the s-r relationship is expressed as mass mixing ratio 
 
 \chapter{Cluster analysis of FLEXPART trajectories}\label{chap:trajec_analysis}
 
-In addition to emission sensitivity, FLEXPART can output the centriod position of the particle cloud and cluster the particles into a specified number of cluster groups at each output interval \parencite{stohl_replacement_2002}. However the clusters produced by FLEXPART are not very informative due to the clustering only being based on the position of the particles at the output time and does not take into consideration which cluster it was previously assign to. Therefore rather than using the cluster trajectories, the centriod trajectories of every particle release are re-clustered using the procedure described by \textcite{dorling1992cluster}. 
+In addition to emission sensitivity, FLEXPART can output the centroid position of the particle cloud and cluster the particles into a specified number of cluster groups at each output interval \parencite{stohl_replacement_2002}. However, the clusters produced by FLEXPART are not very informative due to the clustering only being based on the position of the particles at the output time and does not consider which cluster it was previously assigned to. Therefore rather than using the cluster trajectories, the centroid trajectories of every particle release are re-clustered using the procedure described by \textcite{dorling1992cluster}. 
 
-The \textcite{dorling1992cluster} clustering algorithm is an adaptive clustering method, which starts by clustering the trajectories into many clusters (~30) using K-means clustering. Here the K-means implementation in the scikit-learn python package is used \parencite{scikit-learn}, which cluster the trajectories based on their euclidean distance from the cluster centriod trajectory. K-means works by separating the data in k groups with equal variance and minimising the within cluster sum of squares also called the inertia: 
+The \textcite{dorling1992cluster} clustering algorithm is an adaptive clustering method, which starts by clustering the trajectories into many clusters (~30) using K-means clustering. Here the K-means implementation in the scikit-learn python package is used \parencite{scikit-learn}, which cluster the trajectories based on their euclidean distance from the cluster centroid trajectory. K-means works by separating the data in k groups with equal variance and minimising the within cluster sum of squares also called the inertia: 
 \begin{equation}
     \sum_{i=0}^{n}\min_{\mu_j \in C}(||x_i - \mu_j||^2)
 \end{equation}
-Where $x_i$ represent the a single trajectory and $\mu_j$ is the cluster centriod. 
+Where $x_i$ represent a single trajectory, and $\mu_j$ is the cluster centroid. 
 
-The K-means algorithm is quite sensitive to the initial cluster centriod, therefore the K-means is repeated 20 times with different seeds and the run with the lowest inertia is selected. 
+The K-means algorithm is quite sensitive to the initial cluster centroid. Therefore the K-means is repeated 20 times with different seeds, and the run with the lowest inertia is selected. 
 
-Then two closest cluster centriod are found by calculating which two cluster centriod has shortest great circle distance between each other. The clusters are then merged and their combined centriod calculated and used together with the remaining centriod clusters as initial centroid in the for next K-means clustering. This is repeated until there is only two clusters left. 
+Then two closest cluster centroids are found by calculating which two cluster centroids has the shortest great circle distance. The clusters are then merged, and their combined centroid is calculated and used together with the remaining centroid clusters as initial centroid in the next K-means clustering. This is repeated until there are only two clusters left. 
 
-After each merger the relative change in the score of the clustering between the previous and the merged cluster is calculated. A large relative change in score is interpreted as two distinct clusters having been merged and the clusters before the merger are kept. This allows for an more objective method for determining the optimal number of clusters.    
+After each merger, the relative change in the clustering score between the previous and the merged cluster is calculated. A large relative change in score is interpreted as two distinct clusters merged and the clusters before the merger are kept. This allows for a more objective method for determining the optimal number of clusters.    
+
+\chapter{Analysis software}\label{appendix:software}
+Plotting and data visualisation:  \verb|matplotlib|, \verb|seaborn|, \verb|cartopy|. Data analysis and data processing: \verb|xarray|, \verb|numpy|, \verb|scikit-learn|, \verb|pandas|, \verb|dask|, \verb|snakemake| and \verb|jupyter|. The full anaconda environment listing the specific version of the packages are available on my GitHub. In addition, several python scripts were developed to facilitate the analysis and processing of the model output, and this is also available on my GitHub, or everything can be downloaded as a zip-file here \textbf{Link repo}. 
