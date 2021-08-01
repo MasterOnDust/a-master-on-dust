@@ -1,0 +1,45 @@
+\thispagestyle{plain}
+\chapter{Introduction}
+% \addcontentsline{toc}{chapter}{Introduction}
+% Need to introduce the word aeolian. 
+The windblown sediments at the \acrfull{clp} compromise the largest and thickest deposit of Cenozoic windblown dust on Earth. The \acrshort{clp} covers an area of approximately \SI{275600}{\kilo\metre\squared} and is at the thickest, more than 200\si{\metre} thick \todo{reference}.
+Dust from the proximal source regions has been naturally deposited over this region for millennials and faithfully recorded the past environmental history of East Asia. 
+The oldest parts of the Chinese loess sequences have been dated back to 22Ma \parencite{qiang2011new}. 
+The stratigraphy of the Quaternary \acrshort{clp} deposits is composed of layers of alternating loess and palaeosol sequences \parencite{derbyshire1995variations}. 
+The palaeosol sequences are linked to the interglacial periods during which East Asia experienced a more humid climate with increased soil formation connected to a stronger East Asian summer monsoon\textbf{reference}. 
+The loess sequences formed during the glacial periods, which are thought to have been dominated by a stronger winter monsoon resulting in increased aridity and dust deposition\textbf{reference}.
+Thus the Chinese loess serves as an important record of Quaternary glacial and interglacial periods in East Asia \textbf{reference}.
+
+In reconstruction studies of the \acrfull{eawm}, changes in \acrfull{mar} and loess grain size are typically attributed to variations in the \acrshort{eawm} strength \parencite{stevens2007reinterpreting}.
+Emerging from these studies has the general claim that there is a strengthening of the \acrshort{eawm} during glacial stages, causing an increase in \acrshort{mar} over \acrshort{clp} with a shift towards larger grain sizes. Thus  the interglacial  periods  are characterised by a  significant downturn of \acrshort{eawm} activity.
+However, this interpretation has been cast under doubt because modern dust emissions in East Asia is primarily a spring phenomenon \parencite{sun2001spatial}.
+Moreover, the possible mechanisms linking the \acrshort{eawm} to springtime emissions remains an open question \parencite{roe2009interpretation}. 
+\textcite{wyrwoll2016cold} investigated the linkage between modern dust emissions and the \acrshort{eawm} by examining the interannual correlations between visibility observations from several meteorological stations across China and the frequency of cold wave outbreaks over a 40 year period. 
+In their study, the cold wave frequency was used as a proxy for the \acrshort{eawm} strength. 
+The cold wave frequency was found to be strongly correlated to the dust storm frequency.
+Conversely, \textcite{wyrwoll2016cold} concluded that the \acrshort{clp} serves as a valid record for the variability in the \acrshort{eawm} strength.
+However, the loess is formed by dust deposition, and the visibility is primarily an indicator of the atmospheric dust concentration. 
+Dust concentration and deposition are not necessarily coupled, for instance during wet deposition episodes\textbf{reference}. 
+Moreover, \textcite{wyrwoll2016cold} only considered the frequency of the dust events, however single strong dust events may contribute to the majority of the dust deposited. 
+Thus the motivation behind this thesis is to address the weaknesses of \textcite{wyrwoll2016cold} and examine whether the \acrshort{mar} over the \acrshort{clp} is really linked to \acrshort{eawm}.
+
+In this thesis, \acrfull{flexpart} \parencite{Flexpart10.4_ref} and dust emission model FLEXDUST \parencite{flexdust_ref_2016} are employed for the first time to simulate \acrfull{eadc}. Whereby dust cycle I refer to the fast processes of dust cycle namely; dust emission from the source regions, dust transport in the atmosphere, and dust removal by wet or dry deposition. Specifically, I will investigate the dust cycle of the dust deposited over the \acrshort{clp}, referred to as the \acrshort{eadc}.
+In contrast to a integrated dust model, this model setup is run backwards in time, following the dust from the receptor back to the source. This setup makes it possible to establish a detailed map of how much each source contributes to the deposition. 
+
+Both the climatology and interannual variability of the \acrshort{eadc}  over \acrshort{clp} are based on 20 year simulation of \acrshort{eadc} during spring from 1999 to 2019.  
+The backward FLEXPART simulations are done for 7 prominent loess sites across the \acrshort{clp} and two-particle sizes are used to investigate how grain size of the deposited dust is affected by the \acrshort{eawm} strength. 
+
+\section{Outline and research questions}
+The thesis is structured according to three main themes; (1) Model assessment, (2) Climatology of the \acrshort{eadc} and (3) Interannual variability of the \acrshort{eadc}. Each of the components of the \acrshort{eadc}, emission, transport and deposition will be examined from the perspective of these overarching themes. Moreover, the discussion and analysis of each theme is guided by its own set of research questions: 
+\begin{itemize}
+    \item \textbf{Model assessment;} How well does FLEXPART and FLEXDUST model represent the \acrshort{eadc}? What are the possible uncertainties and biases? How does the model uncertainties impact the interpretation of the model results? What are the advantages/disadvantages of this modelling approach?
+    \item \textbf{Climatology of the \acrshort{eadc};} What is the main mode of deposition to the \acrshort{clp}? How are the source areas and dust transport paths among the sites different? Is the source areas different for the coarse and fine/wet and dry deposited dust? 
+    \item \textbf{Interannual variability of the \acrshort{eadc};} What are the differences in circulation patterns, dust transport paths and source regions between strong and weak deposition years? How does the interannual variability of winter circulation affect springtime dust? 
+\end{itemize}
+The insights from each theme will then be synthesised to discuss the possible implications for the interpretation of the Chinese Loess records. 
+
+The thesis is structured in the following way: 
+\Cref{chap:dust_roles_models} establishes dust as an important component in the climate system and describe the theory related to dust modelling. 
+\Cref{chap:east_asia_dust} describes the East Asian dust sources and the \acrshort{CLP}. 
+The FLEXDUST and FLEXPART models are described in the \Cref{chap:methods}, in addition to input data, model set up and analysis methods. The results are presented in \Cref{Chap:Results} following the three themes of this thesis. 
+The results are then discussed in \Cref{chap:Discussion}, the discussion is guided by the research questions defined above. Finally, \Cref{chap:conclusion} will conclude the thesis by giving a summary of the main findings and provide possibilities for future work. 

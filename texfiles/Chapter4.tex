@@ -1,4 +1,4 @@
-\chapter{Models, input data and analysis method} 
+\chapter{Models, input data and analysis method}\label{chap:methods}
 
 \section{FLEXDUST}\label{sec:flexdust}
 FLEXDUST is an offline global dust emission model developed to be used together 
@@ -338,15 +338,15 @@ Based on this filename pattern \verb|snakemake| knows which rules to run that ge
      \label{fig:rule_graph_eks}
  \end{figure}  
 
-\subsection{FLEXPART trajectory analysis}
-In addition to emission sensitivity, FLEXPART can also output information about particle trajectory. Including calculating the centroid trajectory and cluster trajectories of the particle cloud. 
+\subsection{FLEXPART trajectory analysis}\label{chap:method_trajec_analysis}
+In addition to emission sensitivity, FLEXPART can also output information about particle trajectories. Including calculating the centroid trajectory and cluster trajectories of the particle cloud. 
 Unfortunately, the clusters produced by FLEXPART are not very informative, as the clustering routine only considers the position of the particles at the output time and does not consider which cluster it was previously assigned to. However, the centroid trajectory can still provide insight into the dust transport paths. 
 The original idea was to take the centroid trajectories of every particle release and then cluster the centroid trajectories to obtain a set of trajectories representing the main dust transport pathways. 
 This procedure is described in more detail in Appendix \labelcref{chap:trajec_analysis}. However, this did not work out for two reasons, (1) it was challenging to define a suitable distance metric, and (2) the centroid trajectories is an average of both dust loading and non-dust loading trajectories, thus smoothing out the dust transport paths. 
 Therefore making a clever selection and averaging of the trajectories proved to be more informative. 
 
 % The optimal approach would be do clustering based on the particle position, however this was not infeasible do here since the amount of data would become too much. Analysing the particle positions is better suited for case studies of transport during of single dust storms.       
-The first step of the trajectory analysis was to filter out the non-dust centroid trajectories, based on whether dust was deposited at the receptor at the time of arrival. Then all the dust loading trajectories were given a weight based on their dust loading and averaged to make one weighted average centroid trajectory.      
+The current trajectory analysis was done by first filtering out the  non-dust centroid trajectories, based on whether dust was deposited at the receptor at the time of arrival. Then all the dust loading trajectories were given a weight based on their dust loading and averaged to make one weighted average centroid trajectory. This averaged centroid dust loading was then applied to diagnose the dust transport path sways to the receptor points.       
  
 
 \subsection{Composite analysis}
