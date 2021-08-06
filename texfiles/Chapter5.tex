@@ -1,15 +1,15 @@
 \chapter{Results}\label{Chap:Results}
 In this chapter, the results from the FLEXPART and FLEXDUST model simulations are presented. 
-The results from the model sensitivity experiments and validation are presented first in \Cref{sec:sensitvity_experiment} and \Cref{sec:model_eval} respectively. 
-The rest of this Chapter will focus on interpreting the results from the 20-year simulation of springtime deposition over the \acrshort{clp}. 
+The results from the model sensitivity experiments and validation are presented first in \Cref{sec:sensitvity_experiment} and \Cref{sec:model_eval}. 
+The rest of this Chapter will show the results of the 20-year FLEXPART/FLEXDUST simulation of springtime deposition over the \acrshort{clp}. 
 In \Cref{sec:result_average} the climatology of the East Asian dust cycle is investigated.   
-Before the inter-annual variations in dust  emissions, transport and deposition are examined in \Cref{sec:inter_annual_results} and how the variability of springtime deposition is related to the large scale circulation. 
+Before the inter-annual variations in the \acrshort{eadc} are examined in \Cref{sec:inter_annual_results} and how the variability in the \acrshort{eadc} is related to the large scale circulation. 
 % For each location the mean dust transport path and main source regions are determined for both the clay and silt particle size bins. 
 
 % Then in \Cref{sec:inter_annual_results} the inter annual variation in spring dust emissions, transport and deposition over the 20 year period are investigated. The composite analysis of the of the circulation during the preceeding winter in strong and weak deposition years show a strong positive MSLP anomalies over the arctic implying a negative \acrshort{ao}.   
 
 \section{Model sensitivity to input data and parameters}\label{sec:sensitvity_experiment}
-The sensitivity analysis aimed to quantify the impact of errors, variability, and uncertainties in the input data on the predicted model output. 
+The sensitivity analysis aims to quantify the impact of errors, variability, and uncertainties in the input data on the predicted model output. 
 In \Cref{sec:sens_forcing} the impact of meteorological forcing on the simulated dust emissions and deposition is examined by comparing ERA5, and ERA-Interim forced simulations. 
 Sand and clay fractions are important input variables in FLEXDUST (\Cref{sec:flexdust}), therefore the sensitivity of simulated dust emission to the choice of soil texture data set is considered in \Cref{sec:sens_soil}. 
 In \Cref{sec:density_experiment} and \Cref{wet:dep_sensitivty} the impact particle density and below cloud scavenging on the estimated deposition investigated. 
@@ -128,18 +128,14 @@ Especially odd is the extreme wet deposition in July of 2009 at the Fukuoka and 
 \end{figure}
 
 \section{Climatology of the East Asian dust cycle}\label{sec:result_average}
-To give some context to the investigation of the interannual variability in the East Asian dust cycle in \Cref{sec:inter_annual_results}. The multi-year average of dust emission, transport and deposition is examined first. 
+To give some context to the investigation of the interannual variability of the \acrshort{eadc} in \Cref{sec:inter_annual_results}. The multi-year average of dust emission, transport and deposition is examined first. 
 \subsection{Emissions}
 The dust cycle begins with dust emission.
 The spatial distribution of the multiyear mean simulated dust emissions is shown in \Cref{fig:emission_map_flexdust}. 
 The source regions are divided into five regions as shown in \Cref{fig:emission_map_flexdust}, namely; Taklamakan, Junggar Basin, Qaidam Basin, Mongolia and the northwest \acrshort{clp}. 
-Of these five regions, the largest dust producers are the northwest \acrshort{clp}, Taklamakan and Mongolia \Cref{tab:emissions}. 
-In total, FLEXDUST estimates approximately 11Mt/spring of dust emitted from the East Asian sources, which is less than the estimates by \textcite{xuan2004identification}. 
-However, more importantly, FLEXDUST is able to capture the spatial distribution of the dust sources, showing a similar spatial distribution to that of \textcite{liu2018influence}. 
+Of these five regions, the largest dust producers are the northwest \acrshort{clp}, Taklamakan and Mongolia (\Cref{tab:emissions}). 
+In total, FLEXDUST estimates approximately 11Mt/spring.
 The source distribution show increasing emissions between 110 \degree E - 95 \degree E, and with increasing emissions again at the entrance of the Tarim basin that decreases towards the western end of the basin (\Cref{fig:emission_map_flexdust}).    
-% The estimated mean total spring emissions are 20.02 Mt/spring and are close to the estimates by \textcite{xuan2004identification} for PM30 of 27.6 Mt/year. 
-% The regions with the highest spring emission are identified as the arid regions north west of the \acrshort{clp},  (mean emissions of $6.12\si{Mt}/ \mathrm{spring}$), Taklamakan desert (mean emissions of $4.33\si{Mt} / \mathrm{spring}$) and Mongolia (mean emissions of $2.91\si{Mt} / \mathrm{spring}$). Additional minor dust sources include the Junggar Basin in the north west of China and the Qaidam Baisin close to the Tibetan plateau.  
-
 
 \begin{table}[htpb]
 \caption{The mean springtime emissions for the three largest source regions}
@@ -172,7 +168,7 @@ The averaged path the dust is transported along can tell a lot about the typical
 Therefore, multi-year mean dust loading transport trajectories for all the receptor sites were calculated.
 % The average dust loading trajectories are calculated based on the centroid trajectory of each particle release and in the averaging procedure, each centroid trajectory are given a weight based on their dust loading. 
 \Cref{fig:dust_loading_trajecs}a and b shows the mean dry deposition dust loading trajectories for the clay and silt particles, respectively, with their accompanying vertical profiles shown in \Cref{fig:dust_loading_trajecs}c and d. Similarly wet deposition dust loading trajectories are shown in \Cref{fig:dust_loading_trajecs}e - h. 
-The red points in \Cref{fig:dust_loading_trajecs} are spaced equally 12 hours apart and to indicate the velocity of the dust transporting air masses. 
+The red points in \Cref{fig:dust_loading_trajecs} are spaced equally 12 hours apart and  indicate the velocity of the dust transporting air masses. 
 \begin{figure}[hptb]
     \centering
     \includegraphics[width=\textwidth]{texfiles/figs/average_dust_transport_trajectories.pdf}
@@ -181,14 +177,12 @@ The red points in \Cref{fig:dust_loading_trajecs} are spaced equally 12 hours ap
 \end{figure}
 
 The dry deposited dust is transported along a similar northwesterly trajectory for both clay and silt particles. 
-The exception is SACOL, where the coarse particles have an even more westerly oriented trajectory. 
+The exception is SACOL, where the trajectory of coarse particles is turned more westward. 
 The air masses carrying the silt particles move faster compared to clay particles.  
 The vertical profile of the averaged trajectories shows that the altitude of the dry deposited dust approximately decreases linearly with time. 
-The height of the fine dust particles decreases more slowly with time compared to the coarse dust particles. 
-This suggests that the transport of coarse dust from the remote source regions have to involve upper tropospheric transport. 
-Compared to the fine dust particles, which are primarily transported through the lower troposphere regardless of the proximity of the source. 
-This is also consistent with the coarse dust being transported more swiftly.  
-
+The height of the fine dust particles decreases more slowly with time and  are primarily transported through the lower troposphere.
+Compared to the coarse particles that have to be transported through the upper troposphere to reach the receptor location from the most distant sources. 
+ 
 Compared to the dry deposited dust, the wet deposited dust follow a more southerly trajectory.
 The spread between the wet deposition trajectories is larger than the dry deposition trajectories, indicating that the source of the wet deposited dust is more site-dependent.
 The vertical profile of the wet deposition show lifting starting approximately 12 hours before arriving at the receptor. 
@@ -202,13 +196,12 @@ Precipitation over the \acrshort{clp} during spring is usually caused by convect
 \end{figure}
 
 The advantage of using FLEXPART and FLEXDUST for modelling dust deposition is that it makes it possible to directly quantify how much each source region contributes to the deposition at the receptor.   
-\Cref{fig:source_contrib_2mmu} and \Cref{fig:source_contrib_20mmu} shows the spring averaged source contribution of total deposition of the clay and silt particles respectively. 
-The main source to the dust deposition at all receptor locations is the  deserts northwest of the \acrshort{clp}. 
+\Cref{fig:source_contrib_2mmu} and \Cref{fig:source_contrib_20mmu} shows the spring averaged source contribution of total deposition of the clay and silt particles, respectively. 
+The main source of the dust deposited at all receptor locations is the  deserts northwest of the \acrshort{clp}. 
 The western sites, Shapotou, Yinchuan, Sacol and Lingtai, have a stronger contribution from Taklamakan than the eastern sites. 
 \Cref{fig:source_contrib_2mmu}h and \Cref{fig:source_contrib_20mmu}h shows that the primary mode of deposition for all the sites is wet deposition.
 The wet deposition is even more dominating for the coarse particles. 
-For coarse particles, the areas with the largest contribution are located further away from the receptor than the fine particles, as expected based on the hypothesis that the coarse dust is particles mainly transported by faster-moving air in the upper troposphere.
-    
+The areas with the largest  contribution to the deposition of coarse dust are located further away from the receptor than the fine dust.
  \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{texfiles/figs/20micron_total_depositon_source_contribution.pdf}
@@ -245,14 +238,13 @@ Following this rule, \Cref{fig:eof_test} shows that the first and second \acrsho
 \Cref{fig:emissions_eof}a and b shows the spatial pattern of EOF1 and EOF2. EOF1 and EOF2 account for 54 \% and 12 \% of the total variance in annual springtime emissions. 
 The leading EOF represents increased emissions across all the source regions. 
 As expected, the years with a large positive principal component (PC) correspond to strong emission years (\Cref{fig:emissions_eof}c). 
-Interestingly the second EOF shows a dipole pattern between emissions in Mongolia and Taklamakan. 
+The second EOF shows a dipole pattern between emissions in Mongolia and Taklamakan. 
 The signal of the second EOF is also visible from the time series where the positive EOF2 years correspond to a disproportional increase in emissions from Taklamakan compared to emissions from Mongolia and vice versa.       
 
 Composite analysis of the preceding winter circulation for strong positive minus strong negative \acrshort{eof} years was done to understand better the kind of circulation anomalies that produces the spatial pattern identified by the \acrshort{eof} analysis. 
 In positive EOF1 years, the composite anomalies indicate a negative \acrshort{ao}-like pattern, with positive \acrshort{mslp} anomalies over the Arctic region.
 The composite anomalies for the second \acrshort{eof} show a weakened Aleutian low and Siberian high suggesting a weaker \acrshort{eawm} circulation.
 In other words, the EOF analysis suggests increased emissions from Taklamakan during weak \acrshort{eawm} years. 
-The weaker \acrshort{eawm} produces weaker northwesterly winds, favouring cold air intrusions into the Tarim Basin.        
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=\textwidth]{texfiles/figs/EOF_emissions_composite.pdf}
@@ -261,8 +253,8 @@ The weaker \acrshort{eawm} produces weaker northwesterly winds, favouring cold a
 \end{figure}
 The \acrshort{mam} composite (\Cref{fig:eof_composite_MAM}) shows how the circulation anomalies evolve into spring. 
 The \acrshort{eof}2 spring composite indicates a transition to a positive \acrshort{ao} like circulation pattern with negative \acrshort{mslp} anomalies over the arctic. 
-Moreover, there is now a negative pressure anomaly over Taklamakan causing easterly wind anomalies in the Tarim Basin.
-The easterly wind anomalies could explain the reduction in emissions over Mongolia. 
+Moreover, there is now a negative pressure anomaly over Taklamakan, causing easterly wind anomalies in the Tarim Basin.
+% The easterly wind anomalies could explain the reduction in emissions over Mongolia. 
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=\textwidth]{texfiles/figs/EOF_emissions_composite_MAM.pdf}
@@ -274,7 +266,7 @@ The easterly wind anomalies could explain the reduction in emissions over Mongol
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{texfiles/figs/2_micron_drydep_weak_strong_trajecs.pdf}
-    \caption{The weighted average of dry deposited clay dust loading trajectories for strong (red diamonds) and weak deposition (blue circles) years for every location. The standard deviation of the trajectories during the weak deposition and strong deposition years is represented by the blue and red shading respectively.  (h) show the difference in the height of the dust transporting air masses during strong and weak deposition years. }
+    \caption{The weighted average of dry deposited clay dust loading trajectories for strong (red diamonds) and weak deposition (blue circles) years for every location. The standard deviation of the trajectories during the weak deposition and strong deposition years is represented by the blue and red shading.  (h) show the difference in the height of the dust transporting air masses during strong and weak deposition years. }
     \label{fig:strong_weak_drydepo_year_2mmu_trajecs}
 \end{figure}
 
@@ -317,11 +309,9 @@ As with the multiyear averaged wet deposition trajectories, the differences in d
 \end{figure}
 
 \subsection{Source contribution}
-From the mineralogy of the loess deposits, it is possible to differentiate the provenance of deposited dust in periods of high and low \acrshort{mar}. Conversely, this can be similarly examined with FLEXPART by comparing the source contribution during strong and weak deposition years.  
+From the mineralogy of the loess deposits, it is possible to differentiate the provenance of deposited dust in periods of high and low \acrshort{mar}. Conversely, and this can be similarly examined with FLEXPART by comparing the source contribution during strong and weak deposition years.  
 \Cref{fig:source_contrib2mmu_anomalies} shows the normalised source contribution for the clay particle size bin. The model result suggests that strong deposition years have a more concentrated source contribution. 
 The exception is SACOL (\Cref{fig:source_contrib2mmu_anomalies}e), which during strong deposition years has increased contribution from the entire region northwest of the \acrshort{clp}. 
-During strong deposition years, the source contribution is more concentrated. 
-% source contribution suggests that the strong deposition years are set apart from the weak deposition years by having a large contribution from rare strong dust events. 
 By comparison, in weak deposition years, the source regions are more randomly distributed. \Cref{fig:source_contrib20mmu_anomalies} is as the previous figure just for the silt particle size bin and tells much of the same message. 
 However, Lantian, which showed reduced deposition from Taklamakan during strong deposition years for clay-sized particles, shows increased contribution from Taklamakan during strong silt deposition years.     
 \begin{figure}[hptb]
@@ -339,12 +329,12 @@ However, Lantian, which showed reduced deposition from Taklamakan during strong 
 \end{figure}
 
 \subsection{Covariations between deposition and large-scale circulation patterns}
-Correlation analysis between deposition at each site and several regional and large-scale climate indices, was done to determine the influence of regional and large scale circulation changes on the \acrshort{mar} over the \acrshort{clp}. \todo{make table}.
+Correlation analysis between deposition at each site and several regional and large-scale climate indices, was done to determine the influence of regional and large scale circulation changes on the \acrshort{mar} over the \acrshort{clp} \todo{make table}.
 The circulation indices are calculated based on seasonally averaged ERA5 reanalysis. 
 The full analysis is shown in \Cref{fig:correlations}, and the significant correlations are displayed. 
 The winter \acrshort{ao} and \acrshort{nao} show the strongest correlation with dust deposition of all the indices considered in this analysis. 
 % Contradictory to previous research, 
-There are only very weak non-significant correlations between the \acrshort{eawm} and dust deposition to \acrshort{clp}. 
+There are only weak non-significant correlations between the \acrshort{eawm} and dust deposition to \acrshort{clp}. 
 
 \begin{figure}[htpb]
     \centering
@@ -353,18 +343,15 @@ There are only very weak non-significant correlations between the \acrshort{eawm
     \label{fig:correlations}
 \end{figure}
 
-To examine the covariability between the emission strength in the different source regions and deposition at the receptor locations, correlation analysis between deposition and emissions was also included. 
+A correlation analysis between deposition and emissions was also included to examine the covariability between the emission strength in the different source regions and deposition at the receptor locations. 
 The dry deposition is strongly correlated with emissions in Mongolia and the northwest \acrshort{clp} for almost all sites. However, only Lantian and SACOL show a significant correlation between emissions from Taklamakan and dry deposition. 
-Moreover, wet deposition is generally not significantly correlated and emissions. 
-The exception being Lantian which shows a significant positive correlation between emissions from Mongolia and northwestern sources. For the same reason, wet deposition at Lantian also has a high correlation with dry deposition at the other sites.  
+Moreover, wet deposition is generally not significantly correlated with emissions. 
+Except Lantian which shows a significant positive correlation between emissions from Mongolia and northwestern sources. For the same reason, wet deposition at Lantian is strongly correlated with dry deposition at the other sites.  
 
-% This exemplifies the randomness of the occurrence of wet deposition events. 
+\subsection{Winter circulation and spring deposition}
 
-% The correlations between deposition among the sites show that wet deposition at Lantian correlates well with dry deposition at almost all the other sites. 
-
-\subsection{Circulation composites}
 % To determine the circulation differences between strong and weak deposition years, composite differences anomalies were calculated by subtracting the circulation during strong and weak deposition years. 
-The correlation analysis showed significant correlations between winter \acrshort{ao} and increased dust deposition at several of the receptor locations. 
+The correlation analysis showed significant correlations between winter \acrshort{ao} and increased dust deposition at several receptor locations. 
 To further examine the influence of the wintertime circulation on springtime deposition,  composite anomalies of strong minus weak deposition years for \acrshort{djf} 850hPa winds and \acrshort{mslp} were calculated (\Cref{fig:DJF_850_fine_composite} and \Cref{fig:DJF_850_coarse_composite}). The results show positive \acrshort{mslp} anomalies over the arctic for Lantian, SACOL, Yinchuan and Luochuan, similar to the negative \acrshort{ao} composite anomalies in \Cref{fig:mo_ao_composite}b. 
 The exception to the negative-AO pattern is Baode and silt particles at Lingtai. Badoe seems to be more influenced by pressure changes over the ocean. However, since Baode is not significantly correlated with any of the winter circulation indices, therefore it is hard to quantify the influence of the preceding winter circulation on the springtime deposition. Moreover, the negative pressure anomalies over the ocean are quite pronounced in the clay composite (\Cref{fig:DJF_850_fine_composite}b), the feature is less pronounced in the silt composite (\Cref{fig:DJF_850_coarse_composite}b).       
 
