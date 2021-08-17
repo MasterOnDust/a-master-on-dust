@@ -1,7 +1,7 @@
 
 \Chapter{}{Discussion}\label{chap:Discussion}
-
-Here I will introduce what I am going to discuss
+% The discussion is separated into three main bulks: \Cref{sec:model_assement} will discuss the biases, advantages and disadvantages with the \acrshort{flexpart} and FLEXDUST models based on the results from the sensitivity analysis and model evaluation. \Cref{sec:climatlogy_EA_dust_cycle_discussion} will discuss the results from the analysis of the multiyear mean \acrshort{eadc}. \Cref{}   
+% Here I will introduce what I am going to discuss and
 
 % The consequences of the low agreement between model and observation on the  wet deposition flux  and other model uncertainties for the interpretation and analysis of the model results will be discussed in \Cref{sec:model_uncertainties}. 
 % The results presented in the last chapter also showed spatial differences in the multiyear mean transport trajectories and source contribution for the different receptor locations. 
@@ -29,199 +29,232 @@ Here I will introduce what I am going to discuss
 % Include the evidence or line of reasoning supporting each interpretation.
 % What is the significance of the present results: why should we care? 
 
-\section{Model assessment}
+\section{Model assessment}\label{sec:model_assement}
 
-An important objective of this work was to determine whether \acrshort{flexpart} and FLEXDUST could be used to model the \acrshort{eadc}. The model validation showed that \acrshort{flexpart} could reasonably reproduce the interannual and spatial variability of dust deposition when compared to observations. 
-However, there were large discrepancies between the model and observations on the monthly amount of wet deposition. 
-The wet deposition bias will be discussed in \Cref{sec:model_uncertainties}. 
-Sensitivity experiments were done to identify how possible differences and errors in the input data would affect the model performance. 
-It was shown that the choice of soil texture data could greatly impact the estimated dust emissions. 
-In addition, forcing sensitivity experiments showed that the FLEXDUST produced much less dust emissions when forced using ERA-Interim than ERA5. 
-The difference was particularly large over the Taklamakan. 
-The differences between the two forcing data sets were most noticeable in the source contribution map.
-The implications of the sensitivity experiments will be discussed in \Cref{sec:sensitivity_experiments_implications}
-This work has showcased the capabilities and advantages of this modelling setup. 
-The information obtained from the source contribution made it possible to examine the spatial variability in source regions to \acrshort{clp} with more details than previously possible. 
-However, this model setup is not without its flaws. 
-Therefore, based on my experience working with FLEXPART and FLEXDUST, I will discuss the main advantages and disadvantages of this modelling set up  \Cref{sec:model_advantages}. I will conclude the model assessment by giving some for further improvement of the modelling setup.
 
-\subsection{Wet deposition bias}\label{sec:model_uncertainties}
-Uncertainties and model limitations are embedded in any modelling study, and considering these uncertainties is an important piece of interpreting the results.  
-The sensitivity experiments and model evaluation highlighted some of the limitations of FLEXPART/FLEXDUST. 
-In particular, the inability of FLEXPART to reproduce the variability in the wet deposition flux compared to observations. 
-Achieving a good performance of the wet deposition scheme is particularly important, given that based on the model simulation wet deposition is the primary mode of deposition to the \acrshort{clp}. 
-\textcite{flexdust_ref_2016} achieved relatively good agreement between FLEXDUST combined with a forward FLEXPART simulations and observations of annual dust deposition fluxes using 10 size bins. 
-A possible reason for why \textcite{flexdust_ref_2016} achieved good agreement with observations is that they compared annual deposition fluxes, and it is possible and that the apparent biases on the monthly level compensated each other such that the total deposition was around the observed value. 
-Besides \textcite{flexdust_ref_2016}, there have not been other studies that have evaluated the performance of FLEXPART to simulate deposition of mineral dust.
-However, there have been more studies done comparing simulated deposition of black carbon to with observations, e.g. \textcite{flexpart_wetdep, choi_investigation_2020}. 
-\textcite{choi_investigation_2020} suggested that FLEXPART was not able to capture the regional variability due to severely underestimating the in-cloud scavenging coefficient. Moreover, by diagnosing the relative importance of the input variables 
-they found that the convective available potential energy (CAPE), should be considered an important parameter to improve the in-cloud scavenging scheme. 
-Moreover, there is also a known issue with the current wet deposition scheme related to the interpolation and disaggregation of the input variables \parencite{tipka2021effects}. 
-I did not have the time to test with the new interpolation scheme in FLEXPART. 
-That would require preparing all the forcing data again, and support for the new interpolation scheme has not yet officially been released.
+\subsection{Model representation of dust emission and deposition}
+FLEXDUST estimated an averaged 11Mt of springtime dust emitted from the East Asian source regions. This estimate is lower than previous estimates by \textcite{xuan2004identification}.
+However, getting the dust emission strength correct is less important in this context because a bias in the total emission strength would not be amplified when multiplied with the emission sensitivity, contrary to errors in the spatial distribution.
+Validating the spatial distribution of the dust emissions is hard since the dust emission flux is almost impossible to measure directly on a large scale. 
+The absolute emission strength, therefore, has to be validated indirectly based on dust deposition flux measurements. 
+However, comparing the observed and modelled deposition flux does not reliably tell whether the spatial distribution of emissions is reasonably reproduced in the model.
+\textcite{liu2018influence} compared the spatial distribution of dust emissions from the MERRA2 reanalysis to satellite-derived \acrfull{aod}. 
+They found the spatial distribution of \acrshort{aod} to be consistent with the MERRA2 dust emissions. 
+The spatial distribution of dust emissions in MERRA2 is in line with FLEXDUST. This gives some confidence that the spatial distribution of the East Asian dust sources is reasonably well represented in FLEXDUST at least compared to similar dust models.
+As demonstrated from the sensitivity analysis, achieving a good representation of dust emissions in FLEXDUST relies on an accurate description of the soil and meteorological conditions in the input data. 
 
-Another factor that disproportional impacts the estimated wet deposition is the spatial and temporal distribution of the dust emissions simulated in FLEXDUST. 
-As shown from the input forcing sensitivity experiment, the accumulated source contribution showed a higher sensitivity to the input forcing than the FLEXDUST accumulated emission flux and FLEXPART emission sensitivity. Given how episodic the wet depositions events are and the dependence of emissions in the source region and precipitation at receptor location following the dust event. Slight changes in the temporal and spatial evolution of the dust emissions can greatly affect the amount of dust deposited at the receptor. Moreover, the analysis showed that the strong deposition events did not necessarily coincide with the strongest dust events. The agreement between ERA5 and ERA-Interim FLEXDUST simulations were higher for the strong dust events compared to the weaker dust events. Because the large synoptic scale dust events are better represented in the forcing data. The resulting bias towards strong dust events is less important for the dry deposition flux since the dry deposition strongly correlated with the dust emissions as shown in \Cref{fig:correlations}. 
-
-Then how does the wet deposition bias affect the analysis?
-An important factor that FLEXPART should get right is the interannual variability in the amount of springtime deposited dust to the \acrshort{clp}. 
-As examining the interannual variability of the \acrshort{eadc} is an important part of this thesis. 
-Based on the two years of data used for validation here, FLEXPART does agree with the observation on the year to year difference. 
-However, from only two years of data it is hard to say that this is generally the case.
-Moreover, since the total deposition is so heavily skewed towards wet deposition, the source contribution primarily depicts the source regions during the strong wet deposition episodes.  
-Therefore, the wet deposition is a caveat of this study and has to be improved upon in the future. 
-
-\subsection{Implications of model sensitivities}\label{sec:sensitivity_experiments_implications}
-The model sensitivity reviled that the model forcing and  essential 
-
-\subsection{Dust emissions and source contribution}
-FLEXDUST estimated an average 11Mt of springtime dust emitted from the East Asian source regions. This estimate is lower than previous estimates by \textcite{xuan2004identification}. 
-However, the important figure is not the total amount of dust emission. What is important, is whether FLEXDUST can capture the spatial distribution of the dust sources. \textcite{liu2018influence} compared the spatial distribution of dust emissions from the MERRA2 reanalysis to satellite-derived \acrfull{aod}. They found good agreement with spatial distribution of \acrshort{aod} and dust emissions. The spatial distribution of dust emissions in MERRA2 is very similar to FLEXDUST. Given that the spatial distribution of emissions is well represented in FLEXDUST in comparison with models, suggest that biases in modelled wet deposition are more likely caused by FLEXPART. 
-
-Since this is the first modelling study of source attribution of the dust deposited over the \acrshort{clp} at such high resolution, only a few previous studies are relevant for comparison. \textcite{shi2011distinguishing} used a regional climate model to investigate the provenance of the dust deposited to the \acrshort{clp}. 
+This is the first modelling study of source attribution of the dust deposited over the \acrshort{clp}  with such high spatial resolution, and thus there are not many previous studies relevant for comparison. \textcite{shi2011distinguishing} used a dust model coupled with a regional climate model to investigate the provenance of the dust deposited to the \acrshort{clp}. 
 However, they only did source attribution for five source regions and therefore could not examine the inhomogeneities within each source region.
-They found in agreement with FLEXPART/FLEXDUST that sources northwest of the \acrshort{clp} had the largest influence on the \acrshort{mar} over the \acrshort{clp}. 
+In agreement with FLEXPART/FLEXDUST, they found that sources northwest to the \acrshort{clp} had the largest influence on the \acrshort{mar} over the \acrshort{clp}. 
+Still, a more in-depth assessment of the source contribution in our simulations is not possible until more observations or modelling studies doing high-resolution source attribution are available.
 
-\subsection{Strengths and weaknesses}\label{sec:model_advantages}
-The ability of FLEXPART/FLEXDUST to directly establish which dust sources  are contributing to the dust deposition is what makes this modelling set up potent a tool examining the spatial variability in the dust sources to the \acrshort{clp}. Given a realistic representation of the dust sources, this modelling setup can be used to study the origin of loess sequences worldwide. 
-% More generally given an emission inventory and realistic description of the tracer, FLEXPART can be used to map sources for any receptor.
+The dust deposition depends on both dust emission and transport.
+As shown in the model evaluation, the modelled dry deposition does well reproduce both the observed spatial difference and the monthly variability (\Cref{fig:model_eval_dry_deposition}), while the modelled wet deposition exhibits larger discrepancies compared to the observation. 
+This is understandable as the dry deposition process is much simpler than wet deposition and has fewer inherent uncertainties in the model.
+It is noted that the absolute deposition flux is underestimated for both dry and wet deposition. The dry deposition bias is different from the wet deposition bias.  
+The dry deposition bias suggests a more constant underestimation, with the largest bias during strong deposition months. 
+In contrast, the wet deposition bias is less consistent and is not connected to either weak or strong deposition events.
 
-Nonetheless, this modelling approach is not without flaws.
-A major weakness of \acrshort{flexpart} is the complicated setup process.
-Compared to the similar HYSPLIT model developed by NOAA \parencite{draxler2010hysplit}, which has a graphical interface and even the possibility to run simulations directly from the browser, the difference is huge. Despite HYSPLIT being less capable compared to FLEXPART in certain applications.
-Still, due to how easy HYSPLIT is to use, the userbase of HYSPLIT is about six times that of FLEXPART \footnote{Based on the number of hits on google scholar between 2020 and 2021}. Thus, there is a clear advantage to having a model that is easy to use for the amount of science produced.   
-Nevertheless, the difficulty and amount of effort required to set up and use a model is seldom given much attention. 
-This modelling setup is further complicated by the lack of proper tools for post processing and analysis of the model output. 
-For me, this meant that probably 50\% of the time spent working on this thesis have been spent on creating post analysis scripts for FLEXPART.
-Moreover, there has not been a community effort to develop proper tools for analysing the FLEXPART output. 
-The codes out there are mainly codes developed for some research project and after the end of the project is not maintained anymore.
+It is noticed that \textcite{flexdust_ref_2016} did not report such large biases based on their comparison of modelled and observed  annual dust deposition fluxes when combining FLEXDUST with a forward FLEXPART simulation.    
+This does not mean the same bias was not present in their study, because the apparent biases on the monthly level compensate each other such that the annual deposition was around the observed value. 
+Furthermore, since \textcite{flexdust_ref_2016} used a forward simulation, which means that the deposition at the measurement location has to be extrapolated from the output grid. The spatial averaging could also have had a similar compensating effect to taking the annual sum.      
+Besides \textcite{flexdust_ref_2016}, there have not been other studies that have evaluated the performance of FLEXPART and FLEXDUST to simulate the deposition flux of mineral dust at individual measurement stations.
 
-Another deficiency is the lack of proper trajectory clustering capabilities. This made it impossible to diagnose the dust transport trajectories properly. 
-Even though it is possible to do a proper cluster analysis in FLEXPART by saving the  individual trajectories and then do the clustering as a post-processing step. However, this easily gets quite computationally demanding. In addition, one has to store a lot of additional data, which increases the storage requirements.
+  
+Since the focus of this thesis is more on the interannual variation of the dust deposition than the absolute values of the dust deposition. It is critical that FLEXPART/FLEXDUST get the right interannual variation of the springtime dust deposition to the \acrshort{clp}. 
+Based on the two years of data used for validation here, FLEXPART does agree with the observation on the year to year difference. 
+However, with only two years of data, it is hard to say that this is generally the case. Since the total deposition is so heavily skewed towards wet deposition, the source contribution primarily depicts the source regions during the strong wet deposition episodes. 
+Thus, the bias in wet deposition has the potential to skew the whole analysis.
 
-\subsection{Suggestions for future improvement}\label{sec:conclusion_improvement}
-This section has discussed the biases, sensitivities, advantages and disadvantages with the FLEXPART/FLEXDUST modelling setup. 
-FLEXPART/FLEXDUST can become an indispensable tool for examining the dust sources and transport pathways involved in the formation of loess around the world. 
-However, this work has shown that there are issues that have to be addressed first. 
-Foremost, the wet deposition bias have to be addressed, a first step would be to run FLEXPART with new interpolation scheme. 
-Moreover to allow for properly diagnosing the dust transport, the clustering routine in FLEXPART should be improved upon. Such that that the clustering takes into account the trajectory of the particles as a whole. 
-This could be achieved by reading the trajectory file at each step and then assigning the clustered points to the closest cluster centroid. 
-In FLEXDUST, future work should involve properly validating the ISRIC soil texture data that was implemented and tested out for the first time in this work. 
-Moreover the implementation of different dust emission schemes in FLEXDUST would allow for investigating the sensitivity of the model setup to the choice of emission scheme. 
-Lastly to make the FLEXPART and FLEXDUST model easier to use, a good online documentation in addition to the model development papers, on how to configure and setup the model should be created. 
-In addition to a community portal where it is easy to ask questions and seek support within the FLEXPART community. 
-These additions would be good step in right direction to bring the FLEXPART user experience on par with modern standards.
+In conclusion, the East Asian dust emission flux is well represented in FLEXDUST compared to similar dust emission models, but the performance depends on the input data. There are discrepancies between observation and modelled deposition, especially for wet deposition, which will be further discussed next. 
 
-\section{Climatology of the East Asian dust cycle}
+\subsection{Causes of modelled deposition bias}\label{sec:model_uncertainties}
+% Here I discuss the causes for the biases , relate back to sensitivity studies 
 
-\emph{RQ: What is the main mode of deposition to the CLP? How are the source areas and dust transport paths among the sites different? How are the source areas different for the coarse and fine deposited dust?}
+There are three main sources for potential biases; (1) errors in the input data, (2) poor choice of model parameters, and (3) internal model biases caused by inadequate representation of the physical processes. The sources of bias are different between FLEXPART and FLEXDUST and therefore, one model might have a larger influence on the bias in the modelled deposition as a whole.  
 
-Whether the dust over the \acrshort{clp} is primarily deposited through wet- or dry deposition leads to different interpretations of the Chinese loess records.  
-According to the FLEXPART/FLEXDUST model simulations, wet deposition is the main mode of deposition to the \acrshort{clp}. 
-The differences between wet and dry deposition and the implications for the interpretation of the \acrshort{clp} will be discussed in \Cref{sec:wet_dry_characteristics}. 
-In \Cref{sec:spatial_differences} the spatial differences in the source regions and dust transport trajectories between the receptor locations is discussed and how the spatial differences could be influenced by the topography of \acrshort{clp}. 
-Lastly the spatial differences in the sources of the clay and silt sized dust are discussed in \Cref{sec:fine_vs_coarse}.
+It is found that meteorological forcing data is important for the performance of FLEXDUST and FLEXPART.
+Changes in the forcing data produce drastically different spatial and temporal variability in the models. For instance, models forced by ERA-Interim are not able to resolve the complex topography surrounding the Taklamakan desert.  Both reanalyses cannot resolve weather that occurs on scales smaller than the spatial and temporal resolution of the model. 
+This limitation might disproportionally affect the modelled wet deposition since the model and observation see the precipitation differently.
+Whereas the model forcing provides precipitation in one grid cell, the observation collects precipitation at a single point. Thus, FLEXPART has to parametrise the subgrid-scale precipitation. 
+Since precipitation can be local, especially during summer showers. 
+Therefore, there might not have been any precipitation occurring at the measurement location, while it might have been raining in the closest ERA5 grid cell. 
+This might explain the larger disagreement between the model and observation on the amount of wet deposited dust in summer compared to spring and winter. 
+This is less of a factor for dry deposition since the dry deposition is strongest during periods with high atmospheric dust concentration and such events cover a broad area \parencite{osada2014wet}.  
+While the impact of temporal resolution of the forcing was not considered in the sensitivity analysis, it is an aspect that might be important for the model performance. As the processes relevant for the dust cycle occur on timescales less than one day \parencite{shao2011dust}. Thus having more meteorological data points during dust events could improve the model representation of the dust cycle.  
+
+% Furthermore, there where not only spatial difference, the ERA5 and ERA-interim produced noticeably different temporal variability in the emission strength. 
+
+% Mesoscale cold fronts, which typically produce dust storms in the Taklamakan desert, would be better represented in ERA5. 
+% Whereas, dust storms over Mongolia and northwestern China, which are predominately caused by synoptic scale cyclones, are not as sensitive to the resolution of the forcing. 
+
+% An aspect of the model forcing that was not investigated in the sensitivity analysis is how the temporal resolution of the forcing impacts the FLEXPART/FLEXDUST simulations. 
+% Having a higher temporal resolution could improve the representation of the medium and weaker dust events. 
+
+% The potential causes of the deposition will be discussed here, extra attention is brought to the bias in wet deposition.  
+% Because understanding the biases in the wet deposition scheme is particularly important, given that according to the model results, wet deposition is the primary mode of deposition to the \acrshort{clp}. 
+
+The parameters affecting the dry deposition are only the particle size and density. While wet deposition in addition to the aforementioned parameters also depends on the below and in cloud scavenging efficiencies.
+While only the sensitivity of particle density and below cloud scavenging were examined in this work. The results for this analysis showed that the density of the particles had a negligible effect on the dry deposition rate. The wet deposition showed a slightly stronger dependence on the particle density, 
+possibly since the dust must be lifted to high altitudes to be scavenged inside the clouds. Still, the overall dependency on the particle density for the modelled deposition was small. 
+Turning the below cloud scavenging off yielded, as expected, a reduction in the contribution from the proximal source regions.
+% However, the areas with increased deposition when the below cloud scavenging is turned off are hard to explain.  
+Lastly, \textcite{flexpart_wetdep} demonstrated that the modelled wet deposition scheme in FLEXPART could be sensitive to in-cloud scavenging parameters. Doing an in-depth analysis of the cloud scavenging parameters and the wet deposition  of dust in the model could help better understand this bias. The overestimation of wet deposition compared to observation could be reduced by adjusting cloud scavenging efficiencies.
+% ? Any comments or thoughts?
+
+While \textcite{flexdust_ref_2016} is the only study that has evaluated the performance of FLEXPART and FLEXDUST to simulate mineral dust, there have been more studies done comparing simulated deposition of black carbon with observations, e.g. \textcite{flexpart_wetdep, choi_investigation_2020}. 
+\textcite{choi_investigation_2020} suggested that FLEXPART was not able to capture the regional variation of blackcarbon due to severely underestimation of the in-cloud scavenging coefficient. Moreover, by diagnosing the relative importance of the input variables 
+they found that the convective available potential energy (CAPE), should be considered an important parameter to improve the in-cloud scavenging scheme. 
+There is also a known issue with the current wet deposition scheme related to the interpolation and disaggregation of the input variables \parencite{tipka2021effects}. 
+% What impact will this issue have on your model results? Overestimation or underestimation?
+This will be worth investigating in the future. 
+
+
+% Moreover, the analysis showed that the strong deposition events did not necessarily coincide with the strongest dust events. The agreement between ERA5 and ERA-Interim FLEXDUST simulations were higher for the strong dust events compared to the weaker dust events. Because the large synoptic scale dust events are better represented in the forcing data. 
+% The resulting bias towards strong dust events is less important for the dry deposition flux since the dry deposition strongly correlated with the dust emissions as shown in \Cref{fig:correlations}. 
+
+While it is hard based on this work to draw a definitive conclusion on whether biases in FLEXDUST or FLEXPART are the main cause of the discrepancy between the model and observation of the dust deposition at a site. 
+Still, given the good agreement between the modelled and observed dry deposition and that the East Asian dust sources are reasonably well represented compared to other dust models, we suggest that the main cause of the bias in the deposition flux is with the wet deposition in FLEXPART. Several potential causes for the deposition bias has been proposed. Note that substantial bias in dust deposition is not exclusive to this modelling approach, and the dust models generally struggle to adequately represent the dust deposition \parencite{shao2011dust,zhang2019parameterization}. Therefore, more studies combining fieldwork and dust modelling are necessary to better constrain and improve the modelling of dust deposition.   
+
+
+
+\section{Climatology of the East Asian dust cycle}\label{sec:climatlogy_EA_dust_cycle_discussion}
+
+% \emph{RQ: What is the main mode of deposition to the CLP? How are the source areas and dust transport paths among the sites different? How are the source areas different for the coarse and fine deposited dust?}
+
+% Determining the main mode of deposition to the \acrshort{clp} is important for understanding the dust transport pathways to the \acrshort{clp}.
+% The results from the FLEXPART/FLEXDUST model simulations suggest wet deposition to be the main mode of deposition to the \acrshort{clp}. 
+% The differences between wet and dry deposition will be discussed in \Cref{sec:wet_dry_characteristics}. 
+% In \Cref{sec:spatial_differences} the spatial differences in the source regions and dust transport trajectories between the receptor locations and how the spatial differences could be influenced by the topography of \acrshort{clp} is discussed in \Cref{sec:spatial_differences}. 
+% Lastly, the spatial differences in the sources of clay and silt sized dust are discussed in \Cref{sec:fine_vs_coarse}.
 
 \subsection{Dry- versus wet deposition}\label{sec:wet_dry_characteristics}
 The main mode of deposition to the \acrshort{clp}, according to the FLEXPART/FLEXDUST model simulations, is wet deposition and is the case for both the clay and silt particles. 
-Compared to dry deposition, wet deposition is less influenced by the mean flow. This was shown both from the sensitivity experiments and the correlation analysis. 
-The wet deposition at most of the locations was not significantly correlated with any circulation indices (except Lantian and Sacol).
+Compared to dry deposition, wet deposition is influenced by other factors in addition to the mean flow. This was shown both from the sensitivity experiments and the correlation analysis. 
+The wet deposition at most locations was not significantly correlated with any circulation indices (except Lantian and SACOL).
 Moreover, the correlation between wet deposition at the receptor and emissions was also weak. 
 This implies that the deposition over the \acrshort{clp} is primarily episodic. 
+Furthermore, an examination of the correlation between wet deposition and precipitation at the receptor (not shown) showed no significant relationship between the amount of precipitation and wet deposition.  
 A potential mechanism for how wet deposition could be important for the \acrshort{mar} to \acrshort{clp} must consider dust entrainment and precipitation. 
 The passage of cold fronts is important for the formation of dust events. 
-Precipitation typically forms ahead of or along the surface cold front as the warmer air is lifted over the denser cold air behind the cold front  \parencite{markowski2011mesoscale}. 
+Precipitation typically forms ahead of or along the surface cold front as the warmer air is lifted over, the denser cold air behind the cold front  \parencite{markowski2011mesoscale}. 
 Moreover, as the cold front passes through the source regions, it generates strong winds at the surface, entraining the dust into the upper troposphere \parencite{li2015multi}. 
 The dust can then be swiftly transported to the frontal rain band, efficiently scavenged by the clouds, and rained out. 
 
 The dust transport trajectories from FLEXPART support this interpretation.
-As seen from the increase in altitude of the trajectory, starting around 12 hours before approaching the receptor location consistent with the convective nature of the cold frontal rainband. 
-Moreover, the more southerly orientation of the wet deposition trajectories suggests a larger contribution of moist southerly air masses. 
-Conversely, the dry deposition trajectories have a larger northerly component, indicating more dry and cold air arriving at the receptor. 
-Implying that if the northerly component is too strong, the cold front will move past \acrshort{clp}, and the frontal rainband will be situated to the south of the \acrshort{clp} hence no wet deposition.
-Therefore, suggesting that wet deposition episodes are less likely to occur during the most intense dust storms. On the flip side, if the northerly winds are too weak to entrain a substantial amount of dust, then there will not be a large deposition event regardless if it rains or not.
+As seen from the increase in altitude of the trajectory, starting around 12 hours before approaching the receptor location. This increase in altitude would be consistent with the convective nature of the cold frontal rainband (\Cref{fig:dust_loading_trajecs}). 
+Moreover, the more southerly orientation of the wet deposition trajectories suggests a larger contribution of moist southerly air masses (\Cref{fig:dust_loading_trajecs}). 
+Conversely, the dry deposition trajectories have a larger northerly component, indicating more dry and cold air arriving at the receptor (\Cref{fig:dust_loading_trajecs}). 
 
 The \acrfull{eam} predominately drives the seasonal shift in the circulation of this region. 
-Therefore the wet and dry deposition trajectories can also be interpreted in terms of the transition from winter monsoon to summer monsoon, with the wind reversing direction from generally northerly in winter to southerly in summer. \textcite{dai2021define} divided the \acrshort{eam} into eight stages. 
+Therefore, the wet and dry deposition trajectories can also be interpreted in terms of the transition from winter monsoon to summer monsoon, with the wind reversing direction from generally northerly in winter to southerly in summer. \textcite{dai2021define} divided the \acrshort{eam} into eight stages. 
 The three stages of the \acrshort{eam} that are relevant for the dust transport is the late winter stage (February to early March), spring stage (March to late May) and pre-Meiyu (late May to late June). 
-Predominately northwesterly winds characterise the late winter stage. 
+Predominately, northwesterly winds characterise the late winter stage. 
 Transitioning into spring, the southerly wind is strengthened, turning the northwesterly  winds into  predominately westerly winds. 
 With the southerly shift in the predominant wind direction, the amount of precipitation is also enhanced. 
 Finally, in the pre-Meiyu stage, the southerly wind is further enhanced, while the westerly and northerly winds are substantially weakened. 
-Thus based on the predominately northwesterly transport indicated by the dry deposition trajectories, the conditions for strong dry deposition events are most favourable during late winter and early spring.
-Conversely, strengthened southerlies in the spring and pre-Meiyu stages suggest that the conditions for wet deposition episodes are most favourable in spring and early summer.         
 
-Still, until there is more observational evidence supporting wet deposition as the main mode of deposition to the \acrshort{clp}, it is more likely that the large contribution is due to the bias in the wet deposition, as discussed previously.
-Even supposing that the ratio wet to dry deposition represents present-day deposition over the \acrshort{clp} it is necessary to keep in mind that the climate was very different during the glacial stages when the \acrshort{mar} over the \acrshort{clp} highest. 
-Therefore it might be inaccurate to infer past deposition patterns from present-day climate.  
 
-\subsection{Spatial variability of the dust sources to the CLP}\label{sec:spatial_differences}
-Based on the FLEXPART/FLEXDUST simulations, the deserts North West of the \acrshort{clp} was the main source region of the dust deposited over the \acrshort{clp}. 
-However, there are still noticeable differences in the source areas for the different sites. 
-Generally, more dust was deposited at western sites compared to the eastern sites.  Shapotou, Yinchuan and SACOL, all located on the western side of the Liupan Mountains, have a large contribution from the Tengger and Badain Jaran desert. As opposed to Badoe, Luochuan and Lantian, which are more influenced by the deserts located on the Inner Mongolia Plateau. Suggesting that the Liupan Mountains could play a role in differentiating the source region to western and eastern \acrshort{clp}.
-The topography could also explain some of the differences in source regions between SACOL and Lingtai. In contrast, SACOL experiences less dust transport from the northerly deserts and the opposite is the case for Lantian. This interpretation is also consistent with the centroid dust loading trajectories, which are more westerly than the other locations. 
+Thus, based on the predominately northwesterly transport indicated by the dry deposition trajectories, the conditions for strong dry deposition events are most favourable during late winter and early spring.
+Conversely, the strengthened southerlies in the spring and pre-Meiyu stages suggest that the conditions for wet deposition episodes are more favourable in spring and early summer. 
 
-The north south topography of the \acrshort{clp} offers a possible explanation of the difference in the deposition at Luochuan and Lantian. Luochuan and Lantian have very similar source regions and the amount of dry deposited material (\Cref{fig:source_contrib_2mmu}). 
-However, Luochuan experiences much less wet deposition. The difference in elevation between Lantian and Luochuan is around 500 meters. 
+Note that the large contribution of wet deposition to the total dust deposition over the CLP can be due to the bias in the wet deposition, as discussed previously. Although there is observational evidence suggesting that wet and dry deposition could be equally important for the \acrshort{mar} to \acrshort{clp} \parencite{wang2015geochemical}. This is in contrast with other studies suggesting that dry deposition is the predominant mode of deposition to the \acrshort{clp} \parencite{zhang1993atmospheric, shi2011distinguishing}.
+Even supposing FLEXPART can capture the relative importance of wet to dry deposition over the \acrshort{clp} under present-day conditions, it is likely that this ratio depends on the climatic conditions. Therefore, one has to be cautious to infer past deposition patterns based on present-day simulations.  
+
+\subsection{Spatial variation of the dust sources to the CLP}\label{sec:spatial_differences}
+Based on the FLEXPART/FLEXDUST simulations, the deserts North West of the \acrshort{clp} were the main sources of the dust deposited over the \acrshort{clp}. 
+However, there are still noticeable differences in the source areas for the different sites.
+% , for different particle size (?) and for dry and wet deposition(?). 
+Generally, more dust was deposited at western sites compared to the eastern sites.  Shapotou, Yinchuan and SACOL, all located on the western side of the Liupan Mountains, have a large contribution from the Tengger and Badain Jaran deserts. As opposed to Baode, Luochuan and Lantian, which are more influenced by the deserts located on the Inner Mongolia Plateau, suggest that the Liupan Mountains could play a role in differentiating the source region to western and eastern \acrshort{clp}.
+The topography could explain some of the differences in source regions between SACOL and Lingtai. While SACOL experiences less dust transport from the northerly deserts, Lantian is the opposite. This is also consistent with the centroid dust loading trajectories, which are more westerly at SACOL than that at the other locations. 
+
+The north-south gradient in precipitation of the \acrshort{clp} offers a possible explanation of the difference in the deposition at Luochuan and Lantian. Luochuan and Lantian have very similar source regions and the amount of dry deposited material (\Cref{fig:source_contrib_2mmu}). 
+However, Luochuan experiences much less wet deposition. 
 As moisture is typically transported from the south, a significant portion of the precipitation might have precipitated before arriving at Luochuan. 
 In fact, the precipitation at the ERA5 grid cell nearest to Luochuan is about 30\% less than Lantian. In addition, the wet deposition centroid dust loading trajectories for the two sites are nearly identical, suggesting that the same frontal systems are causing precipitation at both locations.  
 
+
 \subsection{Fine versus coarse dust}\label{sec:fine_vs_coarse}
-The spatial difference among the sites was largest for the silt-sized particles.
-The main source regions of the coarse dust are located slightly further from the receptor location than fine dust. Moreover, while the deposited amount of fine dust does not vary that much between the sites. The deposition of coarse dust varies by more than one order of magnitude between Shapatou, the site experiencing the strongest deposition and Luochuan, the weakest deposition. This result is in agreement with the size distribution becoming finer along the transect from the north west to the south east \parencite{ding2000re,sun2003seasonal}.
+It is found that the spatial difference among the sites was largest for the silt-sized particles (\Cref{fig:source_contrib_20mmu}).
+The main source regions of the coarse dust are located slightly further from the receptor location than the fine dust. 
+Moreover, while the deposited amount of fine dust does not vary that much between the sites, the deposition of coarse dust varies by more than one order of magnitude between Shapatou, the site experiencing the strongest deposition, and Luochuan, the weakest deposition site. 
+This result is consistent with the size distribution of Loess deposits becoming finer along the transect from the northwest to the southeast \parencite{ding2000re,sun2003seasonal}.
 
 As opposed to the silt particles, the clay particles could be transported within the lower troposphere even from the most remote sites (\Cref{fig:dust_loading_trajecs}). 
-This could explain why dry deposition is more efficient for fine particles than coarse particles. Since the coarse dust entrained into the lower troposphere gets deposited over the source region before arriving at the receptor, the silt size particles have a stronger dependence on upper-level transport to reach the \acrshort{clp}. 
-It makes it likely for the coarse dust to be scavenged by clouds and wet deposited, as evident from \Cref{fig:source_contrib_20mmu}h. The higher efficiency of wet deposition for the silt-sized particles could also be caused by the higher \acrshort{ccn} efficiency assumed in the simulations. However, the sensitivity wet deposition scheme in FLEXPART was not examined in this work.  
+This could explain why dry deposition is more efficient for fine particles relative to wet deposition compared to coarse particles. 
+Since the coarse dust entrained into the lower troposphere gets deposited over the source regions before arriving at the receptor, thus the silt size particles have a stronger dependence on upper-level transport to reach the \acrshort{clp}. 
+This also makes it likely for the coarse dust to be scavenged by clouds and wet deposited, as evident from \Cref{fig:source_contrib_20mmu}h. The higher efficiency of wet deposition for the silt-sized particles could also be caused by the higher \acrshort{ccn} efficiency assumed in the simulations. 
+% However, the relative importance of the cloud scavenging parameters was not examined in this work. 
+% However, the dependence of the wet deposition scheme on the \acrshort{ccn} efficiency was not examined in this work.  
 
-Possible processes that could carry the coarse dust into the upper troposphere, turbulent eddies, convection and mechanically forced lifting. 
-The passage of a cold front destabilises the atmosphere producing favourable conditions for deep convection and strong turbulent eddies.    
-Moreover, \textcite{yumimoto_elevated_2009} demonstrated that slopes of the \acrfull{ntp} could produce updraft winds strong enough to lift the dust from the Tarim Basin to a height between 9-12 km. Mechanical lifting might be the mechanism for responsible the localised area of high dust contribution over the Taklamakan in \Cref{fig:source_contrib_20mmu}.    
+The following processes that could carry large dust particles into the upper troposphere are turbulent eddies, convection and mechanically forced lifting. 
+The passage of a cold front destabilises the atmosphere producing favourable conditions for deep convection and strong turbulent eddies \parencite{markowski2011mesoscale}.    
+It has been shown by \textcite{yumimoto_elevated_2009} that slopes of the \acrfull{ntp} could produce updraft winds strong enough to lift the dust from the Tarim Basin to a height between 9-12 km. Mechanical lifting might be the mechanism for responsible the localised area of high dust contribution over the Taklamakan to the \acrshort{clp} in \Cref{fig:source_contrib_20mmu}.    
 
-\section{Interannual variability of the East Asian dust cycle}
-\emph{RQ: What are the differences in circulation patterns, dust transport paths and source regions between strong and weak deposition years? How does the interannual variability of winter circulation affect springtime dust?}
-\subsection{Temporal variability of dust emission}
+\section{Interannual variability of the East Asian dust cycle}\label{sec:interannual_variabiity }
+% \emph{RQ: What are the differences in circulation patterns, dust transport paths and source regions between strong and weak deposition years? How does the interannual variability of winter circulation affect springtime dust?}
+\subsection{Dust emissions}
+The results from the \acrshort{eof} analysis of the interannual variability of East Asian dust emissions identified two predominant spatial patterns. The first \acrshort{eof} showed a general increase of dust emissions for all the sources, similar to the spatial pattern identified by \textcite{liu2018influence,liu2020impact}.  
+The \acrshort{djf} composite difference of \acrshort{mslp} and 850hPa wind of \acrshort{eof}1 indicated a negative \acrshort{ao}-like pattern, with positive \acrshort{mslp} anomalies over the Arctic region. 
+The composite difference also indicated a weakened \acrshort{sh}, suggesting that a strong \acrshort{eawm} is unfavourable for dust emissions from East Asia. 
+This is consistent with the correlation analysis, which showed negative although weak correlations between emissions and the winter monsoon indices. 
+The weakened \acrshort{sh} is also present in the spring composite. 
+This is consistent with the arguments of \textcite{roe2009interpretation}, that \acrshort{caob}s occur as a consequence of the breakdown of the \acrshort{sh} and thus, a persistent \acrshort{sh} would cause fewer \acrshort{caob}s.
+
+The spatial pattern of the second \acrshort{eof} has not been discussed in the literature previously (\Cref{fig:emissions_eof}). It shows a dipole pattern between emissions in Taklamakan and Mongolia. 
+The composite anomalies for the second \acrshort{eof} resemble a weakened \acrshort{eawm}. However, the centre of the pressure anomaly is located further northeast than the climatological position of the \acrshort{sh} in \Cref{fig:clim_circulation}. 
+Transitioning into spring, there is now a negative pressure anomaly over the Taklamakan desert producing anomalous easterly wind and enhanced emissions from Taklamakan. However, the easterly wind anomalies make these conditions unlikely to cause an increase in the \acrshort{mar} to the \acrshort{clp}. Therefore the negative mode of the \acrshort{eof}2 would have the larger influence on the deposition \acrshort{clp}. 
+% The dust storm this year is more like the negative eof2 mode? 
+
+Relating the interannual variability of emissions to the deposition at the receptor. The site with the strongest relationship with \acrshort{eof}1 is Lantian.
+Which share similarities in the composite difference and has a high correlation with emissions in the source regions. 
+From comparing receptor composites to the \acrshort{eof}2 composites, Baode seems to be the site most related to the \acrshort{eof}2. Where strong deposition to Baode is favourable during negative \acrshort{eof}2 years, due to Baode being strongly influenced by emissions from Mongolia (see \Cref{fig:source_contrib2mmu_anomalies} and \Cref{fig:source_contrib20mmu_anomalies}).   
+% a connection between the interannual variability 
+% Comparing the deposition composites with  particular Badoe 
 
 \subsection{Sources and transport in strong versus weak deposition years}
 The composite analysis of the source contribution showed the sources  were more concentrated during strong than weak deposition years. 
 Wet deposition was the main cause for the increase in the \acrshort{mar} to the \acrshort{clp} in strong deposition years. The more concentrated source contribution suggests that the strong deposition years are distinguished from the weak deposition years by a few strong predominately wet deposition events (\Cref{fig:source_contrib2mmu_anomalies} and \Cref{fig:source_contrib20mmu_anomalies}). 
 
 Furthermore, looking at how the weak and strong deposition years differ in terms of their transport trajectories. 
-The main difference in the  transport of dry deposited  dust between the strong and weak deposition years is the strengthening of northwesterly transport (see. \Cref{fig:strong_weak_drydepo_year_2mmu_trajecs} and \Cref{fig:strong_weak_drydepo_year_20mmu_trajecs}).
-Moreover, the spread of the trajectories is slightly diminished with a small shift towards the north in strong deposition years. This is consistent with a stronger northerly component during strong deposition years. 
+The main difference in the transport of dry deposited  dust between the strong and weak deposition years is the strengthening of northwesterly transport 
+(see. \Cref{fig:strong_weak_drydepo_year_2mmu_trajecs} and \Cref{fig:strong_weak_drydepo_year_20mmu_trajecs}).
+Moreover, the spread of the trajectories is slightly diminished with a small shift towards the north in strong deposition years. This is consistent with a stronger northerly component. 
 The wet deposition trajectory shows a strengthening of the transport during the strong deposition years like the dry deposition trajectories. 
-However, the difference is less pronounced. 
-Except for the transport of fine dust to Shapotau and coarse dust to SACOL, which has weaker transport during strong deposition years. 
-Suggesting that intense dust storms might not be favourable conditions for wet deposition in these two cases.
-Most of the locations had a more northerly trajectory during strong deposition events, the exception being SACOL. Suggesting that a strengthened northwesterly transport would produce unfavourable conditions for wet deposition at SACOL. 
+However, the difference is less pronounced, except for the transport of fine dust to Shapotou and coarse dust to SACOL, which has weaker transport during strong deposition years. 
+This suggests that more intense dust storms would not be favourable conditions for wet deposition in these two cases.
+Most of the locations had a more northerly trajectory during strong deposition events, the exception being SACOL, Suggesting that more northwesterly winds would produce unfavourable conditions for wet deposition at SACOL. 
 
    
 \subsection{Linking winter circulation and spring deposition}
 In the introduction of this thesis, I questioned the conclusion of \textcite{wyrwoll2016cold} and their claim to have demonstrated for the first time a close link between the occurrence of dust events and the strength of the \acrshort{eawm}. 
-I had three core issues with their study: (1) The correlation between the \acrshort{eawm} and dust storm frequency was based on visibility measurements, which is more analogous to concentration.
-(2) The frequency of \acrfull{caob} is used as a proxy for \acrshort{eawm}. However, \acrshort{caob}s occur due to the breakdown of the \acrfull{sh}, while a strong \acrshort{eawm} is characterised by a strengthened \acrshort{sh} \parencite{roe2009interpretation}. (3) They only considered the dust storm frequency; however, infrequent strong deposition events might contribute to the majority of the deposited dust. 
+I had three core issues with their study: (1) The correlation between the \acrshort{eawm} and dust storm frequency was based on visibility measurements, which is more analogous to dust concentration.
+(2) The frequency of \acrfull{caob} is used as a proxy for \acrshort{eawm}. However, \acrshort{caob}s occur due to the breakdown of the \acrfull{sh}, while a strong \acrshort{eawm} is characterised by a strengthened \acrshort{sh} \parencite{roe2009interpretation}. (3) They only considered the dust storm frequency; however, infrequent strong deposition events might contribute to most of the deposited dust. 
 
 A comprehensive correlation analysis, including spring deposition and several indices representing the \acrshort{eawm} strength, was done to determine the influence of \acrshort{eawm} on spring deposition. 
-The results showed no evidence for a significant influence of the strength of the \acrshort{eawm} on the deposition over the \acrshort{clp}. Contradicting the conclusions of \textcite{wyrwoll2016cold}.
-While there was no link between the \acrshort{eawm} strength and deposition, the results showed a strong influence of the winter \acrshort{ao} on the strength of the spring dust deposition.    
-As evident from the positive \acrshort{mslp} anomalies over the arctic shown 850hPa and \acrshort{mslp} composites anomalies in \Cref{fig:DJF_850_fine_composite} and \Cref{fig:DJF_850_coarse_composite}. 
-While there was no apparent linkage between spring and the preceding winter in the low-level circulation composite anomalies. 
-The 500hPa geopotential composite anomalies showed height anomalies in the winter preceding a strong deposition spring. 
-Moreover, these anomalous winter conditions persisted into the following spring, with the anomaly being more prominent for the sites that had a strong correlation with the winter AO. 
+The results showed no evidence for a significant influence of the strength of the \acrshort{eawm} on the deposition over the \acrshort{clp}, contradicting the conclusions of \textcite{wyrwoll2016cold}.
+While there was no link between the \acrshort{eawm} strength and deposition, a strong connection of the winter \acrshort{ao} on the strength of the spring dust deposition was documented in our model simulations.    
+This is evident from the positive \acrshort{mslp} anomalies over the arctic shown 850hPa and \acrshort{mslp} composites anomalies in \Cref{fig:DJF_850_fine_composite} and \Cref{fig:DJF_850_coarse_composite}. 
+There was no apparent linkage between spring and the preceding winter in the low-level circulation composite. 
+However, the 500hPa geopotential composite difference showed height anomalies in the winter preceding a strong deposition spring. These anomalous winter conditions persisted into the following spring, with the anomaly being more prominent for the sites with a strong correlation with the winter \acrshort{ao}. The geopotential height anomaly and strengthened westerly wind are consistent with a strengthening of the thermal winds and increased temperature gradient.   
+%  A weaker yet stream does also make it more favourable for cold air intruding into East Asia \parencite{he2017impact}. 
 
 \textcite{liu2018influence} examined the relationship between spring dust emissions and preceding winter \acrshort{ao} using the MERRA2 reanalysis.
 They identified a similar pattern based on regression analysis between the winter 500hPa geopotential height and the leading \acrshort{eof} of springtime dust emissions. 
 \textcite{liu2018influence} suggested that negative \acrshort{ao} produces anomalous cold conditions over central Siberia that can persist into the following spring. 
-The effect of the cold conditions is amplified by snow-albedo and cloud feedbacks, producing favourable conditions for enhanced dust emissions in spring\parencite{liu2018influence}. 
-The influence of the winter \acrshort{ao} on the spring surface temperature is confirmed by the correlation analysis, with a positive \acrshort{ao} corresponding to a reduced temperature gradient over East Asia (\Cref{fig:correlations}). 
-Moreover, the deposition at the receptors all show a negative correlation between deposition and the spring temperature gradient, the same is true for the emissions.
-However, the strength of the \acrshort{eawm}, while being significantly correlated with the winter temperature gradient, the \acrshort{eawm} have barely any influence on the spring temperature gradient. 
+The effect of the cold conditions is amplified by snow-albedo and cloud feedbacks, producing favourable conditions for enhanced dust emissions in spring \parencite{liu2018influence}. 
+The influence of the winter \acrshort{ao} on the spring surface temperature is confirmed by the correlation analysis, with a negative \acrshort{ao} corresponding to a strengthened temperature gradient over East Asia (\Cref{fig:correlations}). 
+Moreover, the deposition at the receptors all show a negative correlation with the spring \acrshort{eatg}, the same is true for the emissions.
+% The strenghte \acrshort{}
+However, the strength of the \acrshort{eawm}, while being significantly correlated with the winter temperature gradient, has barely any influence on the spring temperature gradient. 
 % The important role of the spring temperature on dust emissions is also in agreement with \textcite{liu2020impact}.
 
-Furthermore, \textcite{yang2020interdecadal} examined the interdecadal variations in the paths of the \acrshort{caob}s influencing East Asia. 
-They found a transition in the direction of the \acrshort{caob}s to favour a more northerly path since 1995.
-Moreover, the maximum probability density distribution of the \acrshort{caob} paths since 1995 over Mongolia/Eastern Siberia (\textcite{yang2020interdecadal}, Figure 4)  coincide with the location of the negative winter 500hPa geopotential composite anomalies for SACOL and Lantian. In addition, \textcite{yang2020interdecadal} showed that the northerly \acrshort{caob} path was associated with negative \acrshort{ao}-like composite anomalies and thus consistent SACOL and Lantian being the two sites strongest influenced by the \acrshort{ao}. Compared to wet deposition at Shapotou is only weakly influenced by the  winter \acrshort{ao}, comparing the location of the winter 500hPa geopotential height anomaly with the \acrshort{caob} path distribution, Shapotou seems to be more influenced by the westerly cold surge path, common before 1995.       
-This also illustrates another issue with the evidence for the conclusions of \textcite{wyrwoll2016cold}, since in addition to the frequency and intensity of the \acrshort{caob}s, the path of the \acrshort{caob} can also influence the \acrshort{mar} to the \acrshort{clp}.  
+\textcite{yang2020interdecadal} examined the interdecadal variations in the paths of the \acrshort{caob}s influencing East Asia. 
+They found a transition in the direction of the \acrshort{caob}s to favour a more northerly path since 1995. The maximum probability density distribution of the \acrshort{caob} paths since 1995 over Mongolia/Eastern Siberia (\textcite{yang2020interdecadal}, Figure 4)  coincide with the location of the negative anomaly in the 500hPa geopotential height composite difference for SACOL and Lantian. 
+In addition, they showed that the northerly \acrshort{caob} path was associated with negative \acrshort{ao}-like composite anomalies and thus consistent with SACOL and Lantian being the two sites exhibiting the strongest correlation with the \acrshort{ao}. 
+
+The winter \acrshort{ao} only weakly influences the deposition at Shapotou. The location of the winter 500hPa geopotential height anomaly suggests a stronger influence by the westerly \acrshort{caob}s, common before 1995.       
+This also illustrates another issue with the study of \textcite{wyrwoll2016cold}, since in addition to the frequency and intensity of the \acrshort{caob}s, the path of the \acrshort{caob} also has an influence on the \acrshort{mar} to the \acrshort{clp}.  
 % A weaker yet stream does also make it more favourable for cold air intruding into East Asia \parencite{he2017impact}. 
 % Negative \acrshort{ao} is also associated with increased snow and cloud cover over central Siberia, increasing the albedo amplifying the surface cooling. 
 
@@ -233,10 +266,47 @@ This also illustrates another issue with the evidence for the conclusions of \te
 
 % \subsection{Summary}
 
-\section{Implication for interpreting loess records}
+\section{Implications for interpreting loess records}
+The attention of the discussion so far has been concerned with the processes of the dust cycle of up to annual time scale. Many of the important points brought up also have strong implications for understanding long-term changes in the \acrshort{eadc} and the interpretation of the loess records. 
+Perhaps most importantly was the weak relationship between \acrshort{eawm} and spring deposition. This suggests that the aeolian dust records at the \acrshort{clp} at present are not a valid indicator of the \acrshort{eawm} strength. 
+Based on this work, it is not possible to say whether this is generally the case, because the climatic conditions during the glacial stages are very different from today. However, this could be answered by driving this modelling setup using data from a paleoclimate simulation, e.g., Last Glacial Maximum.  
+% Moreover, the transition from predominately westerly to northerly \acrshort{caob} paths was linked to the current declining trend in Barent sea ice concentration \parencite{yang2020interdecadal}. 
+The Red Clays are considered to be formed under relatively humid conditions due to being pedeogenically more developed than the Quaternary loess. As suggested from the modelling results, dry deposition is more favourable under winter-like conditions, while wet deposition is more favourable under more summer-like conditions. This could imply that the Red Clays might be mainly wet deposited, while the Quaternary Loess primarily is dry deposited.
+% This might suggest that wet deposition played a large role in the 
+% The less favorable conditions for dry deposition during late spring and early summer as suggested by 
+Furthermore, this modelling approach could also be used to better constrain the uncertainties in the geochemical provenance proxies by analysing present-day dust samples using various single-grain geochemical provenance proxies and comparing with the modelled source contribution. 
 
-Comparisons of Zircon U-Pb geochronologies from the \acrshort{clp} and the surrounding source regions have revealed the Taklamakan, Western Mu Us and Northern Tibetan Plateau as the most likely source for loess at the \acrshort{clp} \parencite{bird2015quaternary}. Due to its distance from the deposition centre and the dominant medium to coarse silt composition of the loess, Taklamakan is often disregarded as a major source to the \acrshort{clp}. However    
-dwe
+% Suggesting that the brief periods of increased \acrshort{mar} as recorded in the Loess records might be caused by increased dust emissions from a very concentrated source regions single source regions. 
+% Thus, give more confidence to the interpretation  geochamical proxies  
+% Moreover, since the path of \acrshort{caob}s are 
+% From the discussion uptil now have re
+% Comparisons of Zircon U-Pb geochronologies from the \acrshort{clp} and the surrounding source regions have revealed the Taklamakan, Western Mu Us and Northern Tibetan Plateau as the most likely source for loess at the \acrshort{clp} \parencite{bird2015quaternary}. Due to its distance from the deposition centre and the dominant medium to coarse silt composition of the loess, Taklamakan is often disregarded as a major source to the \acrshort{clp}. However    
 
-Therefore not related to the strength of the winter monsoon winds often assumed in paleoclimate studies \parencite{chen2006zr}. 
-Thus if model simulations are representative of the actual ratio of wet to dry deposition over the \acrshort{clp}, it would mean a fundamental change in how the Loess records are interpreted.
+% Therefore not related to the strength of the winter monsoon winds often assumed in paleoclimate studies \parencite{chen2006zr}. 
+% Thus if model simulations are representative of the actual ratio of wet to dry deposition over the \acrshort{clp}, it would mean a fundamental change in how the Loess records are interpreted
+
+\section{FLEXDUST/FLEXPART as a tool for studying the dust cycle}
+The ability of FLEXPART/FLEXDUST to directly establish which dust sources  are contributing to the dust deposition is what makes this modelling setup such a potent tool for examining the spatial variability in the dust sources to the \acrshort{clp}. Furthermore, this setup can be applied in a broader context beyond the modelling of \acrshort{eadc} to study the origin of loess sequences worldwide. 
+
+Nonetheless, this modelling approach is not without flaws.
+A major weakness of \acrshort{flexpart} is the complicated setup process.
+Compared to the similar HYSPLIT model developed by NOAA \parencite{draxler2010hysplit}, which has a graphical interface and even the possibility to run simulations directly from the browser, the difference is substantial. Even though HYSPLIT is less capable compared to FLEXPART in certain applications, due to how easy HYSPLIT is to use, the userbase of HYSPLIT is about six times that of FLEXPART \footnote{Based on the number of hits on google scholar between 2020 and 2021}. Thus, there is a clear advantage to having an easy to use model for the amount of science produced.   
+Nevertheless, the difficulty and amount of effort required to set up and use a model are seldom given much attention. 
+This modelling setup is further complicated by the lack of proper tools for post processing and analysis of the model output. 
+For me, this meant that probably 50\% of the time spent working on this thesis have been spent on creating post analysis scripts and figuring out the model setup.
+So far, FLEXPART lacks a strong community effort to develop proper tools for analysing and post-processing. 
+
+Another deficiency is the lack of proper trajectory clustering capabilities similar to that of HYSPLIT. This made it impossible to diagnose the dust transport trajectories properly. 
+Even though it is possible to do a proper cluster analysis in FLEXPART by saving the  individual trajectories and then do the clustering as a post-processing step. However, this easily gets quite computationally demanding. In addition, one has to store a lot of additional data, which increases the storage requirements. Thus, this was disregarded as an option for this work. 
+% Thus clustering based on particle positions was unfeasible to in this work.   
+
+% \subsection{Suggestions for future improvement}\label{sec:conclusion_improvement}
+This section has discussed the biases, sensitivities, advantages and disadvantages of the FLEXPART/FLEXDUST modelling setup. 
+FLEXPART/FLEXDUST can become an indispensable tool for examining the dust sources and transport pathways involved in loess formation worldwide. 
+However, this work has shown that there are issues that have to be addressed first. 
+Foremost, the wet deposition bias, a first step would be to test FLEXPART with the new interpolation scheme. 
+Moreover, to properly diagnose the dust transport, the clustering routine in FLEXPART should be improved upon. Such that the clustering takes into account the trajectory of the particles as a whole. 
+This could be achieved by reading the trajectory file at each step and assigning the clustered points to the closest cluster centroid. 
+In FLEXDUST, future work should involve properly validating the ISRIC soil texture data implemented and tested out for the first time in this work. 
+Moreover, implementing different dust emission schemes in FLEXDUST would allow for investigating the sensitivity of the model setup to the choice of emission scheme, and allow different particle sizes to be simulated explicitly.
+Lastly, creating good online documentation and a community forum where it is easy to ask questions and seek support would be a good step in the right direction to bring the FLEXPART user experience up to modern standards.

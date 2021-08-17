@@ -1,3 +1,46 @@
 \Chapter{}{Conclusion}\label{chap:conclusion}
+\section{Conclusion}
+% In this thesis I have presented a novel approach 
+
+In this thesis, the dust emission model FLEXDUST combined with backwards \acrshort{flexpart} simulations were applied for the first time to simulate the \acrshort{eadc} over the \acrshort{clp}.
+% This is the first work using FLEXDUST combined with backwards \acrshort{flexpart} simulations to model the \acrshort{eadc}. 
+An in-depth assessment of the performance, sensitivities, advantages and disadvantages of this modelling setup was done. 
+Overall, this setup performed well compared both to limited observations and to previous modelling studies.
+However, there were considerable uncertainties of the model in depicting wet deposition fluxes.
+% This will be improved upon in the future with release of the new interpolation FLEXPART \parencite{tipka2021effects}.
+The distinguishing feature of this modelling setup is the derivation of dust source contribution for specific sites, which makes it possible to examine the sources of dust deposited over the \acrshort{clp} in more detail than before.    
+
+After ensuring the reliability and validity of the modelling setup, the FLEXPART and FLEXDUST models were applied to simulate the spring \acrshort{eadc} for seven sites across the \acrshort{clp} between 1999-2019.
+% Moreover, the simulations included two particle size bins \SI{1.7}{\micro\metre}-\SI{2.5}{\micro\metre} representing clay particles and  \SI{15}{\micro\metre}-\SI{20}{\micro\metre} representing silt particles. 
+The simulations were then used to examine the climatology and interannual variability of the \acrshort{eadc}. The following conclusions were drawn:
+\begin{enumerate}
+    \item The main source of the dust deposited over the \acrshort{clp} was the deserts located northwest of the \acrshort{clp}, with the Taklamakan having only a weak influence on the \acrshort{mar}. More dust was deposited at the western sites, possibly due to the Liupan Mountains. 
+    
+    \item The spatial difference in the amount of deposited dust was the largest for the silt particles.
+    The transport of the coarse dust was more dependent on upper-level transport, whereas the fine dust could be transported throughout the lower troposphere.
+    There was a higher source contribution from the northeastern side of the Taklamakan for the coarse silt dust than for the fine clay dust , suggesting that the slopes of the \acrshort{ntp} could be important for transporting coarse dust from the Taklamakan to the \acrshort{clp}. 
+    
+    \item Wet deposition was the main mode of deposition to \acrshort{clp} according to the model, even though there were large model uncertainties regarding wet deposition. 
+    The wet deposited dust was transported along a predominantly westerly trajectory, whereas the dry deposited dust followed a more northwesterly trajectory. 
+    This was attributed to wet deposition events being more favourable later in the spring, opposed to dry deposition which was more favourable in late winter / early spring.
+
+    \item The interannual variation in spring dust deposition and emissions were closely related to the \acrshort{ao}. The strong deposition years were linked to winter 500hPa geopotential height anomalies that persisted into spring. The location and intensity of the anomaly varied between the sites. However, this anomaly was more pronounced for sites that had a strong relation to the \acrshort{ao}. The location of the geopotential anomaly was suggested to be related to the path of the \acrshort{caob}s \parencite{yang2020interdecadal}. Notably, stronger and more intense \acrshort{caob}s were favourable during negative \acrshort{ao} winter conditions \parencite{yang2020interdecadal}.
+    Several previous studies have found a strong relationship between the \acrshort{ao} and the \acrshort{eadc} \parencite{gong2006simulated,liu2018influence,mao2011influence}. However, this is the first study that directly links the deposition over the \acrshort{clp} and the \acrshort{ao}. 
+    
+    \item The interannual variability of the \acrshort{eadc} under present-day climatic conditions revealed no significant influence of the \acrshort{eawm}. Even though the strength of the \acrshort{eawm} was significantly correlated with the winter \acrshort{eatg}, the \acrshort{eawm} had barely any influence on the spring \acrshort{eatg}.
+    Unlike the conclusions of \textcite{wyrwoll2016cold} and in contrast with the typical presumption of paleoclimate studies.
+
+\end{enumerate}
+
+ 
 
 \section{Future work}
+To further improve the representation of the \acrshort{eadc} in FLEXPART and FLEXDUST, the wet deposition bias has to be examined further. A natural first step would be to investigate whether the new interpolation scheme would improve performance. A more in-depth sensitivity analysis to find the optimal parameters for representing dust FLEXPART is also needed. This would help to alleviate some of the uncertainties regarding the wet deposition. Moreover, to rule out the possibility of biases in the observations, observations from more than one source should be considered.  
+  
+The information from the dust modelling can be used to validate the provenance information from geochemical proxies. 
+During the spring of 2020 several active and passive dust traps were installed at SACOL, Shapotou, Yinchuan and Baode as a part of the Tracing the Winds project. These traps have been collecting dust for the past two dust seasons. The plan is to analyse the collected dust samples using various single-grain geochemical provenance traces and compare the information from the geochemical proxies with dust modelling. Finally, to bridge the gap between this work on the present-day \acrshort{eadc} and the Neogene Red Clay, the focus of the Tracing the Winds project. This model setup could be forced by output from a paleoclimate simulation.
+
+
+
+
+

@@ -65,7 +65,8 @@
   \renewcommand{\footrulewidth}{0pt}% Line at the footer visible
   }
 
-
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \newcommand{\pd}[2][]{\frac{\partial#1}{\partial#2}}
 %Listings configuration
@@ -100,8 +101,8 @@
 
 % \setlength{\parindent}{1em}
 
-\title{Aeolian Dust Sources, Transport and Deposition over the Chinese Loess Plateau during 1999-2019: A study using the FLEXDUST and FLEXPART Models}
-\subtitle{To years of work}
+\title{Aeolian dust sources, transport and deposition over the Chinese Loess Plateau during 1999-2019: A study using the FLEXDUST and FLEXPART models}
+\subtitle{Two years of work}
 \author{Ove Haugvaldstad}
 
 % \input{texfiles/Misc/glossary}
@@ -116,6 +117,8 @@
 
 \frontmatter
 \subfile{texfiles/abstract}
+\subfile{texfiles/Acknowledgement}
+
 \tableofcontents
 \glsaddall
 \printnoidxglossary[type=\acronymtype,nonumberlist]
